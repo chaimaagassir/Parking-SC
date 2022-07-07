@@ -12,12 +12,12 @@ class CodepromoController extends Controller
     public function afficher()
     {
         $codespromo= Codepromo::paginate(7);
-        return view('layouts.codespromo' , compact('codespromo')) 
+        return view('layoutspp.codespromo' , compact('codespromo')) 
         ->with('i',$codespromo); 
     }
 
     public function add(){
-        return view('layouts.ajouter-codepromo');
+        return view('layoutspp.ajouter-codepromo');
     }
 
    public function promocodes(PostFormRequest $request){
@@ -33,6 +33,6 @@ class CodepromoController extends Controller
 
    public function edit($codespromo_id){
     $codespromo= Codepromo::find($codespromo_id); 
-    return view('layouts.modifier-codespromo' , compact('codespromo')) ;
+    return view('layoutspp.modifier-codespromo' , compact('codespromo')) ;
    }
 }

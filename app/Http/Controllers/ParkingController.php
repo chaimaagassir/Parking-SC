@@ -9,7 +9,7 @@ class ParkingController extends Controller
     public function afficher()
     {
         $parking= Parking::paginate(7);
-        return view('layouts.parking' , compact('parking')) 
+        return view('layoutspp.parking' , compact('parking')) 
         ->with('i',$parking); 
     }
 }
