@@ -35,7 +35,7 @@
     <div class="container-fluid page-body-wrapper">
 
      @include('partials.sidebar')
-     <div class="content-wrapper"> salaaam
+     <div class="content-wrapper"> 
      
     @yield('content')
 
