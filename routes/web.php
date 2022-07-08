@@ -76,6 +76,8 @@ Route::get('parkings', function () {
 });
 
 Route::get('parkings', [ParkingController::class,'afficher']);
+Route::get('findplace', [ParkingController::class,'afficherfind']);
+
 
 Route::get('clients', [ClientsController::class,'afficher']);
 

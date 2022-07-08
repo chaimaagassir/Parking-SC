@@ -12,7 +12,13 @@ class ParkingController extends Controller
         return view('layoutspp.parking' , compact('parking')) 
         ->with('i',$parking);   
     }   
-    
+    public function afficherfind()
+    {
+        $parkingf= Parking::paginate(5);
+        return view('client/layouts.findplace' , compact('parkingf')) 
+        ->with('i',$parkingf);   
+    } 
+
     public function add(){
         return view('layoutspp.ajouter-parking');
     }

@@ -77,68 +77,47 @@
                 <!-- Right content -->
                 <div class="col-xl-9 col-lg-9 col-md-8">
                     <!-- Featured_job_start -->
+                    
                     <section class="featured-job-area">
+                        
                         <div class="container">
-                            <!-- Count of Job list Start -->
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="count-job mb-35">
-                                       
-                                   
-                                        <!--  Select job items End-->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Count of Job list End -->
+                            
                             <!-- single-job-content -->
+                            @forelse ($parkingf as $p)
+                            
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
-                                        <a href="#"><img src="client/assets/img/icon/pa1.png" width="250" 
-                                            height="200" alt=""></a>
+                                        <a href="#"><img src="../../uploads/parkings/{{ $p->image }}" width="250" 
+                                            height="200" alt="image"/></a>
                                     </div>
                                     <div class="job-tittle job-tittle2">
                                         <a href="#">
-                                            <h4>Casa Parking</h4>
+                                            <h4>{{ $p->ville }}</h4>
                                         </a>
                                         <ul>
-                                            <li>Sidi Maarouf</li>
-                                            <li><i class="fas fa-map-marker-alt"> </i>Casablanca</li>
-                                            <li>35DH - 40DH</li>
+                                            <li>{{ $p->emplacement }}</li>
+                                            <li><i class="fas fa-map-marker-alt"> </i>{{ $p->ville }}</li>
+                                            <li>{{ $p->prix }} DH </li>
                                         </ul>
                                     </div>
                                 </div>
                                 
                                 <div class="items-link items-link2 f-right">
                                     <a href="parking-details">Details</a>
-                                    <span>Full time</span>
+                                    
                                 </div>
+                                @empty <h1> rien à afficher </h1>
+                                
                             </div>
+                            @endforelse
+                            
+                            
                             <!-- single-job-content -->
-                            <div class="single-job-items mb-30">
-                                <div class="job-items">
-                                    <div class="company-img">
-                                        <a href="#"><img src="client/assets/img/icon/download.jpg" width="250" 
-                                            height="200" alt=""></a>
-                                    </div>
-                                    <div class="job-tittle job-tittle2">
-                                        <a href="#">
-                                            <h4>Marrakech Parking</h4>
-                                        </a>
-                                        <ul>
-                                            <li>Bab Doukala</li>
-                                            <li><i class="fas fa-map-marker-alt"></i>Marrakech</li>
-                                            <li>35DH - 40DH</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="items-link items-link2 f-right">
-                                    <a href="job_details.html">Details</a>
-                                    <span>7 hours ago</span>
-                                </div>
-                            </div>
+                            
                            
                         </div>
+                        
                     </section>
                     <!-- Featured_job_end -->
                 </div>
