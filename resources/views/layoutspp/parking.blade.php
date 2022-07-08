@@ -8,6 +8,7 @@
 <div>
   <div class="card">
     <div class="card-body">
+      
       <h4 class="card-title">Filtre</h4> <hr>
       
       <div class="form-group row">
@@ -49,6 +50,7 @@
   <br> <br>  <br>
   <div class="card">
     <div class="card-body">
+      
 <div style =' position: absolute; right: 20px;'>
 
   
@@ -56,6 +58,9 @@
   <a href="ajouterparking" ><button type="button" class="btn btn-primary btn-rounded btn-fw" >Ajouter un parking</button> </a>
   </div>
    <br> <br>  <br>
+   @if(Session('message'))
+      <div class="alert alert-success"> {{Session('message')}} </div>
+      @endif
    <h4> La liste des parkings  : </h4> <br> 
    
 <div class="table-responsive">
@@ -74,12 +79,14 @@
           
         
         </tr>
-      </thead>
+      </thead>    
       <tbody>
         @forelse ($parking as $p)
         <tr>
             
-          <td>{{ $p->image }}</td>    
+          <td >
+            <img src="../../uploads/parkings/{{ $p->image }}" alt="image"/>
+          </td>   
           <td>{{ $p->ville }}</td>
           <td >{{ $p->emplacement }} </td>
           <td >{{ $p->numéro_téléphone }} </td>

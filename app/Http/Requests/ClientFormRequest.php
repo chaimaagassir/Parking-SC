@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostFormRequest extends FormRequest
+class ClientFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,15 @@ class PostFormRequest extends FormRequest
      */
     public function rules()
     {
-        $rules =[
-            'Nom'=>['required' , 'string'],
-            'Code'=>['required' , 'string'],
-            'Pourcentage'=>['required' , 'integer']
-
-        ] ; 
-        return $rules; 
+        return [
+            'nom'=>['required' , 'string'],
+            'prenom'=>['required' , 'string'],
+            'email'=>['required' ],
+            'ville'=>['required' , 'string'],
+            'tel'=>['required'  ],
+            'cin'=>['required'],
+           
+            
+        ];
     }
 }

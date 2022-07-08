@@ -13,8 +13,8 @@
       <div class='alert alert-danger'>
         @foreach ($errors->all() as $error)
         <div> {{$error}} </div>
-            
-        @endforeach
+              
+        @endforeach   
       </div>
       @endif
         <h4  >Ajouter un nouveau code promo </h4>

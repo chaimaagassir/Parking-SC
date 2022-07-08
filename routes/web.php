@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CodepromoController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ClientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,12 +72,12 @@ Route::get('codespromo', [CodepromoController::class,'afficher']);
 
 
 Route::get('parkings', function () {
-    return view('layoutspp.parking');
+    return view('layoutspp.parking');    
 });
 
 Route::get('parkings', [ParkingController::class,'afficher']);
 
-
+Route::get('clients', [ClientsController::class,'afficher']);
 
 Route::get('réservations', function () {
     return view('layoutspp.réservations');
@@ -86,8 +87,8 @@ Route::get('tableau-de-bord', function () {
     return view('layoutspp.tableau-de-bord');
 });
 
-Route::get('véhicules', function () {
-    return view('layoutspp.véhicules');
+Route::get('places', function () {
+    return view('layoutspp.places');
 });
 
 Route::get('ajouterclient', function () {
@@ -102,15 +103,22 @@ Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
 
-Route::get('ajouterparking', function () {
-    return view('layoutspp.ajouter-parking');
-});
+Route::get('ajouterparking', [ParkingController::class,'add']);
+Route::post('ajouterparking', [ParkingController::class,'add_place']);
+
+
+Route::get('ajouterclient', [ClientsController::class,'add']);
+Route::post('ajouterclient', [ClientsController::class,'add_client']);
+
+// Route::get('ajouterparking', function () {
+//     return view('layoutspp.ajouter-parking');
+// });
 
 Route::get('ajouterrésevation', function () {
     return view('layoutspp.ajouter-réservation');
 });
-Route::get('ajoutervéhicule', function () {
-    return view('layoutspp.ajouter-véhicule');
+Route::get('ajouterplace', function () {
+    return view('layoutspp.ajouter-places');
 });
 
 Route::get('modifierclient', function () {
@@ -128,8 +136,8 @@ Route::get('modifierparking', function () {
 Route::get('modifierrésevation', function () {
     return view('layoutspp.modifier-réservation');
 });
-Route::get('modifiervéhicule', function () {
-    return view('layoutspp.modifier-véhicule');
+Route::get('modifierplace', function () {
+    return view('layoutspp.modifier-places');
 });
 
 Route::middleware([

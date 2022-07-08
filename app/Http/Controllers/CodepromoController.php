@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Codepromo;
-use App\Http\Requests\PostFormRequest; 
+use App\Http\Requests\CPFormRequest; 
 use DB;
 
 class CodepromoController extends Controller
@@ -20,16 +20,16 @@ class CodepromoController extends Controller
         return view('layoutspp.ajouter-codepromo');
     }
 
-   public function promocodes(PostFormRequest $request){
-        $data = $request->validated(); 
-        $codespromo = new Codepromo ; 
+   public function promocodes(CPFormRequest $request){
+        $data = $request->validated();   
+        $codespromo = new Codepromo ;  
         $codespromo->Nom = $data["Nom"] ; 
         $codespromo->Code = $data["Code"] ;
         $codespromo->Pourcentage = $data["Pourcentage"] ;
         $codespromo->save() ; 
 
         return redirect('codespromo')->with('message'  , 'Code promo ajouté avec succés ! ') ;
-   }
+   }   
 
    public function edit($codespromo_id){
     $codespromo= Codepromo::find($codespromo_id); 

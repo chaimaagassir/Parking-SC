@@ -17,7 +17,7 @@ class CreateParkingsTable extends Migration
             $table->id();
             $table->string('ville');
             $table->string('emplacement');
-            $table->binary('image')->nullable();
+            $table->string('image')->nullable();
             $table->text('description');
             $table->string('numéro_téléphone')->nullable();
             $table->integer('nb_p_c_voiture')->nullable();

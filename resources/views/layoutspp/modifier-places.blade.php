@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title' , 'SC Parking | Véhicules')
+@section('title' , 'SC Parking | Places')
 
 
 
@@ -9,7 +9,7 @@
 <div class="col-md-6 grid-margin stretch-card"  style="margin-left: auto; margin-right: auto;">
     <div class="card">
       <div class="card-body">
-        <h4  >Ajouter un nouveau type de véhicule </h4>
+        <h4  >Modifier une place </h4>
        
         <form class="forms-sample">
           <div class="form-group">

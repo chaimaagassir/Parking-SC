@@ -23,12 +23,13 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('cin')->unique();
             $table->string('usertype')->default(0);
-            $table->boolean('etatcpt')->default(0);
+            $table->integer('nb_v')->default(0);
+            $table->boolean('etatcpt')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
+       
             $table->timestamps();
         });
     }

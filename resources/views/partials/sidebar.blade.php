@@ -35,9 +35,9 @@
            
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="véhicules" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link"  href="places" aria-expanded="false" aria-controls="tables">
               <i class="menu-icon  mdi mdi-car "></i>
-              <span class="menu-title">Véhicules</span>
+              <span class="menu-title">Places</span>
               
             </a>
             

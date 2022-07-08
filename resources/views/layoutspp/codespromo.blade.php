@@ -43,9 +43,7 @@
   <br> <br>  <br>
   <div class="card">
     <div class="card-body">
-      @if(Session('message'))
-      <div class="alert alert-success"> {{Session('message')}} </div>
-      @endif
+      
 <div style =' position: absolute; right: 20px;'>
 
   
@@ -53,6 +51,9 @@
   <a href="ajoutercodepromo" ><button type="button" class="btn btn-primary btn-rounded btn-fw" >Ajouter un code promo</button> </a>
   </div>
    <br> <br>  <br>
+   @if(Session('message'))
+      <div class="alert alert-success"> {{Session('message')}} </div>
+      @endif
    <h4> La liste des codes promos : </h4> <br> 
    
 <div class="table-responsive">
@@ -86,7 +87,7 @@
         
         
       </tbody>
-    </table>
+    </table>  
     
   </div>
   {!! $codespromo->links() !!} 
