@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Clients ;
+use App\Models\User ;
 use App\Http\Requests\ClientFormRequest; 
 
 
@@ -10,7 +10,7 @@ class ClientsController extends Controller
 {
     public function afficher()
     {
-        $client= Clients::paginate(5);  
+        $client= User::paginate(5);  
         return view('layoutspp.clients' , compact('client')) 
         ->with('i',$client); 
     }  
@@ -21,7 +21,7 @@ class ClientsController extends Controller
 
    public function add_client(ClientFormRequest $request){
         $data = $request->validated();   
-        $client = new Clients ;  
+        $client = new User ;  
         $client->name = $data["nom"] ; 
         $client->prenom = $data["prenom"] ;
         $client->email = $data["email"] ;

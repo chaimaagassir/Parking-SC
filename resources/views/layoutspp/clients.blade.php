@@ -60,6 +60,10 @@
   <a href="ajouterclient" ><button type="button"  class="btn btn-primary btn-rounded btn-fw " >Ajouter un client</button> </a>
   </div>
    <br> <br>  <br>
+   
+   @if(Session('message'))
+      <div class="alert alert-success"> {{Session('message')}} </div>
+      @endif
    <h4> La liste des clients  : </h4> <br> 
     <table class="table table-hover">
       <thead>
@@ -119,6 +123,7 @@
       </tbody>
     </table>
   </div>
+  {!! $client->links() !!} 
 </div>
 </div>
 </div>
