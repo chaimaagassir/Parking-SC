@@ -123,7 +123,9 @@
       </tbody>
     </table>
   </div>
+  <div style="margin-left: 40px ; ">
   {!! $client->links() !!} 
+  </div>
 </div>
 </div>
 </div>

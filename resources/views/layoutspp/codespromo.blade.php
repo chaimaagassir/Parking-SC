@@ -90,7 +90,9 @@
     </table>  
     
   </div>
+  <div style="margin-left: 20px ; ">
   {!! $codespromo->links() !!} 
+  </div>
 </div>
 </div>
 </div>

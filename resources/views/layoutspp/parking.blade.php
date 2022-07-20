@@ -101,7 +101,9 @@
       </tbody>
     </table>
   </div>
+  <div style="margin-left: 20px ; ">
   {!! $parking->links() !!} 
+  </div>
 </div>
 </div>
 </div>

@@ -10,7 +10,8 @@ class ClientsController extends Controller
 {
     public function afficher()
     {
-        $client= User::paginate(5);  
+        $client= User::paginate(5); 
+         
         return view('layoutspp.clients' , compact('client')) 
         ->with('i',$client); 
     }  
