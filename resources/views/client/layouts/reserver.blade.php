@@ -90,17 +90,7 @@
                                            <input class="form-control" type="date" required>
                                        </div>
                                    </div>
-                                   <div class="col-md-2">
-                                       <div class="form-group">
-                                           <span class="form-label">Services</span>
-                                           <select class="form-control">
-                                               <option>Lavage</option>
-                                               <option>2</option>
-                                               <option>3</option>
-                                           </select>
-                                           <span class="select-arrow"></span>
-                                       </div>
-                                   </div>
+                                   
                                
                                </div>
                                

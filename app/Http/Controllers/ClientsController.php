@@ -15,6 +15,7 @@ class ClientsController extends Controller
         return view('layoutspp.clients' , compact('client')) 
         ->with('i',$client); 
     }  
+    
 
     public function add(){
         return view('layoutspp.ajouter-client');

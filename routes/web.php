@@ -19,7 +19,7 @@ use App\Http\Controllers\ClientsController;
 // --------------------------User--------------------*/
 //ADMIN PAGE LOGIN 
 
-Route::get('index-admin', [HomeController::class,'redirect']);
+Route::get('index-admin', [HomeController::class,'redirect'])->middleware('auth','verified');
 
 Route::get('dashboard', function () {
     return view('dashboard');
@@ -151,3 +151,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+//Route fichier CSV:
+Route::get('export-excel',[ParkingController::class,'exportIntoExcel']);
+Route::get('export-csv',[ParkingController::class,'exportIntoCSV']);

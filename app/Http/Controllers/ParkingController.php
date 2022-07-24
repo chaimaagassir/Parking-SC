@@ -4,8 +4,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Parking ; 
 use App\Http\Requests\ParkingFormRequest;
+use App\Exports\ParkingsExport;
+use Excel;
 class ParkingController extends Controller
 {
+    public function exportIntoExcel()
+    {
+           return Excel::download(new ParkingsExport,'parkinglist.xlsx');
+    }
+    public function exportIntoCSV()
+    {
+           return Excel::download(new ParkingsExport,'parkinglist.csv');
+    }
+    
     public function afficher()
     {
         $parking= Parking::paginate(5);

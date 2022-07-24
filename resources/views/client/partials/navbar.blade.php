@@ -20,18 +20,21 @@
                                         <li><a href="/">Home</a></li>
                                         <li><a href="findplace">Find Place </a></li>
                                         <li><a href="about">About</a></li>
-                                        
-                                            
                                         </li>
                                         <li><a href="contact">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>          
                             <!-- Header-btn -->
-                            <div class="header-btn d-none f-right d-lg-block">
-                                <a href="register" class="btn head-btn1">Register</a>
+                           
+                            
+                             <div class="header-btn d-none f-right d-lg-block">
+                              
                                 <a href="login" class="btn head-btn2">Login</a>
-                            </div>
+                                <a href="register" class="btn head-btn1">Register</a>
+                             
+                             </div>
+                           
                         </div>
                     </div>
                     <!-- Mobile Menu -->
