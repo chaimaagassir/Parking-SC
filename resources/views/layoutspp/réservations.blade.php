@@ -14,23 +14,23 @@
         <div class="col">
           <label for="exampleSelectGender">Client</label>
             <select class="form-control" id="exampleSelectGender">
-              <option>Male</option>
-              <option>Female</option>
+              <option>salma</option>
+              <option>chaimaa</option>
             </select>
       </div>
        
           <div class="col">
             <label for="exampleSelectGender">Ville</label>
               <select class="form-control" id="exampleSelectGender">
-                <option>Male</option>
-                <option>Female</option>
+                <option>Casablanca</option>
+                <option>Rabat</option>
               </select>
         </div>
         <div class="col">
           <label for="exampleSelectGender">Parking</label>
             <select class="form-control" id="exampleSelectGender">
-              <option>Male</option>
-              <option>Female</option>
+              <option>sidi maarouf</option>
+              <option>Rabat agdal</option>
             </select>
       </div>
         
