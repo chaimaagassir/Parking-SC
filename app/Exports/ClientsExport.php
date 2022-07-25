@@ -17,6 +17,6 @@ class ClientsExport implements FromCollection
     public function heading():array{
         return[
             
-        ]
+        ] 
     }
 }
