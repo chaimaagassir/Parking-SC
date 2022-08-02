@@ -150,14 +150,14 @@
   
     
     <!-- How  Apply Process Start-->
-    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="client/assets/img/gallery/how-applybg.png">
+    <div class="apply-process-area apply-bg pt-100 pb-100" data-background="client/assets/img/gallery/how-applybg.png">
         <div class="container">
             <!-- Section Tittle -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle white-text text-center">
-                        <span>Apply process</span>
-                        <h2> How it works</h2>
+                        
+                        <h2> Comment ça marche ?</h2>
                     </div>
                 </div>
             </div>
@@ -169,8 +169,8 @@
                             <span class="flaticon-search"></span>
                         </div>
                         <div class="process-cap">
-                           <h5>1. Search a job</h5>
-                           <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                           <h5>1. Trouvez votre parking !</h5>
+                           <p>SC Parking déniche tous les jours pour vous de nouveaux parkings partagés. <br><br></p>
                         </div>
                     </div>
                 </div>
@@ -180,8 +180,8 @@
                             <span class="flaticon-curriculum-vitae"></span>
                         </div>
                         <div class="process-cap">
-                           <h5>2. Apply for job</h5>
-                           <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                           <h5>2. Comparez et réservez !</h5>
+                           <p>Réservez votre place pour quelques heures, quelques jours ou louez-la au mois. </p>
                         </div>
                     </div>
                 </div>
@@ -191,8 +191,10 @@
                             <span class="flaticon-tour"></span>
                         </div>
                         <div class="process-cap">
-                           <h5>3. Get your place</h5>
-                           <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                           <h5>3. Garez-vous !</h5>
+                           <p>À votre arrivée, vous ne devrez que montrer votre réservation au personnel du parking.
+
+                             </p>
                         </div>
                     </div>
                 </div>
