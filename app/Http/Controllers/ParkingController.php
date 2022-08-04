@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Parking ; 
+use App\Models\Places ;
 use App\Http\Requests\ParkingFormRequest;
 use App\Exports\ParkingsExport;
 use Excel;
@@ -56,8 +57,48 @@ class ParkingController extends Controller
         }
         
         
-        $parking->save() ; 
+        
 
-        return redirect('parkings')->with('message'  , 'Parking ajouté avec succés ! ') ;
+        $parking->save() ;
+        
+
+        for($i=0 ; $i<$data["nb_p_c_voiture"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_nc_voiture"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->couverte='0' ; 
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_c_moto"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->typev='0';
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_nc_moto"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ;
+            $place->typev='0';
+            $place->couverte='0' ; 
+            $place->save() ;
+       
+        }
+      
+
+       
+
+
+        return redirect('parkings' )->with('message'  , 'Parking ajouté avec succés ! '  ) ;
    }
 }

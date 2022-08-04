@@ -61,7 +61,7 @@
    @if(Session('message'))
       <div class="alert alert-success"> {{Session('message')}} </div>
       @endif
-   <h4> La liste des parkings  : </h4> <br> 
+   <h4> La liste des parkings  :   </h4> <br> 
    
 <div class="table-responsive">
    
