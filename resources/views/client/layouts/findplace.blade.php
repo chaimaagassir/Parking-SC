@@ -57,8 +57,18 @@
                                     <option value="">Marrakech</option>
                                     <option value="">Tanger</option>
                                     <option value="">Fes</option>
-                                </select>
-                                <button style="background:#3630a3;color:white;" onclick="alert('Save processed.')">Filtrer</button>
+                                </select> <br> <br>  
+                                <button style="display: inline-block;
+                                padding: 15px 25px;
+                                font-size: 15px;
+                                
+                                text-align: center;
+                                text-decoration: none;
+                                outline: none;
+                                background-color: #4CAF50;
+                                border: none;
+                                border-radius: 15px;
+   9px #999;background:#3630a3;color:white;" onclick="alert('Save processed.')">Filtrer</button>
                             </div>
                             
                             <!--  Select job items End-->
@@ -83,8 +93,8 @@
                         <div class="container">
                             
                             <!-- single-job-content -->
-                            @forelse ($parkingf as $p)
                             
+                            @forelse ($parkingf as $p)
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
@@ -107,13 +117,15 @@
                                     <a href="parking-details">Details</a>
                                     
                                 </div>
-                                @empty <h1> rien à afficher </h1>
+                                
                                 
                             </div>
+                            @empty <h1> rien à afficher </h1>
                             @endforelse
                             
                             
-                            <!-- single-job-content -->
+                            
+                           
                             
                            
                         </div>
@@ -133,10 +145,7 @@
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
-                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                <li class="page-item"><a class="page-link" href="#">03</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><span class="ti-angle-right"></span></a></li>
+                                {!! $parkingf->links() !!} 
                             </ul>
                         </nav>
                     </div>
@@ -145,5 +154,6 @@
         </div>
     </div>
     <!--Pagination End  -->
+    
 
 @endsection

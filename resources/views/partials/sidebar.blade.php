@@ -19,7 +19,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link"  href="réservations">
+            <a class="nav-link"  href="réservations" >
               <i class="menu-icon mdi mdi-clipboard-check "></i>
               <span class="menu-title">Réservations</span>
               
@@ -35,7 +35,7 @@
            
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="places" aria-expanded="false" aria-controls="tables">
+            <a class="nav-link"  href="places" >
               <i class="menu-icon  mdi mdi-car "></i>
               <span class="menu-title">Places</span>
               
@@ -43,7 +43,7 @@
             
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="codespromo" aria-expanded="false" aria-controls="icons">
+            <a class="nav-link"  href="codespromo" >
               <i class="menu-icon  mdi mdi-sale "></i>
               <span class="menu-title">Codes promos</span>
               
@@ -52,7 +52,7 @@
           </li>
           
          
-          </li>
+          
           
           
         </ul>

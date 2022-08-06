@@ -55,10 +55,7 @@ class ParkingController extends Controller
             $file->move('uploads/parkings/', $filename); 
             $parking->image = $filename ; 
         }
-        
-        
-        
-
+      
         $parking->save() ;
         
 

@@ -12,6 +12,16 @@
             </div>
         @endif
 
+        @if(session('error'))
+        <span style='
+         
+            color: #fff;
+        background: #f44a40;
+        border: 1px solid transparent;
+       
+        '> {{ session('error') }} </span>
+        @endif
+
         <form method="POST" action="login">
             @csrf
 
