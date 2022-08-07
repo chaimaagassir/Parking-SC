@@ -38,7 +38,7 @@ Route::get('register', function () {
 
 Route::get('login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 Route::get('findplace', function () {
     return view('client/layouts.findplace');
@@ -79,9 +79,13 @@ Route::get('parkings', function () {
 
 Route::get('parkings', [ParkingController::class,'afficher']);
 Route::get('findplace', [ParkingController::class,'afficherfind']);
+Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
 
+Route::middleware('auth')->group(function (){
+    Route::get('clients', [ClientsController::class,'afficher']);
+    Route::get('clients/{user_id}/{user_statut}', [ClientsController::class,'update_statuts'])->name('user.update.statuts');
+}) ;
 
-Route::get('clients', [ClientsController::class,'afficher']);
 
 Route::get('réservations', function () {
     return view('layoutspp.réservations');

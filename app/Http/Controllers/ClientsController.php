@@ -35,5 +35,31 @@ class ClientsController extends Controller
 
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
    }   
+
+   public function update_statuts($user_id , $user_statut){
+    try{
+        $update_user = User::whereId($user_id)->update([
+            'etatcpt'=>$user_statut
+        ]);
+
+        if($update_user){
+            
+            if($user_statut == 0){
+                $message='desactivé' ; 
+            }else if($user_statut == 1){
+                $message='activé' ; 
+            }
+            
+            return redirect('clients')->with('message' , 'Compte '.$message .' avec succés !' ) ; 
+        }
+        return redirect('clients')->with('erreur' , 'Erreur !' ) ; 
+
+    }
+    catch(\throwable $th){
+        throw $th; 
+    }
+    
+
+   }
 }
   

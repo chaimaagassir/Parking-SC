@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Parking ; 
+use App\Models\Places ;
 use App\Http\Requests\ParkingFormRequest;
 use App\Exports\ParkingsExport;
 use Excel;
@@ -29,6 +30,13 @@ class ParkingController extends Controller
         return view('client/layouts.findplace' , compact('parkingf')) 
         ->with('i',$parkingf);   
     } 
+    public function parking_details($parking_id){
+        $parking= Parking::where('id', '=' , $parking_id)->get(); 
+       
+        return view('client.layouts.parking-details' , compact('parking')) 
+        ->with('i',$parking); 
+
+    }
 
     public function add(){
         return view('layoutspp.ajouter-parking');
@@ -45,7 +53,11 @@ class ParkingController extends Controller
         $parking->nb_p_c_moto = $data["nb_p_c_moto"] ;
         $parking->nb_p_nc_moto = $data["nb_p_nc_moto"] ; 
         $parking->prix = $data["prix"] ;
-        $parking->description = $data["description"] ;
+        // if((isset($data["description"]))){
+        //     $parking->description = $data["description"] ;
+        // }
+         $parking->description = isset($data["description"])? $data["description"] : null ; 
+       
         if( $request->hasfile('image')){
             
             $file = $request->file('image') ;
@@ -54,10 +66,47 @@ class ParkingController extends Controller
             $file->move('uploads/parkings/', $filename); 
             $parking->image = $filename ; 
         }
+      
+        $parking->save() ;
         
-        
-        $parking->save() ; 
 
-        return redirect('parkings')->with('message'  , 'Parking ajouté avec succés ! ') ;
+        for($i=0 ; $i<$data["nb_p_c_voiture"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_nc_voiture"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->couverte='0' ; 
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_c_moto"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ; 
+            $place->typev='0';
+            $place->save() ;
+       
+        }
+        for($i=0 ; $i<$data["nb_p_nc_moto"]; $i++) 
+        {
+            $place = new places ; 
+            $place->id_parking=$parking->id ;
+            $place->typev='0';
+            $place->couverte='0' ; 
+            $place->save() ;
+       
+        }
+      
+
+       
+
+
+        return redirect('parkings' )->with('message'  , 'Parking ajouté avec succés ! '  ) ;
    }
 }
