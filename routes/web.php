@@ -19,7 +19,7 @@ use App\Http\Controllers\ClientsController;
 // --------------------------User--------------------*/
 //ADMIN PAGE LOGIN 
 
-Route::get('index-admin', [HomeController::class,'redirect'])->middleware('auth','verified');
+Route::get('.', [HomeController::class,'redirect'])->middleware('auth','verified');
 
 Route::get('dashboard', function () {
     return view('dashboard');
@@ -29,6 +29,8 @@ Route::get('dashboard', function () {
 Route::get('/', function () {
     return view('client/layouts.index');
 });
+
+
 
 Route::get('register', function () {
     return view('auth.register');
@@ -59,7 +61,7 @@ Route::get('reserver', function () {
 
 
 Route::get('clients', function () {
-    return view('layoutspp.clients');
+    return view('clients');
 });
 
 Route::get('codespromo', function () {
