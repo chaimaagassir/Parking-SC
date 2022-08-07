@@ -30,18 +30,20 @@
                     <!-- job single -->
                     <div class="single-job-items mb-50">
                         <div class="job-items">
+                            @forelse ($parking as $p)
                             <div class="company-img company-img-details">
-                                <a href="#"><img src="client/assets/img/icon/pa1.png" width="150" 
-                                    height="100" alt=""></a>
+                                <a href="#"><img src="../../uploads/parkings/{{ $p->image }}" width="250" 
+                                    height="200" alt="image"/></a>
                             </div>
                             <div class="job-tittle">
+                                
                                 <a href="#">
-                                    <h4>Casablanca Parking</h4>
+                                    <h4>{{ $p->ville }}</h4>
                                 </a>
                                 <ul>
-                                    <li>Sidi Maarouf</li>
-                                    <li><i class="fas fa-map-marker-alt"></i>Casablanca</li>
-                                    <li>35DH - 40DH</li>
+                                    <li>{{ $p->emplacement }}</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>{{ $p->ville }}</li>
+                                    <li>{{ $p->prix }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -54,11 +56,20 @@
                             <div class="small-section-tittle">
                                 <h4>Parking Description</h4>
                             </div>
-                            <p>Le parking de casablanca est un espace aménagé spécialement pour tous les usagers de la route afin qu'ils puissent stationner leurs véhicules en toute sécurité</p>
+                            @php
+                            $nb_place =  $p->nb_p_c_voiture  + $p->nb_p_nc_voiture + $p->nb_p_c_moto + $p->nb_p_nc_moto  ;
+                            @endphp
+                            
+                            @if( $p->description ==null)
+                            <p> Le parking de {{ $p->emplacement }} qui se situe à {{ $p->ville }} contient @php echo $nb_place  ; @endphp places séparés entre des places de voiture couverte et non couverte et  des places moto couverte et non couverte . </p>
+                            @else
+                            <p>{{ $p->description }}</p>
+                            @endif
                         </div>
                         
                     </div>
-
+                    @empty <h1> rien à afficher </h1>
+                    @endforelse
                 </div>
                 <!-- Right Content -->
                 <div class="col-xl-4 col-lg-4">
@@ -68,9 +79,9 @@
                            <h4>Parking Overview</h4>
                        </div>
                       <ul>
-                          <li>Posted date : <span>12 Aug 2019</span></li>
-                          <li>Location : <span>Casablanca</span></li>
-                          <li>Price : <span>35DH-40DH</span></li>
+                          <li>Posted date : <span>{{$p->created_at->format('Y-m-d')}}</span></li>
+                          <li>Location : <span>{{$p->ville}}</span></li>
+                          <li>Price : <span>{{$p->prix}}</span></li>
                           <li>Park condition : <span>Full time</span></li>
 
                       </ul>

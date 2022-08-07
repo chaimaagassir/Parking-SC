@@ -77,6 +77,7 @@ Route::get('parkings', function () {
 
 Route::get('parkings', [ParkingController::class,'afficher']);
 Route::get('findplace', [ParkingController::class,'afficherfind']);
+Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
 
 Route::middleware('auth')->group(function (){
     Route::get('clients', [ClientsController::class,'afficher']);

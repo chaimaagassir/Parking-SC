@@ -32,7 +32,7 @@ class ParkingFormRequest extends FormRequest
             'nb_p_c_moto'=>['required' , 'integer'],
             'nb_p_nc_moto'=>['required' , 'integer'],
             'prix'=>['required', 'integer'],
-            'description'=>['required'],
+            'description'=>['sometimes'],
             'image'=>['required']
             
 

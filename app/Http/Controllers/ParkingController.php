@@ -30,6 +30,13 @@ class ParkingController extends Controller
         return view('client/layouts.findplace' , compact('parkingf')) 
         ->with('i',$parkingf);   
     } 
+    public function parking_details($parking_id){
+        $parking= Parking::where('id', '=' , $parking_id)->get(); 
+       
+        return view('client.layouts.parking-details' , compact('parking')) 
+        ->with('i',$parking); 
+
+    }
 
     public function add(){
         return view('layoutspp.ajouter-parking');
@@ -46,7 +53,11 @@ class ParkingController extends Controller
         $parking->nb_p_c_moto = $data["nb_p_c_moto"] ;
         $parking->nb_p_nc_moto = $data["nb_p_nc_moto"] ; 
         $parking->prix = $data["prix"] ;
-        $parking->description = $data["description"] ;
+        // if((isset($data["description"]))){
+        //     $parking->description = $data["description"] ;
+        // }
+         $parking->description = isset($data["description"])? $data["description"] : null ; 
+       
         if( $request->hasfile('image')){
             
             $file = $request->file('image') ;

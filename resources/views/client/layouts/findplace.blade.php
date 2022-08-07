@@ -114,7 +114,7 @@
                                 </div>
                                 
                                 <div class="items-link items-link2 f-right">
-                                    <a href="parking-details">Details</a>
+                                    <a href=" {{ route ('parking-details', ['parking_id'=>$p->id ] ) }} ">Details</a>
                                     
                                 </div>
                                 
