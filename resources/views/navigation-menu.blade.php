@@ -3,8 +3,20 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
+                  {{-- logo --}}
+              
+                <div class="shrink-0 flex items-center">
+                    {{-- cette condition pour que l'admin peut passer vers tableau de bord via le logo qui est au navigation 
+                    et pour que le client peut passer vers homepage   --}}
+                    @if(Auth::user()->usertype=='0')
+                    <a href="/"  >
+                    @else <a href="{{url('tableau-de-bord')}}"  >
+                    @endif
+                        <x-jet-application-mark class="block h-9 w-auto" />
+                    </a>
+                </div>
+
                 
-        
                 <!-- Navigation Links -->
                 
             </div>
@@ -16,7 +28,9 @@
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
+                        
                         <x-jet-dropdown align="right" width="60">
+                            
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
@@ -88,6 +102,7 @@
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
+                                
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">

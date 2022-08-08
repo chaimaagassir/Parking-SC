@@ -18,7 +18,7 @@ class HomeController extends Controller
                 return view('dashboard') ;
             }
             else{
-                return view('layoutspp.index') ; 
+                return view('layoutspp.tableau-de-bord') ; 
             }
 
         }
