@@ -31,7 +31,7 @@ class CodepromoController extends Controller
         return redirect('codespromo')->with('message'  , 'Code promo ajouté avec succés ! ') ;
    }   
 
-   public function edit($codespromo_id){
+   public function edit( $codespromo_id){
     $codespromo= Codepromo::find($codespromo_id); 
     return view('layoutspp.modifier-codespromo' , compact('codespromo')) ;
    }

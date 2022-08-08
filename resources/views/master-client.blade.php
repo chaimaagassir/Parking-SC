@@ -88,6 +88,11 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="./client/assets/js/plugins.js"></script>
         <script src="./client/assets/js/main.js"></script>
+
+        
+
+        <script src="vendors/js/vendor.bundle.base.js"></script>
+       
         
     </body>
     @include('client/partials.footer')
