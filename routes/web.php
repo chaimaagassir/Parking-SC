@@ -19,7 +19,7 @@ use App\Http\Controllers\ClientsController;
 // --------------------------User--------------------*/
 //ADMIN PAGE LOGIN 
 
-Route::get('index-admin', [HomeController::class,'redirect'])->middleware('auth','verified');
+Route::get('admin-index', [HomeController::class,'redirect'])->middleware('auth','verified');
 
 Route::get('dashboard', function () {
     return view('dashboard');
@@ -29,6 +29,8 @@ Route::get('dashboard', function () {
 Route::get('/', function () {
     return view('client/layouts.index');
 });
+
+
 
 Route::get('register', function () {
     return view('auth.register');
@@ -59,7 +61,7 @@ Route::get('reserver', function () {
 
 
 Route::get('clients', function () {
-    return view('layoutspp.clients');
+    return view('clients');
 });
 
 Route::get('codespromo', function () {
@@ -157,6 +159,19 @@ Route::middleware([
 });
 
 //Route fichier CSV:
+//Fichier CSV Client
+Route::get('export-excel-client',[ClientsController::class,'exportIntoExcelClient']);
+Route::get('export-csv-client',[ClientsController::class,'exportIntoCSVClient']);
+//Fichier CSV Reservation
+Route::get('export-excel-reservation',[ReservationController::class,'exportIntoExcelReservation']);
+Route::get('export-csv-reservation',[ReservationController::class,'exportIntoCSVReservation']);
+//Fichier CSV Parking
 Route::get('export-excel',[ParkingController::class,'exportIntoExcel']);
 Route::get('export-csv',[ParkingController::class,'exportIntoCSV']);
+<<<<<<< HEAD
+=======
+//Fichier CSV Place
+Route::get('export-excel-place',[PlacesController::class,'exportIntoExcelPlace']);
+Route::get('export-csv-place',[PlacesController::class,'exportIntoCSVPlace']);
+>>>>>>> c465bda9715cfd1d8797a082e32f33781bbdb8dc
 

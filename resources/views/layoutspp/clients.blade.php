@@ -59,7 +59,7 @@
   <div style =' position: absolute; right: 40px;'>
 
   
-  <button type="button" class="btn btn-primary btn-rounded btn-fw">Exporter le fichier csv </button>
+    <a href="export-excel-client" ><button type="button" class="btn btn-primary btn-rounded btn-fw">Exporter le fichier csv </button> </a>
   <a href="ajouterclient" ><button type="button"  class="btn btn-primary btn-rounded btn-fw " >Ajouter un client</button> </a>
   </div>
    <br> <br>  <br>
