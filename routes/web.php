@@ -158,6 +158,7 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
 //Route fichier CSV:
 //Fichier CSV Client
 Route::get('export-excel-client',[ClientsController::class,'exportIntoExcelClient']);
@@ -168,10 +169,7 @@ Route::get('export-csv-reservation',[ReservationController::class,'exportIntoCSV
 //Fichier CSV Parking
 Route::get('export-excel',[ParkingController::class,'exportIntoExcel']);
 Route::get('export-csv',[ParkingController::class,'exportIntoCSV']);
-<<<<<<< HEAD
-=======
 //Fichier CSV Place
 Route::get('export-excel-place',[PlacesController::class,'exportIntoExcelPlace']);
 Route::get('export-csv-place',[PlacesController::class,'exportIntoCSVPlace']);
->>>>>>> c465bda9715cfd1d8797a082e32f33781bbdb8dc
 
