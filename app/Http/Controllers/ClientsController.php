@@ -3,11 +3,21 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User ;
+use App\Exports\ClientsExport;
 use App\Http\Requests\ClientFormRequest; 
+use Excel;
 
 
 class ClientsController extends Controller
 {
+    public function exportIntoExcelClient()
+    {
+           return Excel::download(new ClientsExport,'clientlist.xlsx');
+    }
+    public function exportIntoCSVClient()
+    {
+           return Excel::download(new ClientsExport,'clientlist.csv');
+    }
     public function afficher()
     {
         $client= User::where('usertype', '=' , '0')->paginate(5); 
