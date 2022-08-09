@@ -10,7 +10,7 @@
       
       <div class="form-group row">
         <div class="col">
-          <form>
+          <form action="clients" method='POST'>
           <label>Nom</label>
           <div id="the-basics">
             <input class="typeahead" type="text" >
@@ -20,8 +20,10 @@
           <div class="col">
             <label for="exampleSelectGender">Ville</label>
               <select class="form-control" id="exampleSelectGender">
-                <option>Male</option>
-                <option>Female</option>
+                @forelse ($client as $p)
+                <option>{{ $p->ville }}</option>
+                @empty <option > rien </option>
+                @endforelse
               </select>
         </div> <div class="col">
           <label>CIN</label>
@@ -42,6 +44,7 @@
               <option>Désactivé</option>
             </select>
           </div>
+          
       </div>
       <button type="submit" class="btn btn-primary btn-rounded btn-fw" style =' position: absolute; right: 40px;'>Filtrer </button> <br>  <br>
     </div>

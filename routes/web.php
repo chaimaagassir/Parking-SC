@@ -130,7 +130,7 @@ Route::get('ajouterplace', function () {
 Route::get('modifierclient', function () {
     return view('layoutspp.modifier-client');
 });
-
+ 
 Route::get('modifiercodepromo', function () {
     return view('layoutspp.modifier-codespromo');
 });
@@ -159,3 +159,4 @@ Route::middleware([
 //Route fichier CSV:
 Route::get('export-excel',[ParkingController::class,'exportIntoExcel']);
 Route::get('export-csv',[ParkingController::class,'exportIntoCSV']);
+

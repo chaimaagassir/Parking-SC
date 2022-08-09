@@ -15,7 +15,7 @@ class HomeController extends Controller
         if(Auth::id()){
             if(Auth::user()->usertype=='0')
             {
-                return view('dashboard') ;
+                return view('profile.show') ;
             }
             else{
                 return view('layoutspp.tableau-de-bord') ; 
