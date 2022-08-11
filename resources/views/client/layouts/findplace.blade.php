@@ -51,12 +51,12 @@
                            </div>
                             <!-- Select job items start -->
                             <div class="select-job-items2">
+                                <form action="{{url('filter_find_place')}} " method="POST"> 
                                 <select name="ville">
-                                    <option value="">Ville</option>
-                                    <option value="">Casablanca</option>
-                                    <option value="">Marrakech</option>
-                                    <option value="">Tanger</option>
-                                    <option value="">Fes</option>
+                                    @forelse($parking_filter as $p)
+                                    <option value="" >{{ $p->ville }}</option>
+                                    @empty <option > aucune ville </option>
+                                    @endforelse
                                 </select> <br> <br>  
                                 <button style="display: inline-block;
                                 padding: 15px 25px;
@@ -69,6 +69,7 @@
                                 border: none;
                                 border-radius: 15px;
    9px #999;background:#3630a3;color:white;" onclick="alert('Save processed.')">Filtrer</button>
+                                </form>
                             </div>
                             
                             <!--  Select job items End-->
@@ -122,7 +123,6 @@
                             </div>
                             @empty <h1> rien à afficher </h1>
                             @endforelse
-                            
                             
                             
                            

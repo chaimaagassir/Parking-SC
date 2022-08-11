@@ -78,6 +78,7 @@ Route::get('parkings', function () {
 });
 
 Route::get('parkings', [ParkingController::class,'afficher']);
+Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('filter_find_place');
 Route::get('findplace', [ParkingController::class,'afficherfind']);
 Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
 

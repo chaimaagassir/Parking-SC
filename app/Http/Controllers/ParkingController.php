@@ -27,8 +27,9 @@ class ParkingController extends Controller
     public function afficherfind()
     {
         $parkingf= Parking::paginate(5);
-        return view('client/layouts.findplace' , compact('parkingf')) 
-        ->with('i',$parkingf);   
+        $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
+        return view('client/layouts.findplace' , compact('parkingf', 'parking_filter')) 
+        ->with('i',$parkingf,$parking_filter);   
     } 
     public function parking_details($parking_id){
         $parking= Parking::where('id', '=' , $parking_id)->get(); 
@@ -108,5 +109,17 @@ class ParkingController extends Controller
 
 
         return redirect('parkings' )->with('message'  , 'Parking ajouté avec succés ! '  ) ;
+   }
+   // filter function in find place 
+   public function filter_find_place(){
+    $parking_filter = Parking::distinct()->get(['ville']) ;
+
+    $data = \DB::table('parkings');
+    if( $request->ville){
+        $data = $data->where('ville', 'LIKE', "%" . $request->ville . "%")->get;
+    }
+    $data= Parking::paginate(5);
+    return view('client/layouts.findplace' , compact('parking_filter','data')) 
+    ->with('i',$parking_filter,$data); 
    }
 }
