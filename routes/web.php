@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CodepromoController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\ClientsController;
 
 /*
@@ -43,6 +44,9 @@ Route::get('login', function () {
 Route::get('findplace', function () {
     return view('client/layouts.findplace');
 });
+Route::get('FAQ', function () {
+    return view('client/layouts.faq');
+});
 Route::get('about', function () {
     return view('client/layouts.about');
 });
@@ -72,15 +76,19 @@ Route::get('codespromo', [CodepromoController::class,'afficher']);
 
 
 
-
 Route::get('parkings', function () {
     return view('layoutspp.parking');    
 });
 
+
+Route::get('places', [PlacesController::class,'afficher']);
+
 Route::get('parkings', [ParkingController::class,'afficher']);
-Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('filter_find_place');
+Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('findplace/filter');
 Route::get('findplace', [ParkingController::class,'afficherfind']);
 Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
+Route::get('parkingsdetails/{parking_id}', [ParkingController::class,'parking_details_admin'])->name('parkingsdetailsadmin');
+Route::get('placesdetails/{parking_id}', [ParkingController::class,'place_details_admin'])->name('placesdetailsadmin');
 
 Route::middleware('auth')->group(function (){
     Route::get('clients', [ClientsController::class,'afficher']);
@@ -96,9 +104,9 @@ Route::get('tableau-de-bord', function () {
     return view('layoutspp.tableau-de-bord');
 });
 
-Route::get('places', function () {
-    return view('layoutspp.places');
-});
+// Route::get('places', function () {
+//     return view('layoutspp.places');
+// });
 
 Route::get('ajouterclient', function () {
     return view('layoutspp.ajouter-client');
@@ -112,7 +120,6 @@ Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
 
-Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
 
 

@@ -51,7 +51,8 @@
                            </div>
                             <!-- Select job items start -->
                             <div class="select-job-items2">
-                                <form action="{{url('filter_find_place')}} " method="POST"> 
+                                <form action="findplace/filter" method="POST"> 
+                                    @csrf
                                 <select name="ville">
                                     @forelse($parking_filter as $p)
                                     <option value="" >{{ $p->ville }}</option>
@@ -68,7 +69,7 @@
                                 background-color: #4CAF50;
                                 border: none;
                                 border-radius: 15px;
-   9px #999;background:#3630a3;color:white;" onclick="alert('Save processed.')">Filtrer</button>
+   9px #999;background:#3630a3;color:white;" >Filtrer</button>
                                 </form>
                             </div>
                             

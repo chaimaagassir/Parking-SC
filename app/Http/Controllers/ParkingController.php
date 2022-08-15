@@ -38,10 +38,25 @@ class ParkingController extends Controller
         ->with('i',$parking); 
 
     }
+    public function parking_details_admin($parking_id){
+        $parking= Parking::where('id', '=' , $parking_id)->get(); 
+       
+        return view('layoutspp.parkingdetails' , compact('parking')) 
+        ->with('i',$parking); 
 
+    }
+    public function place_details_admin($parking_id){
+        $parking= Parking::where('id', '=' , $parking_id)->get(); 
+       
+        return view('layoutspp.placedetails' , compact('parking')) 
+        ->with('i',$parking); 
+
+    }
+    
     public function add(){
         return view('layoutspp.ajouter-parking');
     }
+    
     
    public function add_place(ParkingFormRequest $request){
         $data = $request->validated(); 
@@ -105,20 +120,17 @@ class ParkingController extends Controller
         }
       
 
-       
-
-
         return redirect('parkings' )->with('message'  , 'Parking ajouté avec succés ! '  ) ;
    }
-   // filter function in find place 
-   public function filter_find_place(){
-    $parking_filter = Parking::distinct()->get(['ville']) ;
 
-    $data = \DB::table('parkings');
-    if( $request->ville){
-        $data = $data->where('ville', 'LIKE', "%" . $request->ville . "%")->get;
-    }
-    $data= Parking::paginate(5);
+
+   // filter function in find place 
+   public function filter_find_place(ParkingFormRequest $request){
+
+
+    $data = Paking::where('ville', 'LIKE', "%" . $request->ville . "%")->get();
+    
+    
     return view('client/layouts.findplace' , compact('parking_filter','data')) 
     ->with('i',$parking_filter,$data); 
    }
