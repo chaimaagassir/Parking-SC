@@ -11,6 +11,7 @@
   
   
   <!-- plugins:css -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/982530e068.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="vendors/feather/feather.css">
   <link rel="stylesheet" href="vendors/mdi/css/materialdesignicons.min.css">
