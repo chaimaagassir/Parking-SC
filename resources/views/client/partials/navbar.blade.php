@@ -17,7 +17,11 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         <li><a href="/">Home</a></li>
+                                        {{-- @if (Route::has('login'))
+                                        @auth --}}
                                         <li><a href="findplace">Find Place </a></li>
+                                        {{-- @endauth
+                                        @endif --}}
                                         <li><a href="about">About</a></li>
                                         <li><a href="FAQ">FAQ</a></li>
                                         <li><a href="contact">Contact</a></li>
