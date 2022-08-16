@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CodepromoController;
 use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +28,8 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('profile', 'UserController@updateavatar');
+Route::post('profile', 'UserController@updateavatar');
 
 Route::get('/', function () {
     return view('client/layouts.index');
