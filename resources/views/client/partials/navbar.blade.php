@@ -27,8 +27,8 @@
                                         <li><a href="contact">Contact</a></li>
                                         @if (Route::has('login'))
                                         @auth
-                                        <li><a href="">Mes véhicules </a></li>
-                                        <li><a href=""> Mes reservations</a></li>
+                                        <li><a href="reservations"> My reservations</a></li>
+                                        <li><a href="vehicules">my vehicles </a></li>
                                         @endauth
                                         @endif
                                     </ul>

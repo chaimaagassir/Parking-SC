@@ -51,6 +51,12 @@ Route::get('findplace', function () {
 Route::get('FAQ', function () {
     return view('client/layouts.faq');
 });
+Route::get('reservations', function () {
+    return view('client/layouts.reservations');
+});
+Route::get('vehicules', function () {
+    return view('client/layouts.vehicules');
+});
 Route::get('about', function () {
     return view('client/layouts.about');
 });
