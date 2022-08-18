@@ -27,7 +27,11 @@ class ClientsController extends Controller
         ->with('i',$client); 
     }  
     
-
+    public function edit(Request $request, $id)
+    {
+       $id = User::findOrFail($id);
+      
+    }
     public function add(){
         return view('layoutspp.ajouter-client');
     }
@@ -71,6 +75,13 @@ class ClientsController extends Controller
     }
     
 
+   }
+   public function delete_clients($id)
+   {
+    $data=User::find($id);
+    $data->delete();
+
+    return redirect('clients')->with('succes','Data Deleted');
    }
   
 }

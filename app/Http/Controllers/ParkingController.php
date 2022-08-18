@@ -135,4 +135,12 @@ class ParkingController extends Controller
     return view('client/layouts.searchparking' , compact('data','parking_filter')) 
     ->with('i',$data, $parking_filter); 
    }
+
+   public function delete_parkings($id)
+   {
+    $data=Parking::find($id);
+    $data->delete();
+
+    return redirect('parkings')->with('succes','Data Deleted');
+   }
 }
