@@ -6,6 +6,7 @@ use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\VehiculesController;
 
 
 
@@ -84,6 +85,9 @@ Route::get('codespromo', function () {
 
 Route::get('codespromo', [CodepromoController::class,'afficher']); 
 
+Route::get('vehicules', [VehiculesController::class,'afficher']); 
+
+
 
 
 Route::get('parkings', function () {
@@ -135,6 +139,9 @@ Route::post('ajouterparking', [ParkingController::class,'add_place']);
 
 Route::get('ajouterclient', [ClientsController::class,'add']);
 Route::post('ajouterclient', [ClientsController::class,'add_client']);
+
+
+Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
 
 // Route::get('ajouterparking', function () {
 //     return view('layoutspp.ajouter-parking');
