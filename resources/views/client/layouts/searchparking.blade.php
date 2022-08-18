@@ -47,19 +47,19 @@
                         <!-- single one -->
                         <div class="single-listing">
                            <div class="small-section-tittle2">
-                                 <h4>Search by city</h4>
+                                 <h4>Ville parking</h4>
                            </div>
                             <!-- Select job items start -->
                             <div class="select-job-items2">
                                 <form action="findplace/filter" method="get"> 
                                     @csrf
-                                <select class="form-control" name="ville">
-                                    @forelse($parking_filter as $p)
-                                    <option value="{{ $p->ville }}" >{{ $p->ville }}</option>
-                                    @empty <option > aucune ville </option>
-                                    @endforelse
-                                </select>  
-                                
+                                    <select class="form-control" name="ville">
+                                        @forelse($parking_filter as $p)
+                                        <option value="{{ $p->ville }}" >{{ $p->ville }}</option>
+                                        @empty <option > aucune ville </option>
+                                        @endforelse
+                                    </select>    
+                                    
                                 {{-- <input  class="form-control" type="search" name="ville"> --}}
                                 <button style="display: inline-block;
                                 padding: 15px 25px;
@@ -98,7 +98,7 @@
                             
                             <!-- single-job-content -->
                             
-                            @forelse ($parkingf as $p)
+                            @forelse ($data as $p)
                             <div class="single-job-items mb-30">
                                 <div class="job-items">
                                     <div class="company-img">
@@ -124,7 +124,7 @@
                                 
                                 
                             </div>
-                            @empty <h1> rien à afficher </h1>
+                            @empty <h1> no parking with this name </h1>
                             @endforelse
                             
                             
@@ -147,9 +147,7 @@
                 <div class="col-xl-12">
                     <div class="single-wrap d-flex justify-content-center">
                         <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                {!! $parkingf->links() !!} 
-                            </ul>
+                           
                         </nav>
                     </div>
                 </div>

@@ -125,13 +125,14 @@ class ParkingController extends Controller
 
 
    // filter function in find place 
-   public function filter_find_place(ParkingFormRequest $request){
-
-
-    $data = Paking::where('ville', 'LIKE', "%" . $request->ville . "%")->get();
+   public function filter_find_place(){
+    $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
+    $ville=$_GET['ville'] ;
+    $data = Parking::where('ville', 'LIKE', "%" . $ville . "%")->get();
     
     
-    return view('client/layouts.findplace' , compact('parking_filter','data')) 
-    ->with('i',$parking_filter,$data); 
+    
+    return view('client/layouts.searchparking' , compact('data','parking_filter')) 
+    ->with('i',$data, $parking_filter); 
    }
 }

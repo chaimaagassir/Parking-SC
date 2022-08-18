@@ -20,7 +20,7 @@
                 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                       <div class="modal-content">
-                       <form action='ajouterclient' method='POST'class="forms-sample" style="   margin-top: 50px; margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
+                       <form action='ajoutervehicule' method='POST'class="forms-sample" style="   margin-top: 50px; margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
                        
                         
                             @csrf
