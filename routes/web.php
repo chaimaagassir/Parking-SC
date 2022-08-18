@@ -98,6 +98,7 @@ Route::get('parkings', function () {
 
 
 Route::get('places', [PlacesController::class,'afficher']);
+Route::get('delete_place/{id}',[PlacesController::class,'delete_places'])->name('delete_place');
 
 Route::get('parkings', [ParkingController::class,'afficher']);
 Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('findplace/filter');
@@ -134,13 +135,19 @@ Route::get('ajouterclient', function () {
 
 Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
-Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
+Route::get('delete_codepromo/{id}',[CodepromoController::class,'delete_codepromos'])->name('delete_codepromo');
+//Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
+//Route::get('/modifiercodepromo/{id}','CodepromoController@edit');
+
 
 Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
+Route::get('delete_parking/{id}',[ParkingController::class,'delete_parkings'])->name('delete_parking');
 
 Route::get('ajouterclient', [ClientsController::class,'add']);
 Route::post('ajouterclient', [ClientsController::class,'add_client']);
+Route::get('\modifierclient/{client_id}',[ClientController::class,'edit']);
+Route::get('delete_client/{id}',[ClientsController::class,'delete_clients'])->name('delete_client');
 
 
 

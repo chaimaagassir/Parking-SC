@@ -15,4 +15,11 @@ class PlacesController extends Controller
         return view('layoutspp.places' , compact('places'))
         ->with('i',$places); ;   
     }   
+    public function delete_places($id)
+   {
+    $data=Places::find($id);
+    $data->delete();
+
+    return redirect('places')->with('succes','Data Deleted');
+   }
 }
