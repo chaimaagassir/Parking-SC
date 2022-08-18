@@ -87,7 +87,8 @@ Route::get('codespromo', [CodepromoController::class,'afficher']);
 
 Route::get('vehicules', [VehiculesController::class,'afficher']); 
 Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
-Route::get('update_vehicle/{id}', [ParkingController::class,'update_vehicule'])->name('update_vehicle');
+Route::post('update_vehicle/{id}', [VehiculesController::class,'update_vehicule'])->name('update_vehicle');
+Route::get('delete_vehicle/{id}', [VehiculesController::class,'delete_vehicule'])->name('delete_vehicle');
 
 
 
