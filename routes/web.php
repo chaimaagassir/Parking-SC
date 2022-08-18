@@ -30,7 +30,7 @@ Route::get('dashboard', function () {
 });
 
 
-Route::post('profile', 'ClientsController@updateavatar');
+
 
 Route::get('/', function () {
     return view('client/layouts.index');
