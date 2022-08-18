@@ -135,8 +135,8 @@ Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
 
+Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
-
 
 Route::get('ajouterclient', [ClientsController::class,'add']);
 Route::post('ajouterclient', [ClientsController::class,'add_client']);
