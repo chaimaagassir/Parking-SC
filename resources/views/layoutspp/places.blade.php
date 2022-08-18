@@ -62,6 +62,9 @@
   {{-- <a href="ajouterplace" ><button type="button" class="btn btn-primary btn-rounded btn-fw" >Ajouter une nouvelle place</button> </a> --}}
   </div>
    <br> <br>  <br>
+   @if(Session('message'))
+   <div class="alert alert-success"> {{Session('message')}} </div>
+   @endif
    <h4> La liste des Places  : </h4> <br> 
    
 <div class="table-responsive">

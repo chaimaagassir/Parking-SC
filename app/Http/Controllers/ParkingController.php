@@ -141,6 +141,6 @@ class ParkingController extends Controller
     $data=Parking::find($id);
     $data->delete();
 
-    return redirect('parkings')->with('succes','Data Deleted');
+    return redirect('parkings')->with('message','Parking Deleted Successfully');
    }
 }
