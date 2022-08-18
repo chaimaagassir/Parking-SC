@@ -11,7 +11,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="client/assets/img/logo-mini.svg">
 
 		<!-- CSS here -->
-        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <link rel="stylesheet" href="client/assets/css/bootstrap.min.css">
             <link rel="stylesheet" href="client/assets/css/owl.carousel.min.css">
             <link rel="stylesheet" href="client/assets/css/flaticon.css">
