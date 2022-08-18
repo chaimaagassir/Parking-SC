@@ -11,17 +11,20 @@
     <!-- Payment methods card-->
     <div class="card card-header-actions mb-4">
         <div class="card-header">
-            My vehicles
+            My vehicles    @if(Session('message'))
+            <div class="alert alert-success"> {{Session('message')}} </div>
+            @endif
             
             <div class="header-btn d-none f-right d-lg-block">
-                              
+                   {{-- add form   --}}           
                 <a  data-toggle="modal" data-target=".bd-example-modal-xl" href="findplace" class="btn head-btn1">add vehicle</a>
-                {{-- form add vehicule --}}
-                <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                
+                  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"  aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                       <div class="modal-content">
-                       <form action='ajoutervehicule' method='POST'class="forms-sample" style="   margin-top: 50px; margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
-                       
+                        <h5 style='margin-left : 30% ; margin-top: 5%'> Add vehicle </h5> <hr>
+                        <form action='ajoutervehicule' method='POST'class="forms-sample" style=" margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
+                   
                         
                             @csrf
                             <div class="form-group">  
@@ -67,7 +70,42 @@
         </div>
     </div>
     <div class="ms-4 small">
-        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
+   
+      <button  href=" {{ route ('update_vehicle', ['id'=>$p->id ] ) }} "  data-toggle="modal" data-target=".update" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
+      {{-- update form --}}
+      <div class="modal fade update" tabindex="-1" role="dialog"  aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <h5 style='margin-left : 30% ; margin-top: 5%'> Update vehicle </h5> <hr>
+           <form action='update_vehicle' method='POST'class="forms-sample" style="  margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
+       
+            
+                @csrf
+                <div class="form-group">  
+                  <label for="Immatricule">Immatricule</label>
+                  <input type="text" class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
+                </div>
+              
+                <div  class="form-group">
+                  <label for="Type">Type</label><br>
+                  <select type="text" class="form-control" name="type" id="Type" placeholder="Type"  >
+                    <option value='1'>Voiture </option>
+                    <option value='0'>Moto </option>
+                  </select>
+                  
+                </div>
+                <br><br>
+               
+                <button type="submit" class="btn btn-danger" >Enregistrer</button>
+               
+               
+                
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
         
     </div>
 </div>

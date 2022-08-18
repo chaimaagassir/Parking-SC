@@ -86,7 +86,8 @@ Route::get('codespromo', function () {
 Route::get('codespromo', [CodepromoController::class,'afficher']); 
 
 Route::get('vehicules', [VehiculesController::class,'afficher']); 
-
+Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
+Route::get('update_vehicle/{id}', [ParkingController::class,'update_vehicule'])->name('update_vehicle');
 
 
 
@@ -141,7 +142,7 @@ Route::get('ajouterclient', [ClientsController::class,'add']);
 Route::post('ajouterclient', [ClientsController::class,'add_client']);
 
 
-Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
+
 
 // Route::get('ajouterparking', function () {
 //     return view('layoutspp.ajouter-parking');

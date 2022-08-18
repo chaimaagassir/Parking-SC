@@ -26,6 +26,17 @@ class VehiculesController extends Controller
       
         $vehicules->save() ; 
 
-        return redirect('vehicules')->with('message'  , 'Vehicule ajouté avec succés ! ') ;
+        return redirect('vehicules')->with('message'  , 'Vehicle added Successfully ! ') ;
    } 
+   public function update_vehicule(VehiculesRequest $request , $id){
+    
+    $vehicules =  Vehicules::find($id) ;  
+    $vehicules->immatricule = $data["immatricule"] ; 
+    $vehicules->type = $data["type"] ;
+    $vehicules->id_client = Auth::user()->id ;
+  
+    $vehicules->update() ; 
+
+    return redirect('vehicules')->with('message'  , 'Vehicle Updated Successfully! ') ;
+} 
 }
