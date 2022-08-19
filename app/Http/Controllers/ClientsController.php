@@ -78,6 +78,7 @@ class ClientsController extends Controller
     $data=User::find($id);
     $data->delete();
 
+<<<<<<< HEAD
     return redirect('clients')->with('message','Client Deleted');
    }
 
@@ -100,6 +101,9 @@ class ClientsController extends Controller
        , [$client_name,$client_prenom,$client_email,$client_ville,$client_cin,$client_tel,$id]);
 
        return redirect('clients')->with('message','Client updated');
+=======
+    return redirect('clients')->with('message','User deleted Successfully');
+>>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
    }
 }
   

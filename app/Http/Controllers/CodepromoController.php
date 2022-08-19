@@ -36,7 +36,7 @@ class CodepromoController extends Controller
     $data=Codepromo::find($id);
     $data->delete();
 
-    return redirect('codespromo')->with('succes','Data Deleted');
+    return redirect('codespromo')->with('message','Promo code  Deleted Successfully');
    }
 
    public function edit_code($id)

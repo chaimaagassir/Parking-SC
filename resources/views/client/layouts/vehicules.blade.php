@@ -66,22 +66,24 @@
         @endif
         <div class="ms-4" style="margin-left: 80px;">
             <div class="small"><b>{{ $p->immatricule }}</b></div>
-            <div class="text-xs text-muted">Added on {{ $p->created_at }} </div>
+            <div class="text-xs text-muted">Added on {{ $p->created_at }} </div> 
         </div>
     </div>
     <div class="ms-4 small">
-   
-      <button  href=" {{ route ('update_vehicle', ['id'=>$p->id ] ) }} "  data-toggle="modal" data-target=".update" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
-      {{-- update form --}}
+     {{-- update form --}}
+     
+     <button data-toggle="modal" data-target=".update" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
+     
       <div class="modal fade update" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
-            <h5 style='margin-left : 30% ; margin-top: 5%'> Update vehicle </h5> <hr>
-           <form action='update_vehicle' method='POST'class="forms-sample" style="  margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
-       
             
+            <h5 style='margin-left : 30% ; margin-top: 5%'> Update vehicle </h5> <hr>
+           <form action=" {{ route ('update_vehicle', ['id'=>$p->id ] ) }} "method='POST'class="forms-sample" style="  margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
+       
                 @csrf
-                <div class="form-group">  
+                <div class="form-group"> 
+                  
                   <label for="Immatricule">Immatricule</label>
                   <input type="text" class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
                 </div>
@@ -105,7 +107,7 @@
         </div>
       </div>
 
-      <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
+      <a href="{{route('delete_vehicle' , ['id'=>$p->id ])}}" ><button type="button"  class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button></a>
         
     </div>
 </div>

@@ -20,6 +20,6 @@ class PlacesController extends Controller
     $data=Places::find($id);
     $data->delete();
 
-    return redirect('places')->with('succes','Data Deleted');
+    return redirect('places')->with('message','Place Deleted Successfully');
    }
 }

@@ -24,7 +24,9 @@
             <link rel="stylesheet" href="client/assets/css/slick.css">
             <link rel="stylesheet" href="client/assets/css/nice-select.css">
             <link rel="stylesheet" href="client/assets/css/style.css">
-            
+            @yield('css_about')
+            @yield('css_reserver')
+                
            
 @yield('links')
           

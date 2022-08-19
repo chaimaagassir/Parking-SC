@@ -6,237 +6,266 @@
 @section('content')
 
 
-    <!-- Hero Area Start-->
-    <div class="slider-area ">
-    <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="client/assets/img/hero/about.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="hero-cap text-center">
-                        <h2>About Us</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <!-- Hero Area End -->
-    <!-- Support Company Start-->
-    <div class="support-company-area fix section-padding2">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6">
-                    <div class="right-caption">
-                        <!-- Section Tittle -->
-                        <div class="section-tittle section-tittle2">
-                            <span>What we are doing</span>
-                            <h2>24k Talented people are getting Jobs</h2>
-                        </div>
-                        <div class="support-caption">
-                            <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
-                            <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                            <a href="about.html" class="btn post-btn">Post a job</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6">
-                    <div class="support-location-img">
-                        <img src="client/assets/img/service/support-img.jpg" alt="">
-                        <div class="support-img-cap text-center">
-                            <p>Since</p>
-                            <span>1994</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Support Company End-->
-    <!-- How  Apply Process Start-->
-    <div class="apply-process-area apply-bg pt-150 pb-150" data-background="client/assets/img/gallery/how-applybg.png">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-tittle white-text text-center">
-                        <span>Apply process</span>
-                        <h2> How it works</h2>
-                    </div>
-                </div>
-            </div>
-            <!-- Apply Process Caption -->
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-process text-center mb-30">
-                        <div class="process-ion">
-                            <span class="flaticon-search"></span>
-                        </div>
-                        <div class="process-cap">
-                            <h5>1. Search a job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-process text-center mb-30">
-                        <div class="process-ion">
-                            <span class="flaticon-curriculum-vitae"></span>
-                        </div>
-                        <div class="process-cap">
-                            <h5>2. Apply for job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-process text-center mb-30">
-                        <div class="process-ion">
-                            <span class="flaticon-tour"></span>
-                        </div>
-                        <div class="process-cap">
-                            <h5>3. Get your job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- How  Apply Process End-->
-    <!-- Testimonial Start -->
-    <div class="testimonial-area testimonial-padding">
-        <div class="container">
-            <!-- Testimonial contents -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-xl-8 col-lg-8 col-md-10">
-                    <div class="h1-testimonial-active dot-style">
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="client/assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="client/assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <!-- Testimonial Content -->
-                            <div class="testimonial-caption ">
-                                <!-- founder -->
-                                <div class="testimonial-founder  ">
-                                    <div class="founder-img mb-30">
-                                        <img src="client/assets/img/testmonial/testimonial-founder.png" alt="">
-                                        <span>Margaret Lawson</span>
-                                        <p>Creative Director</p>
-                                    </div>
-                                </div>
-                                <div class="testimonial-top-cap">
-                                    <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-    <!-- Online CV Area Start -->
-    <div class="online-cv cv-bg section-overly pt-90 pb-120"  data-background="client/assets/img/gallery/cv_bg.jpg">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-10">
-                    <div class="cv-caption text-center">
-                        <p class="pera1">FEATURED TOURS Packages</p>
-                        <p class="pera2"> Make a Difference with Your Online Resume!</p>
-                        <a href="#" class="border-btn2 border-btn4">Upload your cv</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Online CV Area End-->
+<section>
 
-    <!-- Blog Area Start -->
-    <div class="home-blog-area blog-h-padding">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-tittle text-center">
-                        <span>Our latest blog</span>
-                        <h2>Our recent news</h2>
-                    </div>
+   
+    <div class="container" style='margin-top: 7% ;margin-bottom : 7%'>
+      
+        <div class="row" >
+            <div class="history-wrapper">
+                <div class="title-wrap text-center one-of-two">
+                    <h2 class="h1 text-secondary mb-0 text-uppercase">SC Parking</h2>
+                    
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="client/assets/img/blog/home-blog1.jpg" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <p>|   Properties</p>
-                                <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                <a href="#" class="more-btn">Read more »</a>
-                            </div>
-                        </div>
+                <div class="timeline-box one-of-two">
+                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/87CEFA/000000" alt="...">
+                    <div class="content">
+                        <h3 class="h4 mb-2 mb-md-3">Start with small space</h3>
+                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
                     </div>
+                    <div class="year">2012</div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-                        <div class="blog-img-cap">
-                            <div class="blog-img">
-                                <img src="client/assets/img/blog/home-blog2.jpg" alt="">
-                                <!-- Blog date -->
-                                <div class="blog-date text-center">
-                                    <span>24</span>
-                                    <p>Now</p>
-                                </div>
-                            </div>
-                            <div class="blog-cap">
-                                <p>|   Properties</p>
-                                <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                                <a href="#" class="more-btn">Read more »</a>
-                            </div>
-                        </div>
+                <div class="timeline-box one-of-two">
+                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/FF7F50/000000" alt="...">
+                    <div class="content">
+                        <h3 class="h4 mb-2 mb-md-3">Increase employee by 6 members</h3>
+                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
                     </div>
+                    <div class="year">2014</div>
+                </div>
+                <div class="timeline-box one-of-two">
+                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/008B8B/000000" alt="...">
+                    <div class="content">
+                        <h3 class="h4 mb-2 mb-md-3">We win the national awards</h3>
+                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                    </div>
+                    <div class="year">2016</div>
+                </div>
+                <div class="timeline-box one-of-two">
+                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/00CED1/000000" alt="...">
+                    <div class="content">
+                        <h3 class="h4 mb-2 mb-md-3">Branches open in International</h3>
+                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                    </div>
+                    <div class="year">2022</div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Blog Area End -->
+</section>
+@endsection
 
+
+@section('css_about')
+        <style> 
+        body{margin-top:20px;}
+        .history-wrapper {
+            position: relative;
+            padding: 50px 0 50px;
+        }
+        .history-wrapper:after {
+            content: "";
+            width: 3px;
+            height: 100%;
+            background: #ededed;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+        .history-wrapper .title-wrap {
+            opacity: 0.2;
+            padding: 100px 0 0 45px;
+        }
+        .history-wrapper .timeline-box {
+            position: relative;
+        }
+        .one-of-two {
+            width: 50%;
+            float: left;
+        }
+        .history-wrapper .timeline-box:not(:last-child) {
+            margin-bottom: 140px;
+        }
+        .timeline-box:nth-child(2n) {
+            padding: 0 0 0 140px;
+        }
+        .history-wrapper .timeline-box:nth-child(2n) {
+            margin-bottom: 140px;
+        }
+        .history-wrapper .timeline-box:nth-child(2n + 1) {
+            margin-top: -24%;
+            text-align: right;
+        }
+        .timeline-box:nth-child(2n + 1) {
+            padding: 0 140px 0 0;
+        }
+        .year {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            background: #fff;
+            top: 30%;
+            color: #3b3b3b;
+            transform: translateY(-50%);
+            border: 1px solid #dbdbdb;
+            line-height: 100px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .timeline-box:nth-child(2n) .year {
+            left: 25px;
+        }
+        .timeline-box:nth-child(2n + 1) .year {
+            right: 32px;
+        }
+        .year:before {
+            content: "";
+            width: 15px;
+            height: 15px;
+            border-left: 1px solid #dbdbdb;
+            border-bottom: 1px solid #dbdbdb;
+            background: #ffffff;
+            position: absolute;
+            top: 50%;
+            margin-top: -7.5px;
+        }
+        .timeline-box:nth-child(2n) .year:before {
+            left: -8px;
+            transform: rotate(45deg);
+        }
+        .timeline-box:nth-child(2n + 1) .year:before {
+            right: -8px;
+            transform: rotate(-135deg);
+        }
+        .timeline-box:after {
+            content: "";
+            width: 3px;
+            height: 0;
+            background: #ffa200;
+            position: absolute;
+            top: 30%;
+            transform: translateY(-50%);
+            z-index: 1;
+            transition: all 0.3s ease-in-out;
+        }
+        .timeline-box:nth-child(2n):after {
+            left: -1.5px;
+        }
+        .timeline-box:nth-child(2n + 1):after {
+            right: -1.5px;
+        }
+        .timeline-box:hover:after {
+            height: 97px;
+        }
+        .timeline-box:before {
+            content: "";
+            width: 21px;
+            height: 21px;
+            border-radius: 50%;
+            border: 5px solid #ededed;
+            position: absolute;
+            background: #fff;
+            z-index: 2;
+            top: 30%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease-in-out;
+        }
+        .timeline-box:nth-child(2n):before {
+            left: -10.5px;
+        }
+        .timeline-box:nth-child(2n + 1):before {
+            right: -10.5px;
+        }
+        .timeline-box:hover:before {
+            border: 5px solid #ffa200;
+        }
+        @media screen and (max-width: 1199px) {
+            .year {
+                width: 90px;
+                height: 90px;
+                line-height: 90px;
+                font-size: 22px;
+            }
+        }
+        @media screen and (max-width: 991px) {
+            .history-wrapper {
+                padding: 30px 0 30px;
+            }
+            .history-wrapper .title-wrap {
+                padding: 0;
+                margin-bottom: 30px;
+            }
+            .title-wrap.one-of-two {
+                width: 100%;
+            }
+            .history-wrapper:after {
+                left: 0;
+            }
+            .history-wrapper .timeline-box:nth-child(2n) {
+                padding: 0 0 0 140px;
+            }
+            .history-wrapper .timeline-box:not(:last-child) {
+                margin-bottom: 40px;
+            }
+            .timeline-box.one-of-two,
+            .timeline-box .img img {
+                width: 100%;
+            }
+            .history-wrapper .timeline-box:nth-child(2n + 1) {
+                margin-top: 0;
+                text-align: left;
+            }
+            .timeline-box:nth-child(2n + 1) .year {
+                left: 32px;
+            }
+            .timeline-box:nth-child(2n + 1):before {
+                left: -10.5px;
+            }
+            .timeline-box:nth-child(2n + 1) .year:before {
+                left: -8px;
+                transform: rotate(45deg);
+            }
+            .timeline-box:nth-child(2n + 1):after {
+                left: -1.5px;
+            }
+            .history-wrapper .timeline-box:nth-child(2n + 1) {
+                margin-top: 0;
+                text-align: left;
+            }
+            .timeline-box:nth-child(2n + 1) {
+                padding: 0 0 0 140px;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .history-wrapper:after,
+            .year,
+            .timeline-box:before {
+                display: none;
+            }
+            .history-wrapper {
+                padding: 0;
+            }
+            .history-wrapper .timeline-box:nth-child(2n),
+            .history-wrapper .timeline-box:nth-child(2n + 1) {
+                padding: 0 15px;
+            }
+            .history-wrapper .timeline-box:not(:last-child) {
+                margin-bottom: 30px;
+            }
+            .timeline-box .content {
+                text-align: center;
+            }
+            .timeline-box:nth-child(2n):after,
+            .timeline-box:nth-child(2n + 1):after {
+                display: none;
+            }
+        }
+
+        .mb-1-6, .my-1-6 {
+            margin-bottom: 1.6rem;
+        }
+        </style>
 @endsection

@@ -7,7 +7,7 @@
 
 
     <!-- Hero Area Start-->
-    <div class="slider-area ">
+    {{-- <div class="slider-area ">
     <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="client/assets/img/hero/about.jpg">
         <div class="container">
             <div class="row">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    </div>
+    </div> --}}
     <!-- Hero Area End -->
     <!-- job post company Start -->
     <div class="job-post-company pt-120 pb-120">
@@ -87,7 +87,7 @@
                       </ul>
                      <div class="apply-btn2">
                         
-                        <a href="reserver" class="btn">Reserver</a>
+                        <a href="{{route('reserver' ,$p->id )}}" class="btn">Reserver</a>
                      </div>
                    </div>
                     

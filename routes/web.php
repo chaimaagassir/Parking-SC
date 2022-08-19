@@ -7,7 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\VehiculesController;
-
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\DashbordController;
 
 
 /*
@@ -71,9 +72,18 @@ Route::get('reserver', function () {
     return view('client/layouts.reserver');
 });
 
+Route::get('vehicules', [VehiculesController::class,'afficher']); 
+Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
+Route::post('update_vehicle/{id}', [VehiculesController::class,'update_vehicule'])->name('update_vehicle');
+Route::get('delete_vehicle/{id}', [VehiculesController::class,'delete_vehicule'])->name('delete_vehicle');
+
+Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('findplace/filter');
+Route::get('findplace', [ParkingController::class,'afficherfind']);
+Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
+
 // --------------------------Admin--------------------*/
 
-
+Route::get('tableau-de-bord', [DashbordController::class,'dashboard']); 
 
 Route::get('clients', function () {
     return view('clients');
@@ -85,12 +95,6 @@ Route::get('codespromo', function () {
 
 Route::get('codespromo', [CodepromoController::class,'afficher']); 
 
-Route::get('vehicules', [VehiculesController::class,'afficher']); 
-Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
-Route::get('update_vehicle/{id}', [ParkingController::class,'update_vehicule'])->name('update_vehicle');
-
-
-
 Route::get('parkings', function () {
     return view('layoutspp.parking');    
 });
@@ -100,9 +104,7 @@ Route::get('places', [PlacesController::class,'afficher']);
 Route::get('delete_place/{id}',[PlacesController::class,'delete_places'])->name('delete_place');
 
 Route::get('parkings', [ParkingController::class,'afficher']);
-Route::get('findplace/filter', [ParkingController::class,'filter_find_place'])->name('findplace/filter');
-Route::get('findplace', [ParkingController::class,'afficherfind']);
-Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_details'])->name('parking-details');
+
 Route::get('parkingsdetails/{parking_id}', [ParkingController::class,'parking_details_admin'])->name('parkingsdetailsadmin');
 Route::get('placesdetails/{parking_id}', [ParkingController::class,'place_details_admin'])->name('placesdetailsadmin');
 
@@ -116,9 +118,9 @@ Route::get('réservations', function () {
     return view('layoutspp.réservations');
 });
 
-Route::get('tableau-de-bord', function () {
-    return view('layoutspp.tableau-de-bord');
-});
+// Route::get('tableau-de-bord', function () {
+//     return view('layoutspp.tableau-de-bord');
+// });
 
 // Route::get('places', function () {
 //     return view('layoutspp.places');
@@ -135,17 +137,26 @@ Route::get('ajouterclient', function () {
 Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('delete_codepromo/{id}',[CodepromoController::class,'delete_codepromos'])->name('delete_codepromo');
+<<<<<<< HEAD
 Route::get('code_edit/{id}',[CodepromoController::class,'edit_code'])->name('code_edit');
 Route::post('/code_update/{id}',[CodepromoController::class,'update_code'])->name('code_update');
+=======
+// Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
+// Route::get('/modifiercodepromo/{id}','CodepromoController@edit');
+>>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
 
 
 Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
 Route::get('delete_parking/{id}',[ParkingController::class,'delete_parkings'])->name('delete_parking');
+<<<<<<< HEAD
 //Route::get('/updateparking/{id}',[ParkingController::class,'update_parkings'])->name('updateparking');
 //Route::post('/editparking/{id}',[ParkingController::class,'edit_parkings'])->name('editparking');
 Route::get('parking_edit/{id}',[ParkingController::class,'edit_parking'])->name('parking_edit');
 Route::post('/parking_update/{id}',[ParkingController::class,'update_parking'])->name('parking_update');
+=======
+Route::get('reserver/{id}',[ReservationController::class,'id_parking_form'])->name('reserver');
+>>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
 
 
 Route::get('ajouterclient', [ClientsController::class,'add']);

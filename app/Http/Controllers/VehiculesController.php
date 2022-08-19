@@ -30,13 +30,20 @@ class VehiculesController extends Controller
    } 
    public function update_vehicule(VehiculesRequest $request , $id){
     
-    $vehicules =  Vehicules::find($id) ;  
+    $data = $request->validated();  
+    $vehicules = Vehicules::find($id) ;  
     $vehicules->immatricule = $data["immatricule"] ; 
     $vehicules->type = $data["type"] ;
     $vehicules->id_client = Auth::user()->id ;
-  
     $vehicules->update() ; 
 
-    return redirect('vehicules')->with('message'  , 'Vehicle Updated Successfully! ') ;
+    return redirect('vehicules')->with('message'  , 'Vehicle updated Successfully! ') ;
 } 
+    public function delete_vehicule($id){
+
+        $data=Vehicules::find($id) ; 
+        $data->delete() ; 
+
+        return redirect('vehicules')->with('message'  , 'Vehicle deleted Successfully! ') ;
+    }
 }
