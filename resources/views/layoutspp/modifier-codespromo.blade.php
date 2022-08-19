@@ -10,20 +10,20 @@
       <div class="card-body">
         <h4  >Modifier un code promo </h4>
        
-        <form action='ajoutercodepromo' method='POST' class="forms-sample">
+        <form action="/code_update/{{ $codepromos[0]->id }} " method="POST" class="forms-sample">
           @csrf
           
           <div class="form-group">
             <label for="Nom">Nom</label>
-            <input type="text" class="form-control" name="Nom" id="Nom" placeholder="Nom">
+            <input type="text" class="form-control" name="Nom" value="{{ $codepromos[0]->Nom}}" id="Nom" placeholder="Nom">
           </div>
           <div class="form-group">
             <label for="Code">Code</label>
-            <input type="text" class="form-control" id="Code" placeholder="code">
+            <input type="text" class="form-control" name="Code" value="{{ $codepromos[0]->Code}}" id="Code" placeholder="code">
           </div>
           <div class="form-group">
             <label for="Pourcentage">Pourcentage</label>
-            <input type="text" class="form-control" name="Pourcentage" id="Pourcentage" placeholder="Pourcentage">
+            <input type="text" class="form-control" name="Pourcentage" id="Pourcentage"  value="{{ $codepromos[0]->Pourcentage}}"placeholder="Pourcentage">
           </div>
          <button type="submit" class="btn btn-primary me-2" >Enregistrer</button>
           

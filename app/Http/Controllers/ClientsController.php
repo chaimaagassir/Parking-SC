@@ -6,6 +6,7 @@ use App\Models\User ;
 use App\Exports\ClientsExport;
 use App\Http\Requests\ClientFormRequest; 
 use Excel;
+use DB;
 
 
 
@@ -27,11 +28,7 @@ class ClientsController extends Controller
         ->with('i',$client); 
     }  
     
-    public function edit(Request $request, $id)
-    {
-       $id = User::findOrFail($id);
-      
-    }
+    
     public function add(){
         return view('layoutspp.ajouter-client');
     }
@@ -81,8 +78,28 @@ class ClientsController extends Controller
     $data=User::find($id);
     $data->delete();
 
-    return redirect('clients')->with('succes','Data Deleted');
+    return redirect('clients')->with('message','Client Deleted');
    }
-  
+
+   public function edit_function($id)
+   {
+       $users = DB::select('select * from users where id = ?',[$id]);
+       return view('layoutspp.modifier-client',['users'=>$users]);
+   }
+   public function update_function(Request $request,$id)
+   {
+       $client_name = $request->input('name');
+       $client_prenom = $request->input('prenom');
+       $client_email = $request->input('email');
+       $client_ville = $request->input('ville');
+       $client_cin = $request->input('cin');
+       $client_tel = $request->input('tel');
+       
+
+       DB::update('update users set name = ?, prenom = ?, email = ?, ville= ?, cin = ?, tel = ? where id = ?'
+       , [$client_name,$client_prenom,$client_email,$client_ville,$client_cin,$client_tel,$id]);
+
+       return redirect('clients')->with('message','Client updated');
+   }
 }
   

@@ -11,35 +11,34 @@
       <div class="card-body">
         <h4  >Modifier un client</h4>
        
-        <form class="forms-sample">
+        <form action="/update/{{ $users[0]->id }} " method="POST" class="forms-sample">
+          {{ csrf_field() }}
+             
           <div class="form-group">
             <label for="Nom">Nom</label>
-            <input type="text" class="form-control" id="Nom" placeholder="Nom">
+            <input type="text" class="form-control" name="name" id="Nom" value="{{ $users[0]->name}}" placeholder="Nom">
           </div>
           <div class="form-group">
             <label for="Prénom">Prénom</label>
-            <input type="text" class="form-control" id="Prénom" placeholder="Prénom">
+            <input type="text" class="form-control" name="prenom" id="Prénom" value="{{ $users[0]->prenom}}" placeholder="Prénom">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Email">
+            <input type="email" class="form-control"name="email" id="email" value="{{$users[0]->email}}" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="ville">Ville</label>
-            <input type="password" class="form-control" id="ville" placeholder="Ville">
+            <input type="password" class="form-control"name="ville" id="ville" value="{{$users[0]->ville}}" placeholder="Ville">
           </div>
           <div class="form-group">
             <label for="cin">CIN</label>
-            <input type="password" class="form-control" id="cin" placeholder="Cin">
+            <input type="password" class="form-control" name="cin" id="cin" value="{{$users[0]->cin}}" placeholder="Cin">
           </div>
           <div class="form-group">
             <label for="téléphone">Téléphone</label>
-            <input type="password" class="form-control" id="téléphone" placeholder="Téléphone">
+            <input type="password" class="form-control" name="tel" id="téléphone" value="{{$users[0]->tel}}" placeholder="Téléphone">
           </div>
-          <div class="form-group">
-            <label for="mdp">Mot de passe</label>
-            <input type="password" class="form-control" id="mdp" placeholder="Password">
-          </div>
+         
          
          <button type="submit" class="btn btn-primary me-2" >Enregistrer</button>
           

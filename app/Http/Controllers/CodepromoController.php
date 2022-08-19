@@ -39,8 +39,20 @@ class CodepromoController extends Controller
     return redirect('codespromo')->with('succes','Data Deleted');
    }
 
-   //public function edit( $codespromo_id){
-    //$codespromo= Codepromo::find($codespromo_id); 
-    //return view('layoutspp.modifier-codespromo' , compact('codespromo')) ;
-   //}
+   public function edit_code($id)
+   {
+       $codepromos = DB::select('select * from codepromos where id = ?',[$id]);
+       return view('layoutspp.modifier-codespromo',['codepromos'=>$codepromos]);
+   }
+   public function update_code(Request $request,$id)
+   {
+    $codepromos = Codepromo::find($id);
+
+    $codepromos->Nom=$request->Nom;
+    $codepromos->Code=$request->Code;
+    $codepromos->Pourcentage=$request->Pourcentage;
+    $codepromos->save();
+
+    return redirect('codespromo')->with('message','Code Promo updated');
+   }
 }
