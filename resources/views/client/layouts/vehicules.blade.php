@@ -77,6 +77,7 @@
       <div class="modal fade update" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
+            
             <h5 style='margin-left : 30% ; margin-top: 5%'> Update vehicle </h5> <hr>
            <form action=" {{ route ('update_vehicle', ['id'=>$p->id ] ) }} "method='POST'class="forms-sample" style="  margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
        

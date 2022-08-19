@@ -2,168 +2,285 @@
 
 @section('title' , 'SC Parking | Reserver ')
 
-@section('links')
-
-<link type="text/css" rel="stylesheet" href="client/ZMER/css/bootstrap.min.css" />
-
-<!-- Custom stlylesheet -->
-<link type="text/css" rel="stylesheet" href="client/ZMER/css/style.css" />
-@endsection
 
 @section('content')
+<div id="booking" class="section">
+  <div class="section-center">
+      <div class="container">
+          <div class="row">
+              <div class="booking-form">
+                  <div class="form-header">
+                      <h1>Make your reservation</h1>
+                  </div>
+                  <form>
+                      
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <input class="form-control" type="datetime-local" required>
+                                  <span class="form-label">Check In</span>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <input class="form-control" type="datetime-local" required>
+                                  <span class="form-label">Check out</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row" style='margin-right :5% ; margin-left:5% ;  '>
+                          <div class="col-md-4">
+                              <div class="form-group">
+                                 <div style='  color: rgba(255, 255, 255, 0.5);'> Choose vehicle</div>
+                                  <select class="form-control" required>
+                                     @forelse ($vehicules as $p)
+                                      <option value='{{$p->id}}'> {{$p->immatricule}} </option>
+                                      @empty no data
+                                      @endforelse
+                                  </select>
+                                  <span class="select-arrow"></span>
+                                  <span class="form-label">Rooms</span>
+                              </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              
+                            </div>
+                        </div>
 
-    <div class="container">
-     <!-- Trigger the modal with a button -->
-     {{-- <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button> --}}
-   
-     <!-- Modal -->
-     <div class="modal fade" id="myModal" role="dialog">
-       <div class="modal-dialog">
-       
-         <!-- Modal content-->
-         <div class="modal-content">
-           <div class="modal-header" style="padding:35px 50px;">
-             <button type="button" class="close" data-dismiss="modal">&times;</button>
-             <h4  class="zmer"><span class="glyphicon glyphicon-lock"></span> Ajouter vehicule</h4>
-           </div>
-           <div class="modal-body" style="padding:40px 50px;">
-             <form role="form">
-               <div class="form-checkbox">
-                   <label for="roundtrip">
-                       <input type="radio" id="roundtrip" name="flight-type">
-                       <span></span>Voiture
-                   </label>
-                   <label for="one-way">
-                       <input type="radio" id="one-way" name="flight-type">
-                       <span></span>Velo
-                   </label>
-               </div>
-               <div class="form-group">
-                 <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Matricule</label>
-                 <input type="text" class="form-control" id="psw" placeholder="Entrer le matricule">
-               </div>
-             
-                 <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
-             </form>
-           </div>
-           <div class="modal-footer">
-             <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-             <button type="submit" class="btn btn-success pull-right" data-dismiss="modal"><span class="glyphicon "></span> Choisir vehicule</button>
-             
-            
-           </div>
-         </div>
-         
-       </div>
-     </div> 
-   </div>
-   
-       <div id="booking" class="section">
-           <div class="section-center">
-               <div class="container">
-                   <div class="row">
-                       <div class="booking-form">
-                           <form>
-                               <div class="form-group">
-                                   <div class="form-checkbox">
-                                       <label for="roundtrip">
-                                           <input type="radio" id="roundtrip" name="flight-type">
-                                           <span></span>Place Couverte
-                                       </label>
-                                       <label for="one-way">
-                                           <input type="radio" id="one-way" name="flight-type">
-                                           <span></span>Place non couverte
-                                       </label>
-                                   </div>
-                               </div>
-                           
-                               <div class="row">
-                                   <div class="col-md-3">
-                                       <div class="form-group">
-                                           <span class="form-label">Date d'entrée</span>
-                                           <input class="form-control" type="date" required>
-                                       </div>
-                                   </div>
-                                   <div class="col-md-3">
-                                       <div class="form-group">
-                                           <span class="form-label">Datte de sortie</span>
-                                           <input class="form-control" type="date" required>
-                                       </div>
-                                   </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                               <div style='  color: rgba(255, 255, 255, 0.5);'> Type of place</div>
+                                <select class="form-control" required>
                                    
-                               
-                               </div>
-                               
-                               <div class="row">
-                                   <div class="col-md-3">
-                                       <div class="form-group">
-                                           <span class="form-label">Vehicule</span>
-                                           <div class="container">
-                                               <!-- Trigger the modal with a button -->
-                                               <button type="button" class="btn btn-default btn-lg" id="myBtn">Ajouter</button>
-                                             
-                                               <!-- Modal -->
-                                               <div class="modal fade" id="myModal" role="dialog">
-                                                 <div class="modal-dialog">
-                                                 
-                                                   <!-- Modal content-->
-                                                   <div class="modal-content">
-                                                     <div class="modal-header" style="padding:35px 50px;">
-                                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                       <h4 class="zmer" ><span class="glyphicon glyphicon-lock"></span> Ajouter vehicule</h4>
-                                                     </div>
-                                                     <div class="modal-body" style="padding:40px 50px;">
-                                                       <form role="form">
-                                                         <div class="form-checkbox">
-                                                             <label for="roundtrip">
-                                                                 <input type="radio" id="roundtrip" name="flight-type">
-                                                                 <span></span>Voiture
-                                                             </label>
-                                                             <label for="one-way">
-                                                                 <input type="radio" id="one-way" name="flight-type">
-                                                                 <span></span>Velo
-                                                             </label>
-                                                         </div>
-                                                         <div class="form-group">
-                                                           <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Matricule</label>
-                                                           <input type="text" class="form-control" id="psw" placeholder="Entrer le matricule">
-                                                         </div>
-                                                       
-                                                           <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Valider</button>
-                                                       </form>
-                                                     </div>
-                                                     <div class="modal-footer">
-                                                       <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-                                                       <button type="submit" class="btn btn-success pull-right" data-dismiss="modal"><span class="glyphicon "></span> Choisir vehicule</button>
-                                                      
-                                                     </div>
-                                                   </div>
-                                                   
-                                                 </div>
-                                               </div> 
-                                             </div>
-                                       </div>
-                                   </div>
-                                   <div class="col-md-3">
-                                       <div class="form-btn">
-                                           <button class="submit-btn">Reserver</button>
-                                       </div>
-                                   </div>
-                               </div>
-                           </form>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   
-    
-   <script>
-   $(document).ready(function(){
-     $("#myBtn").click(function(){
-       $("#myModal").modal();
-     });
-   });
-   </script>
+                                    <option value='1'> Covered </option>
+                                    <option value='0'> Not covered </option>
+                                </select>
+                                <span class="select-arrow"></span>
+                                <span class="form-label">Rooms</span>
+                            </div>
+                        </div>
+                      
+                      </div><br><br>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <input class="form-control" type="email" placeholder="Enter your Email">
+                                  <span class="form-label">Email</span>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <input class="form-control" type="tel" placeholder="Enter you Phone">
+                                  <span class="form-label">Phone</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-btn">
+                          <button class="submit-btn">Book Now</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 @endsection
-   
+
+@section('css_reserver')
+    <style>  
+    body {
+      /* background-image: linear-gradient(to right, #f0ebf1, #bebbbc)
+      */
+      /* background-image: url('../../../client/ZMER/img/back.jpg');
+      background-size: cover;
+      background-position: center; */
+    }
+
+    .section {
+      position: relative;
+      height: 100vh;
+    }
+
+    .section .section-center {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+    }
+
+    #booking {
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .booking-form {
+      position: relative;
+      max-width: 642px;
+      width: 100%;
+      margin: auto;
+      padding: 40px;
+      overflow: hidden;
+      background-image: url('public/client/ZMER/img/back.jpg');
+      background-size: cover;
+      border-radius: 5px;
+      z-index: 20;
+    }
+
+    .booking-form::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: -1;
+    }
+
+    .booking-form .form-header {
+      text-align: center;
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .booking-form .form-header h1 {
+      font-weight: 700;
+      text-transform: capitalize;
+      font-size: 42px;
+      margin: 0px;
+      color: #fff;
+    }
+
+    .booking-form .form-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .booking-form .form-control {
+      background-color: rgba(255, 255, 255, 0.2);
+      height: 60px;
+      padding: 0px 25px;
+      border: none;
+      border-radius: 40px;
+      
+      -webkit-box-shadow: 0px 0px 0px 2px transparent;
+      box-shadow: 0px 0px 0px 2px transparent;
+      -webkit-transition: 0.2s;
+      transition: 0.2s;
+    }
+
+    .booking-form .form-control::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control:focus {
+      -webkit-box-shadow: 0px 0px 0px 2px #fb246a;
+      box-shadow: 0px 0px 0px 2px #fb246a;
+    }
+
+    .booking-form input[type="date"].form-control {
+      padding-top: 16px;
+    }
+
+    .booking-form input[type="date"].form-control:invalid {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form input[type="date"].form-control+.form-label {
+      opacity: 1;
+      top: 10px;
+    }
+
+    .booking-form select.form-control {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+    }
+
+    .booking-form select.form-control:invalid {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form select.form-control+.select-arrow {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 32px;
+      line-height: 32px;
+      height: 32px;
+      text-align: center;
+      pointer-events: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 14px;
+    }
+
+    .booking-form select.form-control+.select-arrow:after {
+      content: '\279C';
+      display: block;
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+
+    .booking-form select.form-control option {
+      color: #000;
+    }
+
+    .booking-form .form-label {
+      position: absolute;
+      top: -10px;
+      left: 25px;
+      opacity: 0;
+      color: #fb246a;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      height: 15px;
+      line-height: 15px;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+    }
+
+    .booking-form .form-group.input-not-empty .form-control {
+      padding-top: 16px;
+    }
+
+    .booking-form .form-group.input-not-empty .form-label {
+      opacity: 1;
+      top: 10px;
+    }
+
+    .booking-form .submit-btn {
+      color: #fff;
+      background-color: #da2461;
+      font-weight: 700;
+      height: 60px;
+      padding: 10px 30px;
+      width: 100%;
+      border-radius: 40px;
+      border: none;
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 1.3px;
+      -webkit-transition: 0.2s all;
+      transition: 0.2s all;
+    }
+
+    .booking-form .submit-btn:hover,
+    .booking-form .submit-btn:focus {
+      opacity: 0.9;
+    }
+    </style>
+@endsection

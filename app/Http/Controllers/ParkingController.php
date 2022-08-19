@@ -143,4 +143,5 @@ class ParkingController extends Controller
 
     return redirect('parkings')->with('message','Parking Deleted Successfully');
    }
+  
 }

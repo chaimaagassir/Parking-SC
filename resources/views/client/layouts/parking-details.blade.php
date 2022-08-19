@@ -87,7 +87,7 @@
                       </ul>
                      <div class="apply-btn2">
                         
-                        <a href="reserver" class="btn">Reserver</a>
+                        <a href="{{route('reserver' ,$p->id )}}" class="btn">Reserver</a>
                      </div>
                    </div>
                     
