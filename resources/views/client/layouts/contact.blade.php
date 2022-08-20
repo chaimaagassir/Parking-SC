@@ -11,9 +11,13 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="contact-title">Contact us</h2>
+                @if(Session('message_sent'))
+                <div class="alert alert-success"> {{Session('message_sent')}} </div>
+                @endif
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                <form class="form-contact contact_form" action="send_mail" method="post" id="contactForm" novalidate="novalidate">
+                    @csrf
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">

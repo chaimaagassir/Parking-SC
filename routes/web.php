@@ -9,6 +9,7 @@ use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\VehiculesController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -71,6 +72,13 @@ Route::get('parking-details', function () {
 Route::get('reserver', function () {
     return view('client/layouts.reserver');
 });
+
+// contact us 
+Route::get('contact', [ContactController::class,'contact_us']); 
+Route::post('send_mail', [ContactController::class,'send_mail'])->name('send_mail');
+
+
+Route::post('make_reservation/{id}', [ReservationController::class,'add_reservation'])->name('make_reservation');
 
 Route::get('vehicules', [VehiculesController::class,'afficher']); 
 Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);

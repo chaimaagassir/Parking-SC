@@ -2,16 +2,40 @@
 
 namespace App\Http\Controllers;
 use App\Models\Vehicules;
+use App\Models\Parking ; 
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReservationFormRequest; 
 
 class ReservationController extends Controller
 {
     public function id_parking_form($id){
         $vehicules= Vehicules::where('id_client', '=' , Auth::user()->id)->get(); 
-        return view('client/layouts.reserver' , compact('vehicules'))->with('i',$vehicules); 
+        return view('client/layouts.reserver' , compact('vehicules','id'))->with('i',$vehicules ,$id); 
 
     }
     
+    public function add_reservation(ReservationFormRequest $request ,$id){
+       
+        $data = $request->validated(); 
+        $couverte=$data["couverte"] ; // data from form to serch place with this option 
+        $parking = Parking::find($id) ; 
+        
+        $reservation = new Reservation ;  
+        $reservation->date_debut = $data["date_debut"] ;   //data from form
+        $reservation->date_fin = $data["date_fin"] ;       //data from form
+        $reservation->id_vehicule = $data["id_vehicule"] ; //data from form
+        $reservation->prix = $parking->prix;                // foreing key doit etre calculé 
+        $reservation->id_client = Auth::user()->id ;
+        $reservation->id_parking = $id ; // from link
+       
+        // $reservation->id_codepromos = $data["id_codepromos"] ; 
+        $reservation->id_place = 'blabla' ;
+       
+        $reservation->save() ; 
+
+        return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
+   }  
 
 }
