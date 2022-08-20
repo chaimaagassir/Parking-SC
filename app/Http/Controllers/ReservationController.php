@@ -11,8 +11,15 @@ use App\Http\Requests\ReservationFormRequest;
 class ReservationController extends Controller
 {
     public function id_parking_form($id){
-        $vehicules= Vehicules::where('id_client', '=' , Auth::user()->id)->get(); 
-        return view('client/layouts.reserver' , compact('vehicules','id'))->with('i',$vehicules ,$id); 
+        if (Auth::guest()){
+           return redirect()->route('login'); 
+        }else{
+            $vehicules= Vehicules::where('id_client', '=' , Auth::user()->id)->get(); 
+            return view('client/layouts.reserver' , compact('vehicules','id'))->with('i',$vehicules ,$id); 
+        }
+         
+        
+        
 
     }
     
