@@ -8,7 +8,7 @@ use App\Models\Codepromo ;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class DashbordController extends Controller
+class DashboardController extends Controller
 {
     public function dashboard(){
         $clients = User::where('usertype', '=' , '0')->count();

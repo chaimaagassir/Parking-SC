@@ -144,7 +144,7 @@ class ParkingController extends Controller
 
     return redirect('parkings')->with('message','Parking Deleted Successfully');
    }
-<<<<<<< HEAD
+
 
    public function edit_parking($id)
    {
@@ -183,7 +183,5 @@ class ParkingController extends Controller
        return redirect()->back()->with('message','parkings updated');
 
    }
-=======
-  
->>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
+
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\VehiculesController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\DashbordController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
 
 
@@ -91,7 +91,7 @@ Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_de
 
 // --------------------------Admin--------------------*/
 
-Route::get('tableau-de-bord', [DashbordController::class,'dashboard']); 
+Route::get('tableau-de-bord', [DashboardController::class,'dashboard']); 
 
 Route::get('clients', function () {
     return view('clients');

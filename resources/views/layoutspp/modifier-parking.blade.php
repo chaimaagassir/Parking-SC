@@ -51,7 +51,7 @@
           </div>
           <div class="form-group">
             <label for="Prix/heure">Prix/heure</label>
-            <input type="password" class="form-control" name="prix" id="Prix/heure" value="{{ $parkings[0]->prix}}"  placeholder="Prix/heure">
+            <input type="number" class="form-control" name="prix" id="Prix/heure" value="{{ $parkings[0]->prix}}"  placeholder="Prix/heure">
           </div>
           <div class="form-group">
             <label for="Description">Description</label>
