@@ -145,20 +145,33 @@ Route::get('ajouterclient', function () {
 Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('delete_codepromo/{id}',[CodepromoController::class,'delete_codepromos'])->name('delete_codepromo');
+<<<<<<< HEAD
+Route::get('code_edit/{id}',[CodepromoController::class,'edit_code'])->name('code_edit');
+Route::post('/code_update/{id}',[CodepromoController::class,'update_code'])->name('code_update');
+=======
 // Route::get('modifiercodepromo/{codespromo_id}', [CodepromoController::class,'edit']);
 // Route::get('/modifiercodepromo/{id}','CodepromoController@edit');
+>>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
 
 
 Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
 Route::get('delete_parking/{id}',[ParkingController::class,'delete_parkings'])->name('delete_parking');
+<<<<<<< HEAD
+//Route::get('/updateparking/{id}',[ParkingController::class,'update_parkings'])->name('updateparking');
+//Route::post('/editparking/{id}',[ParkingController::class,'edit_parkings'])->name('editparking');
+Route::get('parking_edit/{id}',[ParkingController::class,'edit_parking'])->name('parking_edit');
+Route::post('/parking_update/{id}',[ParkingController::class,'update_parking'])->name('parking_update');
+=======
 Route::get('reserver/{id}',[ReservationController::class,'id_parking_form'])->name('reserver');
+>>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
 
 
 Route::get('ajouterclient', [ClientsController::class,'add']);
 Route::post('ajouterclient', [ClientsController::class,'add_client']);
-Route::get('\modifierclient/{client_id}',[ClientController::class,'edit']);
 Route::get('delete_client/{id}',[ClientsController::class,'delete_clients'])->name('delete_client');
+Route::get('click_edit/{id}',[ClientsController::class,'edit_function'])->name('click_edit');
+Route::post('/update/{id}',[ClientsController::class,'update_function'])->name('update');
 
 
 

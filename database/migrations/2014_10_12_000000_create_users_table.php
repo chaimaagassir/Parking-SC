@@ -17,14 +17,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('prenom');
-            $table->string('avatar')->default('default.jpg');
+            $table->string('avatar')->default('default.jpg')->nullable();
             $table->string('tel')->nullable();
             $table->string('ville')->nullable();
             $table->string('email')->unique();
             $table->string('cin')->unique();
-            $table->string('usertype')->default(0);
-            $table->integer('nb_v')->default(0);
-            $table->boolean('etatcpt')->default(1);
+            $table->string('usertype')->default(0)->nullable();
+            $table->integer('nb_v')->default(0)->nullable();
+            $table->boolean('etatcpt')->default(1)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
