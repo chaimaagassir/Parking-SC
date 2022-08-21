@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 use App\Models\Vehicules;
 use App\Models\Parking ; 
+use App\Models\User ;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationFormRequest; 
 
 class ReservationController extends Controller
+
 {
+    public function afficher (){
+        $user=User::find(Auth::user()->id);
+        $solde =$user->solde ; 
+        return view('client/layouts.reservations' , compact ('solde')) ; 
+    }
+
     public function id_parking_form($id){
         if (Auth::guest()){
            return redirect()->route('login'); 
@@ -22,6 +30,7 @@ class ReservationController extends Controller
         
 
     }
+
     
     public function add_reservation(ReservationFormRequest $request ,$id){
        
@@ -39,7 +48,23 @@ class ReservationController extends Controller
        
         // $reservation->id_codepromos = $data["id_codepromos"] ; 
         $reservation->id_place = 'blabla' ;
-       
+        
+        if(type_v=='1'){
+            $coeff_type=1;
+        }
+        else{
+            $coeff_type=0.5;
+        }
+
+        if(couverte=='1'){
+            $coeff_couverte=1.5;
+        }
+        else{
+            $coeff_couverte=1;
+        }
+        
+        $prix = ([($nb_heures * $prix_heure) + ($nb_jour * $prix_jour) + ($nb_mois * $prix_mois ) ] * $coeff_couverte * coeff_type ) - solde ;
+        
         $reservation->save() ; 
 
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;

@@ -50,8 +50,16 @@
             <input type="number" class="form-control" name="nb_p_nc_moto" id="Nombre de place" value="{{ $parkings[0]->nb_p_nc_moto}}" placeholder="Nombre de place">
           </div>
           <div class="form-group">
-            <label for="Prix/heure">Prix/heure</label>
-            <input type="number" class="form-control" name="prix" id="Prix/heure" value="{{ $parkings[0]->prix}}"  placeholder="Prix/heure">
+            <label for="Prix/heure">Prix par heure</label>
+            <input type="number" class="form-control" name="prix_heure" id="Prix/heure" placeholder="Prix/heure">
+          </div>
+          <div class="form-group">
+            <label for="Prix/heure">Prix par jour</label>
+            <input type="number" class="form-control" name="prix_jour" id="Prix/heure" placeholder="Prix/heure">
+          </div>
+          <div class="form-group">
+            <label for="Prix/heure">Prix par mois</label>
+            <input type="number" class="form-control" name="prix_mois" id="Prix/heure" placeholder="Prix/heure">
           </div>
           <div class="form-group">
             <label for="Description">Description</label>

@@ -78,6 +78,8 @@ Route::get('contact', [ContactController::class,'contact_us']);
 Route::post('send_mail', [ContactController::class,'send_mail'])->name('send_mail');
 
 
+Route::get('reservations', [ReservationController::class,'afficher']); 
+
 Route::post('make_reservation/{id}', [ReservationController::class,'add_reservation'])->name('make_reservation');
 
 Route::get('vehicules', [VehiculesController::class,'afficher']); 

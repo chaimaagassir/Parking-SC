@@ -10,7 +10,7 @@
           <div class="row">
               <div class="booking-form">
                   <div class="form-header">
-                      <h1>Make your reservation {{$id}} </h1>
+                      <h1>Make your reservation  </h1>
                   </div>
                   <form action='{{route('make_reservation',  ['id'=>$id ])}}' method='post'>
                       
@@ -59,6 +59,8 @@
                             <br>
                             <a href='vehicules' class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px; margin-top :25;'> add vehicle  </a>
                      
+                            
+
                           </div>
                       </div>
                       

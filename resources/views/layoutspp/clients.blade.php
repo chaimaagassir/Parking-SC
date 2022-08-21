@@ -79,6 +79,7 @@
           <th>Email</th>
           <th>CIN</th>
           <th>Nb véhicules</th>
+          <th>Solde</th>
           <th>Etat  compte</th>
           <th>Action</th>
           
@@ -100,6 +101,7 @@
               <td>{{ $p->email }}</td>
               <td >{{ $p->cin }} </td>
               <td >{{ $p->nb_v }} </td>
+              <td >{{ $p->solde }} </td>
               
               @if( $p->etatcpt ==1)
                 
