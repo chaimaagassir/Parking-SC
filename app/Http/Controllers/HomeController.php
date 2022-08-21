@@ -18,7 +18,7 @@ class HomeController extends Controller
                 return view('client.layouts.index') ;
             }
             else{
-                return view('layoutspp.tableau-de-bord') ; 
+                return redirect()->route('tableau-de-bord') ; 
             }
 
         }

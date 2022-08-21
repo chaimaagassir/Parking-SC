@@ -17,7 +17,7 @@
             
             <div class="header-btn d-none f-right d-lg-block">
                    {{-- add form   --}}           
-                <a  data-toggle="modal" data-target=".bd-example-modal-xl" href="findplace" class="btn head-btn1">add vehicle</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-xl" style="color : white ; " class="btn head-btn1">add vehicle</a>
                 
                   <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"  aria-hidden="true">
                     <div class="modal-dialog modal-xl">

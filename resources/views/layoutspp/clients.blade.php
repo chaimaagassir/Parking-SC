@@ -113,6 +113,44 @@
               
           
           <td >
+            {{-- modal send mail user --}}
+            {{-- <div class="header-btn d-none f-right d-lg-block">
+              <a data-toggle="modal" data-target=".sendmailuser"  ><svg  height="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"/></svg></a>&nbsp; &nbsp;
+              <div class="modal fade " id="#sendmailuser" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                  <div class="modal-content">
+                    <h5 style='margin-left : 30% ; margin-top: 5%'> Add vehicle </h5> <hr>
+                    <form class="forms-sample" style=" margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
+               
+                    
+                       
+                        <div class="form-group">  
+                          <label for="Immatricule">Immatricule</label>
+                          <input type="text" class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
+                        </div>
+                      
+                        <div  class="form-group">
+                          <label for="Type">Type</label><br>
+                          <select type="text" class="form-control" name="type" id="Type" placeholder="Type"  >
+                            <option value='1'>Voiture </option>
+                            <option value='0'>Moto </option>
+                          </select>
+                          
+                        </div>
+                        <br><br>
+                       
+                        <button type="submit" class="btn btn-danger" >Enregistrer</button>
+                       
+                       
+                        
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+             --}}
+
+             
             @if( $p->etatcpt ==0)
             <a href=" {{ route ('user.update.statuts', ['user_id'=>$p->id , 'user_statut'=>1 ] ) }} "><svg height='24' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path style='fill : green ; 'd="M0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256zM371.8 211.8C382.7 200.9 382.7 183.1 371.8 172.2C360.9 161.3 343.1 161.3 332.2 172.2L224 280.4L179.8 236.2C168.9 225.3 151.1 225.3 140.2 236.2C129.3 247.1 129.3 264.9 140.2 275.8L204.2 339.8C215.1 350.7 232.9 350.7 243.8 339.8L371.8 211.8z"/></svg></a>&nbsp; &nbsp;
             @else
@@ -127,6 +165,9 @@
           
           @endforelse
        
+
+          {{-- modal send mail --}}
+          
          
           
        

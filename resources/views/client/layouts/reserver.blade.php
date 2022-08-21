@@ -35,7 +35,7 @@
                                   <select name="id_vehicule"class="form-control" required>
                                      @forelse ($vehicules as $p)
                                       <option value='{{$p->id}}'> {{$p->immatricule}} </option>
-                                      @empty no data
+                                      @empty <option> please add vehicle </option>
                                       @endforelse
                                   </select>
                                  

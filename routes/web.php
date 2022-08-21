@@ -91,7 +91,7 @@ Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_de
 
 // --------------------------Admin--------------------*/
 
-Route::get('tableau-de-bord', [DashboardController::class,'dashboard']); 
+Route::get('tableau-de-bord', [DashboardController::class,'dashboard'])->name('tableau-de-bord'); 
 
 Route::get('clients', function () {
     return view('clients');
