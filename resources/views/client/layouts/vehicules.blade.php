@@ -73,9 +73,9 @@
     <div class="ms-4 small">
      {{-- update form --}}
      
-     <button data-toggle="modal" data-target=".update" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
+     <button data-toggle="modal" data-target="#update-{{$p->id}}" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
      
-      <div class="modal fade update" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal fade update" id='update-{{$p->id}}'tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             
@@ -86,7 +86,7 @@
                 <div class="form-group"> 
                   
                   <label for="Immatricule">Immatricule</label>
-                  <input type="text" class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
+                  <input type="text" value ='{{ $p->immatricule }}'class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
                 </div>
               
                 <div  class="form-group">

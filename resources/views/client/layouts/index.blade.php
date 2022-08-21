@@ -6,7 +6,7 @@
 @section('content')
 
 
-    <!-- slider Area Start-->
+    <!-- slider Area -->
     <div class="slider-area ">
         <!-- Mobile Menu -->
         <div class="slider-active">
@@ -32,8 +32,9 @@
             </div>
         </div>
     </div>
-    <!-- slider Area End-->
-    <!-- Our Services Start -->
+
+
+    {{-- why choose SC Parking --}}
     <div class="our-services section-pad-t30">
         <div class="container">
             <!-- Section Tittle -->
@@ -41,7 +42,7 @@
                 <div class="col-lg-12">
                     <div class="section-tittle text-center">
                     
-                        <h2>Browse Top Categories </h2>
+                        <h2>Why choose SC parking ? </h2>
                     </div>
                 </div>
             </div>
@@ -90,66 +91,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-helmet"></span>
-                        </div>
-                        <div class="services-cap">
-                           <h5><a href="job_listing.html">Construction</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-high-tech"></span>
-                        </div>
-                        <div class="services-cap">
-                           <h5><a href="job_listing.html">Information Technology</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-real-estate"></span>
-                        </div>
-                        <div class="services-cap">
-                           <h5><a href="job_listing.html">Real Estate</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <div class="single-services text-center mb-30">
-                        <div class="services-ion">
-                            <span class="flaticon-content"></span>
-                        </div>
-                        <div class="services-cap">
-                           <h5><a href="job_listing.html">Content Writer</a></h5>
-                            <span>(658)</span>
-                        </div>
-                    </div>
-                </div>
+               
+              
+              
+              
             </div>
             <!-- More Btn -->
-            <!-- Section Button -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="browse-btn2 text-center mt-50">
-                        <a href="job_listing.html" class="border-btn2">Browse All Sectors</a>
-                    </div>
-                </div>
-            </div>
+          
         </div>
     </div>
-    <!-- Our Services End -->
+
   
     
-    <!-- How  Apply Process Start-->
+    <!-- Comment ça marche ? -->
     <div class="apply-process-area apply-bg pt-100 pb-100" data-background="client/assets/img/gallery/how-applybg.png">
         <div class="container">
             <!-- Section Tittle -->
@@ -201,7 +155,7 @@
             </div>
          </div>
     </div>
-    <!-- How  Apply Process End-->
+
     
     <!-- Blog Area Start -->
     <div class="home-blog-area blog-h-padding">
