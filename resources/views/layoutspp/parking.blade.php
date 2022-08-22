@@ -90,7 +90,7 @@
           <td>{{ $p->ville }}</td>
           <td >{{ $p->emplacement }} </td>
           <td >{{ $p->numéro_téléphone }} </td>
-          <td><label >{{ $p->prix }}</label></td>
+          <td><label >{{ $p->prix_heure }}</label></td>
        
           <td> 
            <a href=" {{ route ('parkingsdetailsadmin', ['parking_id'=>$p->id ] ) }} " ><img  style="width: 27px;"src="images/more.svg" alt="logo" /></a>&nbsp; &nbsp;  

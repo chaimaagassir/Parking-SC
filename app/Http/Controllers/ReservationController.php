@@ -8,6 +8,8 @@ use App\Models\Reservation;
 use App\Models\Codepromo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Mail\CodePromoMail ;
+use Mail ;
 use App\Http\Requests\ReservationFormRequest; 
 
 class ReservationController extends Controller
@@ -16,8 +18,10 @@ class ReservationController extends Controller
     public function afficher (){
         $user=User::find(Auth::user()->id);
         $solde =$user->solde ; 
-        $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
-        return view('client/layouts.reservations' , compact ('solde')) ; 
+       
+        return view('client/layouts.reservations' , compact ('solde' )) ; 
+
+
     }
 
     public function id_parking_form($id){
@@ -59,7 +63,7 @@ class ReservationController extends Controller
         }
 
         if(couverte=='1'){
-            $coeff_couverte=1.5;
+            $coeff_couverte=1.2;
         }
         else{
             $coeff_couverte=1;
@@ -68,6 +72,28 @@ class ReservationController extends Controller
         $prix = ([($nb_heures * $prix_heure) + ($nb_jour * $prix_jour) + ($nb_mois * $prix_mois ) ] * $coeff_couverte * coeff_type ) - solde ;
         
         $reservation->save() ; 
+
+      
+        // $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
+        // $Codepromo = Codepromo::get();
+
+        
+        // foreach ($Codepromo as $cp) {
+        //     if($cp->nb_reserv = $nb_reservation ){
+        //         $message= 'bravo' ; 
+        //             $datalist=[
+        //                 "Nom"=> $cp->Nom ,
+        //                 "Code"=>$cp->Code, 
+        //                 "Pourcentage"=>$cp->Pourcentage, 
+        //                 "nb_reserv"=>$cp->nb_reserv, 
+        //                 "name_client"=>Auth::user()->name 
+        //             ] ; 
+        //             Mail::to(Auth::user()->email)->send(new CodePromoMail($datalist)) ;
+        //     }
+            
+        // }
+
+      
 
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
    }  

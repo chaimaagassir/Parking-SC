@@ -26,6 +26,7 @@
             <link rel="stylesheet" href="client/assets/css/style.css">
             @yield('css_about')
             @yield('css_reserver')
+           
                 
            
 @yield('links')

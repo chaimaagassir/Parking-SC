@@ -3,7 +3,7 @@
 @section('title' , 'SC Parking | Clients')
 
 @section('content')
-<div>
+<div >
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Filtre</h4> <hr>
