@@ -144,7 +144,7 @@ class ParkingController extends Controller
 
     return redirect('parkings')->with('message','Parking Deleted Successfully');
    }
-<<<<<<< HEAD
+
 
    public function edit_parking($id)
    {
@@ -158,32 +158,27 @@ class ParkingController extends Controller
        $parkings->ville=$request->ville;
        $parkings->emplacement=$request->emplacement;
        $image=$request->file;
-
        if($image)
        {
-
        $imagename=time().'.'.$image->getClientOriginalExtension();
 
        $request->file->move('parkingimage',$imagename);
 
        $parkings->image=$imagename;
        }
-       $parkings->numéro_téléphone=$request->numéro_téléphone;
+    
        $parkings->nb_p_c_voiture=$request->nb_p_c_voiture;
        $parkings->nb_p_nc_voiture=$request->nb_p_nc_voiture;
        $parkings->nb_p_c_moto=$request->nb_p_c_moto;
        $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
        $parkings->prix=$request->prix;
+       $parkings->numéro_téléphone=$request->numéro_téléphone;
        $parkings->description=$request->description;
-      
-
-
        $parkings->save();
 
-       return redirect()->back()->with('message','parkings updated');
+       return redirect('parkings')->with('message','parkings updated');
 
    }
-=======
-  
->>>>>>> 868c7f0b3f9a4cac47ea44eef2a301c3061508bd
+
+
 }

@@ -18,12 +18,14 @@
                     
                 </div>
                 <div class="timeline-box one-of-two">
-                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/87CEFA/000000" alt="...">
+                    <img class="mb-1-6 rounded" src="uploads/parkings/parking_lot.jpg" alt="..."
+                    width="280" 
+                    height="280">
                     <div class="content">
-                        <h3 class="h4 mb-2 mb-md-3">Start with small space</h3>
-                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                        <h3 class="h4 mb-2 mb-md-3">We make parking easy</h3>
+                        <p class="mb-0">The effect of large-scale parking in-city has long been contentious. Elimination of historic structures for garages or lots led to historical preservation movements in many cities. The acreage devoted to parking is widely seen as disrupting a walkable urban fabric, maximizing convenience to each individual building.</p>
                     </div>
-                    <div class="year">2012</div>
+                    <div class="year">Idea</div>
                 </div>
                 <div class="timeline-box one-of-two">
                     <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/FF7F50/000000" alt="...">

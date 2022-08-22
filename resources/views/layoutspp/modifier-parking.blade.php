@@ -29,10 +29,7 @@
             <label>Update image</label>
             <input type="file" name="file">
           </div>
-          <div class="form-group">
-            <label for="Numéro de téléphone">Numéro de téléphone</label>
-            <input type="email" class="form-control" name="numéro_téléphone" id="Numéro de téléphone" value="{{ $parkings[0]->numéro_téléphone}}"  placeholder="Numéro de téléphone">
-          </div>
+         
           <div class="form-group">
             <label for="Nombre de place">Nombre de place couverte voiture</label>
             <input type="number" class="form-control" name="nb_p_c_voiture"id="Nombre de place" value="{{ $parkings[0]->nb_p_c_voiture}}"  placeholder="Nombre de place">
@@ -52,6 +49,10 @@
           <div class="form-group">
             <label for="Prix/heure">Prix/heure</label>
             <input type="password" class="form-control" name="prix" id="Prix/heure" value="{{ $parkings[0]->prix}}"  placeholder="Prix/heure">
+          </div>
+          <div class="form-group">
+            <label for="Numéro de téléphone">Numéro de téléphone</label>
+            <input type="number" class="form-control" name="numéro_téléphone" id="Numéro de téléphone" value="{{ $parkings[0]->numéro_téléphone}}"  placeholder="Numéro de téléphone">
           </div>
           <div class="form-group">
             <label for="Description">Description</label>
