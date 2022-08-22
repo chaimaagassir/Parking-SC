@@ -22,11 +22,11 @@
                             <h4>Contact Info</h4>
                             <ul>
                                 <li>
-                                <p>Address :Your address goes
-                                    here, your demo address.</p>
+                                <p>Casablanca, Nearshore.
+                                    Shore 1 - Sector A</p>
                                 </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
+                                <li><a href="#">Phone : +212 700001122</a></li>
+                                <li><a href="#">Email : scparking2022@gmail.com</a></li>
                             </ul>
                         </div>
 
@@ -37,11 +37,9 @@
                         <div class="footer-tittle">
                             <h4>Important Link</h4>
                             <ul>
-                                <li><a href="#"> View Project</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Testimonial</a></li>
-                                <li><a href="#">Proparties</a></li>
-                                <li><a href="#">Support</a></li>
+                               
+                                <li><a href="contact">Contact Us</a></li>
+                                <li><a href="about">About Us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -110,9 +108,7 @@
                  <div class="row d-flex justify-content-between align-items-center">
                      <div class="col-xl-10 col-lg-10 ">
                          <div class="footer-copy-right">
-                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                             <p>SC Parking</p>
                          </div>
                      </div>
                      <div class="col-xl-2 col-lg-2">
@@ -120,7 +116,7 @@
                              <a href="#"><i class="fab fa-facebook-f"></i></a>
                              <a href="#"><i class="fab fa-twitter"></i></a>
                              <a href="#"><i class="fas fa-globe"></i></a>
-                             <a href="#"><i class="fab fa-behance"></i></a>
+                             <a href="#"><i class="fab fa-linkedin"></i></a>
                          </div>
                      </div>
                  </div>

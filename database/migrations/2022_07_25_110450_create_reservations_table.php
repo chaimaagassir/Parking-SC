@@ -34,10 +34,11 @@ class CreateReservationsTable extends Migration
             ->constrained('vehicules')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->foreignId('id_codepromos')
+            $table->foreignId('id_codepromos')->nullable()
             ->constrained('codepromos')
             ->onDelete('cascade')
             ->onUpdate('cascade');
+            
             $table->timestamps();
         });
     }

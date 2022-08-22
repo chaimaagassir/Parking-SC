@@ -69,7 +69,9 @@ class ParkingController extends Controller
         $parking->nb_p_nc_voiture = $data["nb_p_nc_voiture"] ;
         $parking->nb_p_c_moto = $data["nb_p_c_moto"] ;
         $parking->nb_p_nc_moto = $data["nb_p_nc_moto"] ; 
-        $parking->prix = $data["prix"] ;
+        $parking->prix_heure = $data["prix_heure"] ;
+        $parking->prix_jour = $data["prix_jour"] ;
+        $parking->prix_mois = $data["prix_mois"] ;
         // if((isset($data["description"]))){
         //     $parking->description = $data["description"] ;
         // }
@@ -172,7 +174,13 @@ class ParkingController extends Controller
        $parkings->nb_p_c_moto=$request->nb_p_c_moto;
        $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
        $parkings->prix=$request->prix;
+
        $parkings->numéro_téléphone=$request->numéro_téléphone;
+
+       $parkings->prix_heure = $request->prix_heure;
+        $parkings->prix_jour = $request->prix_jour;
+        $parkings->prix_mois = $request->prix_mois;
+
        $parkings->description=$request->description;
        $parkings->save();
 

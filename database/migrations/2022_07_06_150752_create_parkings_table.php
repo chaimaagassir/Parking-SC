@@ -24,7 +24,9 @@ class CreateParkingsTable extends Migration
             $table->integer('nb_p_c_moto')->nullable();
             $table->integer('nb_p_nc_voiture')->nullable();
             $table->integer('nb_p_nc_moto')->nullable();
-            $table->integer('prix')->nullable();
+            $table->integer('prix_heure')->nullable();
+            $table->integer('prix_jour')->nullable();
+            $table->integer('prix_mois')->nullable();
             $table->timestamps();
         });
     }

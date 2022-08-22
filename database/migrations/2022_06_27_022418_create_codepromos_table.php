@@ -18,6 +18,7 @@ class CreateCodepromosTable extends Migration
             $table->string('Nom')->unique();
             $table->string('Code')->unique();
             $table->integer('Pourcentage');
+            $table->integer('nb_reserv')->nullable();
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@
             
             <div class="header-btn d-none f-right d-lg-block">
                    {{-- add form   --}}           
-                <a  data-toggle="modal" data-target=".bd-example-modal-xl" href="findplace" class="btn head-btn1">add vehicle</a>
+                <a  data-toggle="modal" data-target=".bd-example-modal-xl" style="color : white ; " class="btn head-btn1">add vehicle</a>
                 
                   <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog"  aria-hidden="true">
                     <div class="modal-dialog modal-xl">
@@ -65,6 +65,7 @@
         <svg height='24' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M342.5 32C357.2 32 370.7 40.05 377.6 52.98L391.7 78.93L439.1 39.42C444.9 34.62 452.1 32 459.6 32H480C497.7 32 512 46.33 512 64V96C512 113.7 497.7 128 480 128H418.2L473.3 229.1C485.5 226.1 498.5 224 512 224C582.7 224 640 281.3 640 352C640 422.7 582.7 480 512 480C441.3 480 384 422.7 384 352C384 311.1 402.4 276.3 431.1 252.8L415.7 224.2C376.1 253.4 352 299.8 352 352C352 362.1 353.1 373.7 355.2 384H284.8C286.9 373.7 287.1 362.1 287.1 352C287.1 263.6 216.4 192 127.1 192H31.1V160C31.1 142.3 46.33 128 63.1 128H165.5C182.5 128 198.7 134.7 210.7 146.7L255.1 192L354.1 110.3L337.7 80H279.1C266.7 80 255.1 69.25 255.1 56C255.1 42.75 266.7 32 279.1 32L342.5 32zM448 352C448 387.3 476.7 416 512 416C547.3 416 576 387.3 576 352C576 316.7 547.3 288 512 288C509.6 288 507.2 288.1 504.9 288.4L533.1 340.6C539.4 352.2 535.1 366.8 523.4 373.1C511.8 379.4 497.2 375.1 490.9 363.4L462.7 311.2C453.5 322.3 448 336.5 448 352V352zM253.8 376C242.5 435.2 190.5 480 128 480C57.31 480 0 422.7 0 352C0 281.3 57.31 224 128 224C190.5 224 242.5 268.8 253.8 328H187.3C177.9 304.5 154.9 288 128 288C92.65 288 64 316.7 64 352C64 387.3 92.65 416 128 416C154.9 416 177.9 399.5 187.3 376H253.8zM96 352C96 334.3 110.3 320 128 320C145.7 320 160 334.3 160 352C160 369.7 145.7 384 128 384C110.3 384 96 369.7 96 352z"/></svg>
         @endif
         <div class="ms-4" style="margin-left: 80px;">
+          
             <div class="small"><b>{{ $p->immatricule }}</b></div>
             <div class="text-xs text-muted">Added on {{ $p->created_at }} </div> 
         </div>
@@ -72,20 +73,20 @@
     <div class="ms-4 small">
      {{-- update form --}}
      
-     <button data-toggle="modal" data-target=".update" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
+     <button data-toggle="modal" data-target="#update-{{$p->id}}" type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Update</button>
      
-      <div class="modal fade update" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal fade update" id='update-{{$p->id}}'tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             
             <h5 style='margin-left : 30% ; margin-top: 5%'> Update vehicle </h5> <hr>
            <form action=" {{ route ('update_vehicle', ['id'=>$p->id ] ) }} "method='POST'class="forms-sample" style="  margin-bottom: 50px; margin-right: 150px; margin-left: 80px;">
-       
+              
                 @csrf
                 <div class="form-group"> 
                   
                   <label for="Immatricule">Immatricule</label>
-                  <input type="text" class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
+                  <input type="text" value ='{{ $p->immatricule }}'class="form-control" name="immatricule" id="Immatricule" placeholder="Immatricule">
                 </div>
               
                 <div  class="form-group">

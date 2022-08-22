@@ -22,6 +22,10 @@
             <input type="text" class="form-control" name="Code" value="{{ $codepromos[0]->Code}}" id="Code" placeholder="code">
           </div>
           <div class="form-group">
+            <label for="nb_reserv">nb_reserv</label>
+            <input type="number" class="form-control" name="nb_reserv" id="nb_reserv"  value="{{ $codepromos[0]->nb_reserv}}"placeholder="nb_reserv">
+          </div>
+          <div class="form-group">
             <label for="Pourcentage">Pourcentage</label>
             <input type="text" class="form-control" name="Pourcentage" id="Pourcentage"  value="{{ $codepromos[0]->Pourcentage}}"placeholder="Pourcentage">
           </div>

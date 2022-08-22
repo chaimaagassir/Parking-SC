@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('cin')->unique();
             $table->string('usertype')->default(0)->nullable();
             $table->integer('nb_v')->default(0)->nullable();
+            $table->integer('solde')->default(0)->nullable();
             $table->boolean('etatcpt')->default(1)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

@@ -55,7 +55,15 @@
           </div>
           <div class="form-group">
             <label for="Prix/heure">Prix par heure</label>
-            <input type="number" class="form-control" name="prix" id="Prix/heure" placeholder="Prix/heure">
+            <input type="number" class="form-control" name="prix_heure" id="Prix/heure" placeholder="Prix/heure">
+          </div>
+          <div class="form-group">
+            <label for="Prix/heure">Prix par jour</label>
+            <input type="number" class="form-control" name="prix_jour" id="Prix/heure" placeholder="Prix/heure">
+          </div>
+          <div class="form-group">
+            <label for="Prix/heure">Prix par mois</label>
+            <input type="number" class="form-control" name="prix_mois" id="Prix/heure" placeholder="Prix/heure">
           </div>
           <div class="form-group">
             <label for="description">Description</label>

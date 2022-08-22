@@ -26,6 +26,7 @@ class CodepromoController extends Controller
         $codespromo->Nom = $data["Nom"] ; 
         $codespromo->Code = $data["Code"] ;
         $codespromo->Pourcentage = $data["Pourcentage"] ;
+        $codespromo->nb_reserv = $data["nb_reserv"] ;
         $codespromo->save() ; 
 
         return redirect('codespromo')->with('message'  , 'Code promo ajouté avec succés ! ') ;
@@ -51,6 +52,7 @@ class CodepromoController extends Controller
     $codepromos->Nom=$request->Nom;
     $codepromos->Code=$request->Code;
     $codepromos->Pourcentage=$request->Pourcentage;
+    $codepromos->nb_reserv=$request->nb_reserv;
     $codepromos->save();
 
     return redirect('codespromo')->with('message','Code Promo updated');

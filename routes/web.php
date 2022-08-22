@@ -8,8 +8,9 @@ use App\Http\Controllers\PlacesController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\VehiculesController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\DashbordController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -74,6 +75,15 @@ Route::get('reserver', function () {
     return view('client/layouts.reserver');
 });
 
+// contact us 
+Route::get('contact', [ContactController::class,'contact_us']); 
+Route::post('send_mail', [ContactController::class,'send_mail'])->name('send_mail');
+
+
+Route::get('reservations', [ReservationController::class,'afficher']); 
+
+Route::post('make_reservation/{id}', [ReservationController::class,'add_reservation'])->name('make_reservation');
+
 Route::get('vehicules', [VehiculesController::class,'afficher']); 
 Route::post('ajoutervehicule', [VehiculesController::class,'add_vehicule']);
 Route::post('update_vehicle/{id}', [VehiculesController::class,'update_vehicule'])->name('update_vehicle');
@@ -85,7 +95,7 @@ Route::get('parking-details/{parking_id}', [ParkingController::class,'parking_de
 
 // --------------------------Admin--------------------*/
 
-Route::get('tableau-de-bord', [DashbordController::class,'dashboard']); 
+Route::get('tableau-de-bord', [DashboardController::class,'dashboard'])->name('tableau-de-bord'); 
 
 Route::get('clients', function () {
     return view('clients');
@@ -156,6 +166,7 @@ Route::get('delete_parking/{id}',[ParkingController::class,'delete_parkings'])->
 //Route::post('/editparking/{id}',[ParkingController::class,'edit_parkings'])->name('editparking');
 Route::get('parking_edit/{id}',[ParkingController::class,'edit_parking'])->name('parking_edit');
 Route::post('/parking_update/{id}',[ParkingController::class,'update_parking'])->name('parking_update');
+
 Route::get('reserver/{id}',[ReservationController::class,'id_parking_form'])->name('reserver');
 
 

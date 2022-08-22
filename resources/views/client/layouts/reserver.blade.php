@@ -10,20 +10,20 @@
           <div class="row">
               <div class="booking-form">
                   <div class="form-header">
-                      <h1>Make your reservation</h1>
+                      <h1>Make your reservation  </h1>
                   </div>
-                  <form>
+                  <form action='{{route('make_reservation',  ['id'=>$id ])}}' method='post'>
                       
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input class="form-control" type="datetime-local" required>
+                                  <input name='date_debut' class="form-control" type="datetime-local" required>
                                   <span class="form-label">Check In</span>
                               </div>
                           </div>
                           <div class="col-md-6">
                               <div class="form-group">
-                                  <input class="form-control" type="datetime-local" required>
+                                  <input name='date_fin' class="form-control" type="datetime-local" required>
                                   <span class="form-label">Check out</span>
                               </div>
                           </div>
@@ -32,37 +32,40 @@
                           <div class="col-md-4">
                               <div class="form-group">
                                  <div style='  color: rgba(255, 255, 255, 0.5);'> Choose vehicle</div>
-                                  <select class="form-control" required>
+                                  <select name="id_vehicule"class="form-control" required>
                                      @forelse ($vehicules as $p)
                                       <option value='{{$p->id}}'> {{$p->immatricule}} </option>
-                                      @empty no data
+                                      @empty <option> please add vehicle </option>
                                       @endforelse
                                   </select>
-                                  <span class="select-arrow"></span>
-                                  <span class="form-label">Rooms</span>
+                                 
                               </div>
                           </div>
-                          <div class="col-md-4">
-                            <div class="form-group">
-                              
-                            </div>
-                        </div>
+                        
 
                           <div class="col-md-4">
                             <div class="form-group">
                                <div style='  color: rgba(255, 255, 255, 0.5);'> Type of place</div>
-                                <select class="form-control" required>
+                                <select name="couverte"class="form-control" required>
                                    
                                     <option value='1'> Covered </option>
                                     <option value='0'> Not covered </option>
                                 </select>
-                                <span class="select-arrow"></span>
-                                <span class="form-label">Rooms</span>
+                             
                             </div>
                         </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <br>
+                            <a href='vehicules' class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px; margin-top :25;'> add vehicle  </a>
+                     
+                            
+
+                          </div>
+                      </div>
                       
                       </div><br><br>
-                      <div class="row">
+                      {{-- <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
                                   <input class="form-control" type="email" placeholder="Enter your Email">
@@ -75,7 +78,7 @@
                                   <span class="form-label">Phone</span>
                               </div>
                           </div>
-                      </div>
+                      </div> --}}
                       <div class="form-btn">
                           <button class="submit-btn">Book Now</button>
                       </div>

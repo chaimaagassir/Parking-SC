@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Codepromo extends Model
+class Contact extends Model
 {
     use HasFactory;
-    protected $table="codepromos" ; 
-    protected $fillable = ['Nom','Code' ,'Pourcentage','>nb_reserv'];
 }

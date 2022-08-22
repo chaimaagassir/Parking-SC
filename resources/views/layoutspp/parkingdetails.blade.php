@@ -48,7 +48,15 @@
                                 </tr>
                                 <tr>
                                     <td width="390"><b>prix par heure</b></td>
-                                    <td>{{ $p->prix }} DH</td>
+                                    <td>{{ $p->prix_heure }} DH</td>
+                                </tr>
+                                <tr>
+                                    <td width="390"><b>prix par jour</b></td>
+                                    <td>{{ $p->prix_jour }} DH</td>
+                                </tr>
+                                <tr>
+                                    <td width="390"><b>prix par mois</b></td>
+                                    <td>{{ $p->prix_mois }} DH</td>
                                 </tr>
                                 <tr>
                                     <td width="390"><b>Nombre de place couverte voiture</b></td>

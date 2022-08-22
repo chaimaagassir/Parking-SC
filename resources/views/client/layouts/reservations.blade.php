@@ -16,7 +16,7 @@
     <hr class="mt-0 mb-4">
     <div class="row">
          <!-- Number of reservations-->
-        <div class="col-lg-4 mb-4">
+        <div class="col-lg-3 mb-3">
            
             <div class="card h-100 border-start-lg border-start-primary">
                 <div class="card-body">
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Expired reservations-->
-        <div class="col-lg-4 mb-4">
+        <div class="col-lg-3 mb-3">
             
             <div class="card h-100 border-start-lg border-start-secondary">
                 <div class="card-body">
@@ -39,12 +39,25 @@
             </div>
         </div>
 
-        <div class="col-lg-4 mb-4">
+        
+
+        <div class="col-lg-3 mb-3">
             <!-- Billing card 3-->
             <div class="card h-100 border-start-lg border-start-success">
                 <div class="card-body">
                     <div class="small text-muted">Reservation (pas encore expiré)</div>
                     <div class="h3 d-flex align-items-center">3</div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 mb-3">
+            
+            <div class="card h-100 border-start-lg border-start-secondary">
+                <div class="card-body">
+                    <div class="small text-muted">Solde</div>
+                    <div class="h3">{{$solde}}</div>
                    
                 </div>
             </div>

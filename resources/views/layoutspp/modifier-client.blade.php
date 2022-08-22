@@ -28,15 +28,15 @@
           </div>
           <div class="form-group">
             <label for="ville">Ville</label>
-            <input type="password" class="form-control"name="ville" id="ville" value="{{$users[0]->ville}}" placeholder="Ville">
+            <input  class="form-control"name="ville" id="ville" value="{{$users[0]->ville}}" placeholder="Ville">
           </div>
           <div class="form-group">
             <label for="cin">CIN</label>
-            <input type="password" class="form-control" name="cin" id="cin" value="{{$users[0]->cin}}" placeholder="Cin">
+            <input  class="form-control" name="cin" id="cin" value="{{$users[0]->cin}}" placeholder="Cin">
           </div>
           <div class="form-group">
             <label for="téléphone">Téléphone</label>
-            <input type="password" class="form-control" name="tel" id="téléphone" value="{{$users[0]->tel}}" placeholder="Téléphone">
+            <input  class="form-control" name="tel" id="téléphone" value="{{$users[0]->tel}}" placeholder="Téléphone">
           </div>
          
          

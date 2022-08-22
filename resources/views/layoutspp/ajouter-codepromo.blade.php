@@ -30,6 +30,10 @@
             <input type="text" class="form-control" name="Code" id="Code" placeholder="code">
           </div>
           <div class="form-group">
+            <label for="nb_reserv">People Autorized</label>
+            <input type="number" class="form-control" name="nb_reserv" id="nb_reserv" placeholder="nb_reserv">
+          </div>
+          <div class="form-group">
             <label for="Pourcentage">Pourcentage</label>
             <input type="text" class="form-control" name="Pourcentage" id="Pourcentage" placeholder="Pourcentage">
           </div>
