@@ -112,7 +112,7 @@
                                         <ul>
                                             <li>{{ $p->emplacement }}</li>
                                             <li><i class="fas fa-map-marker-alt"> </i>{{ $p->ville }}</li>
-                                            <li>{{ $p->prix }} DH </li>
+                                            <li>{{ $p->prix_heure }} DH </li>
                                           </ul>
                                     </div>
                                 </div>

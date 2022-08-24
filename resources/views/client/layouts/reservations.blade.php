@@ -21,7 +21,7 @@
             <div class="card h-100 border-start-lg border-start-primary">
                 <div class="card-body">
                     <div class="small text-muted">Number of reservations</div>
-                    <div class="h3">20</div>
+                    <div class="h3">{{$nb_reservation}}</div>
                     
                 </div>
             </div>
@@ -33,7 +33,7 @@
             <div class="card h-100 border-start-lg border-start-secondary">
                 <div class="card-body">
                     <div class="small text-muted">Expired reservations</div>
-                    <div class="h3">7</div>
+                    <div class="h3">{{$nb_reservation_expired}}</div>
                    
                 </div>
             </div>
@@ -45,8 +45,8 @@
             <!-- Billing card 3-->
             <div class="card h-100 border-start-lg border-start-success">
                 <div class="card-body">
-                    <div class="small text-muted">Reservation (pas encore expiré)</div>
-                    <div class="h3 d-flex align-items-center">3</div>
+                    <div class="small text-muted">Reservations not expired yet</div>
+                    <div class="h3 d-flex align-items-center">{{$nb_reservation_not_expired}}</div>
                    
                 </div>
             </div>
@@ -71,7 +71,10 @@
     <!-- Payment methods card-->
     <div class="card card-header-actions mb-4">
         <div class="card-header">
-            My reservations
+            My reservations 
+            @if(Session('message'))
+            <div class="alert alert-success"> {{Session('message')}} </div>
+            @endif
             
             <div class="header-btn d-none f-right d-lg-block">
                               
@@ -81,6 +84,7 @@
  
         </div>
         <div class="card-body px-0">
+            @forelse($reservation as $r )
 <div class="d-flex align-items-center justify-content-between px-4">
     <div class="d-flex align-items-center">
          <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
@@ -97,82 +101,27 @@
             
         </div>
         <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Prix</div>
+            <div class="small">{{$r->prix}}</div>
             
         </div>
         <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Le 17/08/2022</div>
+            <div class="small">{{Carbon\Carbon::parse($r->date_debut)->format('d-m-Y H:i')}} <b>vers </b> {{Carbon\Carbon::parse($r->date_fin)->format('d-m-Y H:i')}}</div>
             
         </div>
     </div>
     <div class="ms-4 small">
-        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
-        
-    </div>
-</div>
-<hr>
-<!-- Payment method 2-->
-<div class="d-flex align-items-center justify-content-between px-4">
-    <div class="d-flex align-items-center">
-         <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-        <div class="ms-4" style="margin-left: 80px;">
-            <div class="small">VILLE</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Emplacement</div>
-          
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Expired / pas encore</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Prix</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Le 17/08/2022</div>
-            
-        </div>
-    </div>
-    <div class="ms-4 small">
-        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
-        
-    </div>
-</div>
-<hr>
+        @if($r->date_fin < $now)
+        <button type="button" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Expired</button>
+        @else
 
-<!-- Payment method 3-->
-<div class="d-flex align-items-center justify-content-between px-4">
-    <div class="d-flex align-items-center">
-         <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-        <div class="ms-4" style="margin-left: 80px;">
-            <div class="small">VILLE</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Emplacement</div>
-          
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Expired / pas encore</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Prix</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 120px;">
-            <div class="small">Le 17/08/2022</div>
-            
-        </div>
-    </div>
-    <div class="ms-4 small">
-        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Delet</button>
-        
+        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Cancel</button>
+        @endif
     </div>
 </div>
+<hr>
+@empty <h5> You don't have reservation yet </h5>
+@endforelse
+
 </div>
 </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Codepromo;
 use App\Http\Requests\CPFormRequest; 
+use App\Models\User ;
 use DB;
 
 class CodepromoController extends Controller
@@ -28,6 +29,23 @@ class CodepromoController extends Controller
         $codespromo->Pourcentage = $data["Pourcentage"] ;
         $codespromo->nb_reserv = $data["nb_reserv"] ;
         $codespromo->save() ; 
+
+         // $client = User::get();
+
+        
+        // foreach ($client as $c) {
+        //     
+        //             $datalist=[
+        //                 "Nom"=> $codespromo->Nom  ,
+        //                 "Code"=>$cp->$codespromo->Code, 
+        //                 "Pourcentage"=>$cp->Pourcentage, 
+        //                 "nb_reserv"=>$cp->$codespromo->Pourcentage, 
+        //                 "name_client"=>Auth::user()->name 
+        //             ] ; 
+        //             Mail::to(c->email)->send(new CodePromoMail($datalist)) ;
+        //     }
+            
+        // }
 
         return redirect('codespromo')->with('message'  , 'Code promo ajouté avec succés ! ') ;
    }   

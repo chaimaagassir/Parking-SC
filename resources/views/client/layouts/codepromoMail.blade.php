@@ -36,7 +36,7 @@
                                                                         <table width="100%" cellspacing="0" cellpadding="0">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <img src="../../images/logo.svg" alt="logo">
+                                                                                    <img src="images/logo.svg" alt="logo">
                                                                                     {{-- <td class="esd-block-image es-p20t es-p25b es-p35r es-p35l" style="font-size:0" align="center"><a target="_blank" href="https://viewstripo.email/"><img src="https://tlr.stripocdn.email/content/guids/CABINET_75694a6fc3c4633b3ee8e3c750851c02/images/83001522239333914.png" alt="ship" style="display: block;" title="ship" width="150"></a></td> --}}
                                                                                 </tr>
                                                                                 <tr>
@@ -53,7 +53,7 @@
                                                                                     <td class="esd-block-text es-p15t es-p10b" align="left">
                                                                                         <p style="font-size: 16px; color: #777777;">
                                                                                         
-                                                                                            Sc Parking  vous offre un code promo &#x1F381; pour votre fildélité puique vous avez atteint {{$datalist['nb_reserv']}} réservations chez nous ! 
+                                                                                            Sc Parking  vous offre un code promo &#x1F381; pour votre fildélité puisque vous avez atteint {{$datalist['nb_reserv']}} réservations chez nous ! 
                                                                                         </p>
                                                                                     </td>
                                                                                 </tr>

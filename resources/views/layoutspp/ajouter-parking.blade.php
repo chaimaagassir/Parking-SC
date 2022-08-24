@@ -58,12 +58,12 @@
             <input type="number" class="form-control" name="prix_heure" id="Prix/heure" placeholder="Prix/heure">
           </div>
           <div class="form-group">
-            <label for="Prix/heure">Prix par jour</label>
-            <input type="number" class="form-control" name="prix_jour" id="Prix/heure" placeholder="Prix/heure">
+            <label for="Prix/jour">Prix par jour</label>
+            <input type="number" class="form-control" name="prix_jour" id="Prix/jour" placeholder="Prix/jour">
           </div>
           <div class="form-group">
-            <label for="Prix/heure">Prix par mois</label>
-            <input type="number" class="form-control" name="prix_mois" id="Prix/heure" placeholder="Prix/heure">
+            <label for="Prix/mois">Prix par mois</label>
+            <input type="number" class="form-control" name="prix_mois" id="Prix/mois" placeholder="Prix/mois">
           </div>
           <div class="form-group">
             <label for="description">Description</label>

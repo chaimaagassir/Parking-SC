@@ -8,13 +8,10 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-<<<<<<< HEAD
-           
-=======
-            <div class="mt-10 sm:mt-0">
+ <div class="mt-10 sm:mt-0">
               
             
->>>>>>> 6e32217962d3736c4451baad2b6df9a3ebeadae2
+
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
             <div class="mt-10 sm:mt-0">
                 @livewire('profile.update-profile-information-form')
