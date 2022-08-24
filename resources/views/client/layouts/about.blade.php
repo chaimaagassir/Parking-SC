@@ -22,32 +22,34 @@
                     width="280" 
                     height="280">
                     <div class="content">
-                        <h3 class="h4 mb-2 mb-md-3">We make parking easy</h3>
+                        <h3 class="h4 mb-2 mb-md-3">Start with small space</h3>
                         <p class="mb-0">The effect of large-scale parking in-city has long been contentious. Elimination of historic structures for garages or lots led to historical preservation movements in many cities. The acreage devoted to parking is widely seen as disrupting a walkable urban fabric, maximizing convenience to each individual building.</p>
                     </div>
-                    <div class="year">Idea</div>
+                    <div class="year">2012</div>
                 </div>
                 <div class="timeline-box one-of-two">
-                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/FF7F50/000000" alt="...">
+                    <img class="mb-1-6 rounded" src="uploads/parkings/members.jpg" alt="...">
                     <div class="content">
                         <h3 class="h4 mb-2 mb-md-3">Increase employee by 6 members</h3>
-                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                        <p class="mb-0">Better employee productivity often means workers can put out more work in less time. When this is the case, employees can enjoy the benefits of efficiency, while still maintaining a balance between work and break times.For the productivity we increase employes by 6 members.</p>
                     </div>
                     <div class="year">2014</div>
                 </div>
                 <div class="timeline-box one-of-two">
-                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/008B8B/000000" alt="...">
+                    <img class="mb-1-6 rounded" src="uploads/parkings/download.jpg" alt="...">
                     <div class="content">
                         <h3 class="h4 mb-2 mb-md-3">We win the national awards</h3>
-                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                        <p class="mb-0">SC Parking Service team have been awarded with a prestigious award at a recent national event, held at the House of Commons.</p>
                     </div>
                     <div class="year">2016</div>
                 </div>
                 <div class="timeline-box one-of-two">
-                    <img class="mb-1-6 rounded" src="https://via.placeholder.com/280x280/00CED1/000000" alt="...">
+                    <img class="mb-1-6 rounded" src="uploads/parkings/parko.jpg" alt="...">
                     <div class="content">
                         <h3 class="h4 mb-2 mb-md-3">Branches open in International</h3>
-                        <p class="mb-0">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum</p>
+                        <p class="mb-0">We’re doing everything we can to keep our services running for customers however, due to challenges caused by the coronavirus (Covid-19) pandemic, we are unable to keep all our branches open. Our remaining branches are operating on reduced hours with most open from 10am until 2pm.
+
+                        </p>
                     </div>
                     <div class="year">2022</div>
                 </div>

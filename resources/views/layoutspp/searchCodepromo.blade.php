@@ -16,19 +16,19 @@
           <label>Nom</label>
           <select class="form-control" id="exampleSelectGender" name="Nom">
             <option></option>
-            @forelse ($codespromo as $p)
+            @forelse ($codepromos_filter as $p)
             <option>{{ $p->Nom}}</option>
             @empty <option > rien </option>
             @endforelse
           </select>
         </div>
        
-          <div class="col">
+        <div class="col">
           <label>Code</label>
           <div id="the-basics">
-            <input class="typeahead" type="text" name="Code" >
-          </div>
-        </div> 
+            <input class="typeahead" type="text" name="Code">
+          </div> 
+        </div>
         <div class="col">
           <label>Pourcentage</label>
           <div id="the-basics">
@@ -77,7 +77,7 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($codespromo as $cp) 
+        @forelse ($result as $cp) 
         <tr>
            
           <td> {{ $cp->id }}</td>
@@ -97,9 +97,7 @@
     </table>  
     
   </div>
-  <div style="margin-left: 20px ; ">
-  {!! $codespromo->links() !!} 
-  </div>
+ 
 </div>
 </div>
 </div>

@@ -17,7 +17,7 @@
          
           <select class="form-control" id="exampleSelectGender" name="typev">
             <option></option>
-            <option>Voiture</option>
+            <option>Car</option>
             <option>Moto</option>
           </select>
         </div>
@@ -79,7 +79,7 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($places as $p)
+        @forelse ($result as $p)
         <tr>
            
           <td> {{ $p->id_parking }}</td>
@@ -117,9 +117,7 @@
       </tbody>
     </table>
   </div>
-  <div style="margin-left: 40px ; ">
-    {!! $places->links() !!} 
-    </div>
+ 
 </div>
 </div>
 </div>

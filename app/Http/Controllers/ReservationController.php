@@ -26,14 +26,9 @@ class ReservationController extends Controller
         }else{
             $vehicules= Vehicules::where('id_client', '=' , Auth::user()->id)->get(); 
             return view('client/layouts.reserver' , compact('vehicules','id'))->with('i',$vehicules ,$id); 
-        }
-         
-        
-        
+        } 
 
     }
-
-    
     public function add_reservation(ReservationFormRequest $request ,$id){
        
         $data = $request->validated(); 
@@ -70,6 +65,7 @@ class ReservationController extends Controller
         $reservation->save() ; 
 
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
-   }  
+   }
+     
 
 }

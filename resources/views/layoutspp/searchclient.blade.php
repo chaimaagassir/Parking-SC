@@ -7,7 +7,7 @@
   <div class="card">
     <div class="card-body">
     <h4 class="card-title">Filtre</h4> <hr>
-    <form action="/search_client" method='get'>
+    <form action="/search_client" method='POST'>
       @csrf
       <div class="form-group row">
         <div class="col">
@@ -20,8 +20,7 @@
           <div class="col">
             <label for="exampleSelectGender">Ville</label>
               <select class="form-control" id="exampleSelectGender" name="ville">
-                <option></option>
-                @forelse ($clients as $p)
+                @forelse ($client_filter as $p)
                 <option>{{ $p->ville }}</option>
                 @empty <option > rien </option>
                 @endforelse
@@ -41,9 +40,8 @@
         <div class="col">
           <label for="exampleSelectGender">Etat compte</label>
             <select class="form-control" id="exampleSelectGender" name="etatcpt">
-              <option></option>
-              <option value="1">Activé</option>
-              <option value="0">Désactivé</option>
+              <option>Activé</option>
+              <option>Désactivé</option>
             </select>
           </div>
           
@@ -90,7 +88,7 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($clients as $p)
+        @forelse ($result as $p)
         
         <tr>
             <td class="py-1">
@@ -181,9 +179,7 @@
       </tbody>
     </table>
   </div>
-  <div style="margin-left: 40px ; ">
-  {!! $clients->links() !!} 
-  </div>
+  
 </div>
 </div>
 </div>
