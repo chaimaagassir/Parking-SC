@@ -19,16 +19,16 @@ class ParkingController extends Controller
            return Excel::download(new ParkingsExport,'parkinglist.csv');
     }
     
-    public function afficher()
-    {
+    public function afficher(){
+    
         $parking= Parking::paginate(5);
         $parking_filter = Parking::distinct()->get(['ville']) ;
 
         return view('layoutspp.parking' , compact('parking','parking_filter')) 
         ->with('i',$parking,$parking_filter);   
     }   
-    public function afficherfind()
-    {
+    public function afficherfind(){
+    
         $parkingf= Parking::paginate(5);
         $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
         return view('client/layouts.findplace' , compact('parkingf', 'parking_filter')) 
@@ -129,6 +129,10 @@ class ParkingController extends Controller
     $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
     $ville=$_GET['ville'] ;
     $data = Parking::where('ville', 'LIKE', "%" . $ville . "%")->get();
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 6ca6352e9cb8557ca46e99992853ab9cac319109
     
     return view('client/layouts.searchparking' , compact('data','parking_filter')) 
     ->with('i',$data, $parking_filter); 
@@ -168,7 +172,7 @@ class ParkingController extends Controller
        $parkings->nb_p_nc_voiture=$request->nb_p_nc_voiture;
        $parkings->nb_p_c_moto=$request->nb_p_c_moto;
        $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
-       $parkings->prix=$request->prix;
+       
 
        $parkings->numéro_téléphone=$request->numéro_téléphone;
 

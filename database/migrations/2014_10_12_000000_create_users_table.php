@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('prenom');
             $table->string('avatar')->default('default.jpg')->nullable();
+            $table->string('profile_photo_path')->nullable() ;  
             $table->string('tel')->nullable();
             $table->string('ville')->nullable();
             $table->string('email')->unique();

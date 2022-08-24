@@ -11,9 +11,12 @@
               <div class="booking-form">
                   <div class="form-header">
                       <h1>Make your reservation  </h1>
+                      @if(Session('message'))
+            <div class="alert alert-danger"> {{Session('message')}} </div>
+            @endif
                   </div>
                   <form action='{{route('make_reservation',  ['id'=>$id ])}}' method='post'>
-                      
+                      @csrf
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group">
@@ -46,7 +49,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                <div style='  color: rgba(255, 255, 255, 0.5);'> Type of place</div>
-                                <select name="couverte"class="form-control" required>
+                                <select name="couverte" class="form-control" required>
                                    
                                     <option value='1'> Covered </option>
                                     <option value='0'> Not covered </option>

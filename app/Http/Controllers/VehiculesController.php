@@ -24,7 +24,7 @@ class VehiculesController extends Controller
         
         $vehicules = new Vehicules ;  
         $vehicules->immatricule = $data["immatricule"] ; 
-        $vehicules->type = $data["type"] ;
+        $vehicules->type = $data["type"] ;  
         $vehicules->id_client = Auth::user()->id ;
         // nb_vehicule ... 
         

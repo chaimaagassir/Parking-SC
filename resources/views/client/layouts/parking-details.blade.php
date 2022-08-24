@@ -81,7 +81,7 @@
                       <ul>
                           <li>Posted date : <span>{{$p->created_at->format('Y-m-d')}}</span></li>
                           <li>Location : <span>{{$p->ville}}</span></li>
-                          <li>Price : <span>{{$p->prix}}</span></li>
+                          <li>Price : <span>{{$p->prix_heure}}</span></li>
                           <li>Park condition : <span>Full time</span></li>
 
                       </ul>
