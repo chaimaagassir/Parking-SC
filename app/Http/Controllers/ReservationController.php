@@ -40,19 +40,19 @@ class ReservationController extends Controller
         }else{
             $vehicules= Vehicules::where('id_client', '=' , Auth::user()->id)->get(); 
             return view('client/layouts.reserver' , compact('vehicules','id'))->with('i',$vehicules ,$id); 
-<<<<<<< HEAD
+
         } 
 
     }
     public function add_reservation(ReservationFormRequest $request ,$id){
-=======
+
         }
    
-    }
+}
 
     
     public function add_reservation(Request $request ,$id){
->>>>>>> 6ca6352e9cb8557ca46e99992853ab9cac319109
+
        
         $user=User::find(Auth::user()->id);
         $solde =$user->solde ;
@@ -128,11 +128,11 @@ class ReservationController extends Controller
         $reservation->prix = $prix; 
         $reservation->save() ; 
 
-<<<<<<< HEAD
+
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
    }
      
-=======
+
         $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
         $Codepromo = Codepromo::get();
 
@@ -160,6 +160,12 @@ class ReservationController extends Controller
       
         return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
    }  
->>>>>>> 6ca6352e9cb8557ca46e99992853ab9cac319109
+
+   pubic function display()
+   {
+    $reservation = Reservation::all();
+
+    return view('layoutspp.reservation', compact('reservation'));
+   }
 
 }
