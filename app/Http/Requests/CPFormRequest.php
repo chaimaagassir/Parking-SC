@@ -24,10 +24,12 @@ class CPFormRequest extends FormRequest
     public function rules()
     {
         $rules =[
-            'Nom'=>['required' , 'string'],
+            'Nom'=>['sometimes' ],
             'Code'=>['required' , 'string'],
             'Pourcentage'=>['required' , 'integer'],
-            'nb_reserv'=>['sometimes' , 'integer']
+            'nb_reserv'=>['sometimes'  ],
+            'Occasion'=>['sometimes'],
+            'date_expiration'=>['sometimes' ]
 
         ] ; 
         return $rules; 

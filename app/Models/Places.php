@@ -9,6 +9,6 @@ class Places extends Model
 {
     use HasFactory;
     protected $table="places" ; 
-    protected $fillable = ["'etat','couverte' ,'typev', 'id_parking' "];
+    protected $fillable = ["'etat', ,'numero' , couverte' ,'typev', 'id_parking' "];
 
 }

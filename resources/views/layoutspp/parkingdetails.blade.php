@@ -44,7 +44,15 @@
                                 </tr>
                                 <tr>
                                     <td width="390"><b>Numéro de téléphone</b></td>
-                                    <td>{{ $p->emplacement }}</td>
+                                    <td>{{ $p->numéro_téléphone }}</td>
+                                </tr>
+                                <tr>
+                                    <td width="390"><b>Nombre de place vide </b></td>
+                                    <td ><label class="badge badge-danger" style = " font-size : 15px ;" >{{ $nb_places_vide}}</label></td>
+                                </tr>
+                                <tr>
+                                    <td width="390"><b>Nombre de places réservés </b></td>
+                                    <td> <label class="badge badge-success " style = " font-size : 15px ;">{{ $nb_places_réservé }}</label></td>
                                 </tr>
                                 <tr>
                                     <td width="390"><b>prix par heure</b></td>

@@ -22,6 +22,10 @@
         <form action='ajoutercodepromo' method='POST' class="forms-sample">
           @csrf
           <div class="form-group">
+            <label for="Occasion">Occasion</label>
+            <input type="text" class="form-control" name="Occasion" id="Occasion" placeholder="Occasion">
+          </div>
+          <div class="form-group">
             <label for="Nom">Nom</label>
             <input type="text" class="form-control" name="Nom" id="Nom" placeholder="Nom">
           </div>
@@ -36,6 +40,10 @@
           <div class="form-group">
             <label for="Pourcentage">Pourcentage</label>
             <input type="text" class="form-control" name="Pourcentage" id="Pourcentage" placeholder="Pourcentage">
+          </div>
+          <div class="form-group">
+            <label for="date_expiration">Date d'expiration</label>
+            <input type="datetime-local" class="form-control" name="date_expiration" id="date_expiration" placeholder="date_expiration">
           </div>
          <button type="submit" class="btn btn-primary me-2" >Enregistrer</button>
           

@@ -11,8 +11,10 @@ use App\Models\Places ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Mail\CodePromoMail ;
-use Mail ;
 use App\Http\Requests\ReservationFormRequest; 
+use Mail ;
+use PDF ;
+
 use DB  ;
 // use App\Http\Controllers\Carbon ; 
 
@@ -49,6 +51,7 @@ class ReservationController extends Controller
         }
    
 }
+   
 
     
     public function add_reservation(Request $request ,$id){
@@ -124,14 +127,20 @@ class ReservationController extends Controller
         $prix_mois=$parking->prix_mois ;
         
         
-        $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type ) - $solde ;
+        $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type );
         $reservation->prix = $prix; 
+        // $reservation->prix_a_payer = $prix  - $solde ;  et ajouter le calcul du code promo 
+        // $reservation->prix_a_payer = 5 ;
         $reservation->save() ; 
 
 
         return redirect('clients')->with('message'  , 'Client ajouté avec succés ! ') ;
    }
      
+
+
+       
+        
 
         $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
         $Codepromo = Codepromo::get();
@@ -155,10 +164,9 @@ class ReservationController extends Controller
             
         }
 
-        
-         
       
         return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
+
    }  
 
    pubic function display()
@@ -168,4 +176,10 @@ class ReservationController extends Controller
     return view('layoutspp.reservation', compact('reservation'));
    }
 
-}
+  
+   }
+     
+ }  
+
+
+

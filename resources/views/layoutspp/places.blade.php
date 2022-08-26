@@ -68,10 +68,10 @@
       <thead>
         <tr>
           
-          <th>id parking</th>
+          <th>Numéro parking</th>
           <th>Type de véhicule</th>
           <th>couverte/non couverte</th>
-          <th>état</th>
+          <th>Etat</th>
           <th> Actions </th>
         
           
@@ -82,7 +82,7 @@
         @forelse ($places as $p)
         <tr>
            
-          <td> {{ $p->id_parking }}</td>
+          <td> {{ $p->numero }}</td>
           {{-- condition type de vehicule --}}
           @if($p->typev =='1')
           <td>voiture</td> 
