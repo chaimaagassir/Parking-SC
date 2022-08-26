@@ -162,10 +162,7 @@ class ParkingController extends Controller
     $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
     $ville=$_GET['ville'] ;
     $data = Parking::where('ville', 'LIKE', "%" . $ville . "%")->get();
-<<<<<<< HEAD
-=======
-   
->>>>>>> 6ca6352e9cb8557ca46e99992853ab9cac319109
+
     
     return view('client/layouts.searchparking' , compact('data','parking_filter')) 
     ->with('i',$data, $parking_filter); 
