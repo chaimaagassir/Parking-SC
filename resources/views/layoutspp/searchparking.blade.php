@@ -13,11 +13,10 @@
       
       <div class="form-group row">
         <div class="col">
-          <form action="/search_parking" method='get'>
-            @csrf
+          <form>
           <label>Emplacement</label>
           <div id="the-basics">
-            <input class="typeahead" type="text" name="emplacement" >
+            <input class="typeahead" type="text" >
           </div>
         </div>
        
@@ -25,7 +24,7 @@
             <label for="exampleSelectGender">Ville</label>
             <select class="form-control" id="exampleSelectGender" name="ville">
               <option></option>
-              @forelse ($parking as $p)
+              @forelse ($parking_filter as $p)
               <option>{{ $p->ville }}</option>
               @empty <option > rien </option>
               @endforelse
@@ -33,7 +32,7 @@
         </div> <div class="col">
           <label>Numéro de téléphone</label>
           <div id="the-basics">
-            <input class="typeahead" type="text" name="numéro_téléphone" >
+            <input class="typeahead" type="text" >
           </div>
         </div> 
       
@@ -80,7 +79,7 @@
         </tr>
       </thead>    
       <tbody>
-        @forelse ($parking as $p)
+        @forelse ($result as $p)
         <tr>
             
           <td >
@@ -89,7 +88,7 @@
           <td>{{ $p->ville }}</td>
           <td >{{ $p->emplacement }} </td>
           <td >{{ $p->numéro_téléphone }} </td>
-          <td><label >{{ $p->prix_heure }}</label></td>
+          <td><label >{{ $p->prix }}</label></td>
        
           <td> 
            <a href=" {{ route ('parkingsdetailsadmin', ['parking_id'=>$p->id ] ) }} " ><img  style="width: 27px;"src="images/more.svg" alt="logo" /></a>&nbsp; &nbsp;  
@@ -103,9 +102,7 @@
       </tbody>
     </table>
   </div>
-  <div style="margin-left: 20px ; ">
-  {!! $parking->links() !!} 
-  </div>
+  
 </div>
 </div>
 </div>

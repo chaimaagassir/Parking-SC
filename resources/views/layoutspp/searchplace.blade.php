@@ -17,7 +17,7 @@
          
           <select class="form-control" id="exampleSelectGender" name="typev">
             <option></option>
-            <option>Voiture</option>
+            <option>Car</option>
             <option>Moto</option>
           </select>
         </div>
@@ -68,10 +68,10 @@
       <thead>
         <tr>
           
-          <th>Numéro parking</th>
+          <th>id parking</th>
           <th>Type de véhicule</th>
           <th>couverte/non couverte</th>
-          <th>Etat</th>
+          <th>état</th>
           <th> Actions </th>
         
           
@@ -79,10 +79,10 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($places as $p)
+        @forelse ($result as $p)
         <tr>
            
-          <td> {{ $p->numero }}</td>
+          <td> {{ $p->id_parking }}</td>
           {{-- condition type de vehicule --}}
           @if($p->typev =='1')
           <td>voiture</td> 
@@ -117,9 +117,7 @@
       </tbody>
     </table>
   </div>
-  <div style="margin-left: 40px ; ">
-    {!! $places->links() !!} 
-    </div>
+ 
 </div>
 </div>
 </div>

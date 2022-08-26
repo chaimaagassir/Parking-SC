@@ -24,8 +24,10 @@ class ParkingController extends Controller
     public function afficher(){
     
         $parking= Parking::paginate(5);
-        return view('layoutspp.parking' , compact('parking')) 
-        ->with('i',$parking);   
+        $parking_filter = Parking::distinct()->get(['ville']) ;
+
+        return view('layoutspp.parking' , compact('parking','parking_filter')) 
+        ->with('i',$parking,$parking_filter);   
     }   
     public function afficherfind(){
         // vider les places expirés 
@@ -78,12 +80,9 @@ class ParkingController extends Controller
         ->with('i',$parking); 
 
     }
-    
     public function add(){
         return view('layoutspp.ajouter-parking');
     }
-    
-    
    public function add_place(ParkingFormRequest $request){
         $data = $request->validated(); 
         $parking = new parking ; 
@@ -158,14 +157,15 @@ class ParkingController extends Controller
 
         return redirect('parkings' )->with('message'  , 'Parking ajouté avec succés ! '  ) ;
    }
-
-
    // filter function in find place 
    public function filter_find_place(){
     $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
     $ville=$_GET['ville'] ;
     $data = Parking::where('ville', 'LIKE', "%" . $ville . "%")->get();
+<<<<<<< HEAD
+=======
    
+>>>>>>> 6ca6352e9cb8557ca46e99992853ab9cac319109
     
     return view('client/layouts.searchparking' , compact('data','parking_filter')) 
     ->with('i',$data, $parking_filter); 
@@ -217,6 +217,70 @@ class ParkingController extends Controller
        $parkings->save();
 
        return redirect('parkings')->with('message','parkings updated');
+
+   }
+   public function parkingSearch(Request $request)
+   {
+     $parking_filter = Parking::distinct()->get(['ville']) ; 
+     $emplacement = $_GET['emplacement'] ;
+     $ville = $_GET['ville'] ;
+     $numéro_téléphone = $_GET['numéro_téléphone'] ;
+     
+    
+
+     if($request->emplacement)
+     {
+         $result = Parking::where('emplacement','LIKE','%' . $request->emplacement . '%')->get();
+     }
+      if($request->ville)
+     {
+         $result = Parking::where('ville','LIKE','%' . $request->ville . '%')->get();
+     }
+    if($request->numéro_téléphone)
+     {
+         $result = Parking::where('numéro_téléphone','LIKE','%' . $request->numéro_téléphone . '%')->get();
+     }
+     
+    
+     if($request->ville && $request->emplacement)
+     {
+        
+         $result = Parking::where('ville','LIKE','%' . $request->ville . '%')
+                         ->where('emplacement','LIKE','%' . $request->emplacement . '%')
+                         ->get();
+     }
+     if($request->ville && $request->cin)
+     {
+        
+         $result = Parking::where('ville','LIKE','%' . $request->ville . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->get();
+     }
+     if($request->emplacement && $request->cin)
+     {
+        
+         $result = Parking::where('emplacement','LIKE','%' . $request->emplacement . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->get();
+     }
+     if($request->emplacement && $request->cin && $request->ville)
+     {
+        
+         $result = Parking::where('emplacement','LIKE','%' . $request->emplacement . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->where('ville','LIKE','%' . $request->ville . '%')
+                         ->get();
+     }
+    
+    
+
+     
+    
+
+     return view('layoutspp.searchparking' , compact('result','parking_filter')) 
+    ->with('i',$result, $parking_filter);
+   // return view('layoutspp.searchclient' , compact('client_filter','name','ville','cin','nb_v','etatcpt','result')) 
+    //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
 
    }
 

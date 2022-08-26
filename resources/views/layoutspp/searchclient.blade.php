@@ -3,11 +3,11 @@
 @section('title' , 'SC Parking | Clients')
 
 @section('content')
-<div >
+<div>
   <div class="card">
     <div class="card-body">
     <h4 class="card-title">Filtre</h4> <hr>
-    <form action="/search_client" method='get'>
+    <form action="/search_client" method='POST'>
       @csrf
       <div class="form-group row">
         <div class="col">
@@ -20,8 +20,7 @@
           <div class="col">
             <label for="exampleSelectGender">Ville</label>
               <select class="form-control" id="exampleSelectGender" name="ville">
-                <option></option>
-                @forelse ($clients as $p)
+                @forelse ($client_filter as $p)
                 <option>{{ $p->ville }}</option>
                 @empty <option > rien </option>
                 @endforelse
@@ -41,9 +40,8 @@
         <div class="col">
           <label for="exampleSelectGender">Etat compte</label>
             <select class="form-control" id="exampleSelectGender" name="etatcpt">
-              <option></option>
-              <option value="1">Activé</option>
-              <option value="0">Désactivé</option>
+              <option>Activé</option>
+              <option>Désactivé</option>
             </select>
           </div>
           
@@ -90,23 +88,12 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($clients as $p)
+        @forelse ($result as $p)
         
         <tr>
             <td class="py-1">
-                 
-              @if ($p->profile_photo_path)
-                     
-              <img  width="23" height="23" src="{{ $p->profile_photo_url }}"  class="rounded-circle z-depth-2" alt="100x100" data-holder-rendered="true">
-              
-              @else
-               <svg height ='24'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg> 
-               
-              @endif
-              
-              {{-- <svg height ='23'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg> </a> --}}
-              
-            </td>
+                <svg height ='23'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M224 256c70.7 0 128-57.31 128-128s-57.3-128-128-128C153.3 0 96 57.31 96 128S153.3 256 224 256zM274.7 304H173.3C77.61 304 0 381.6 0 477.3c0 19.14 15.52 34.67 34.66 34.67h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304z"/></svg> </a>
+              </td>
                
               <td>{{ $p->name }}</td>
               <td >{{ $p->prenom }} </td>
@@ -192,9 +179,7 @@
       </tbody>
     </table>
   </div>
-  <div style="margin-left: 40px ; ">
-  {!! $clients->links() !!} 
-  </div>
+  
 </div>
 </div>
 </div>

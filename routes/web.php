@@ -114,6 +114,7 @@ Route::get('parkings', function () {
 
 Route::get('places', [PlacesController::class,'afficher']);
 Route::get('delete_place/{id}',[PlacesController::class,'delete_places'])->name('delete_place');
+Route::get('/search_place',[PlacesController::class,'placeSearch'])->name('search_place');
 
 Route::get('parkings', [ParkingController::class,'afficher']);
 
@@ -149,7 +150,7 @@ Route::get('ajouterclient', function () {
 Route::get('ajoutercodepromo', [CodepromoController::class,'add']);
 Route::post('ajoutercodepromo', [CodepromoController::class,'promocodes']);
 Route::get('delete_codepromo/{id}',[CodepromoController::class,'delete_codepromos'])->name('delete_codepromo');
-
+Route::get('/search_codepromos',[CodepromoController::class,'codepromoSearch'])->name('search_codepromos');
 Route::get('code_edit/{id}',[CodepromoController::class,'edit_code'])->name('code_edit');
 Route::post('/code_update/{id}',[CodepromoController::class,'update_code'])->name('code_update');
 
@@ -161,11 +162,9 @@ Route::post('/code_update/{id}',[CodepromoController::class,'update_code'])->nam
 Route::get('ajouterparking', [ParkingController::class,'add']);
 Route::post('ajouterparking', [ParkingController::class,'add_place']);
 Route::get('delete_parking/{id}',[ParkingController::class,'delete_parkings'])->name('delete_parking');
-
-//Route::get('/updateparking/{id}',[ParkingController::class,'update_parkings'])->name('updateparking');
-//Route::post('/editparking/{id}',[ParkingController::class,'edit_parkings'])->name('editparking');
 Route::get('parking_edit/{id}',[ParkingController::class,'edit_parking'])->name('parking_edit');
 Route::post('/parking_update/{id}',[ParkingController::class,'update_parking'])->name('parking_update');
+Route::get('/search_parking',[ParkingController::class,'parkingSearch'])->name('search_parking');
 
 Route::get('reserver/{id}',[ReservationController::class,'id_parking_form'])->name('reserver');
 
@@ -177,6 +176,10 @@ Route::post('ajouterclient', [ClientsController::class,'add_client']);
 Route::get('delete_client/{id}',[ClientsController::class,'delete_clients'])->name('delete_client');
 Route::get('click_edit/{id}',[ClientsController::class,'edit_function'])->name('click_edit');
 Route::post('/update/{id}',[ClientsController::class,'update_function'])->name('update');
+Route::get('/search_client',[ClientsController::class,'clientSearch'])->name('search_client');
+
+
+
 
 
 

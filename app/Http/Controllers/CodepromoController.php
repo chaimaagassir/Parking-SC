@@ -18,8 +18,9 @@ class CodepromoController extends Controller
     public function afficher()
     {
         $codespromo= Codepromo::paginate(7);
-        return view('layoutspp.codespromo' , compact('codespromo')) 
-        ->with('i',$codespromo); 
+        $codepromos_filter = Codepromo::distinct()->get(['Nom']) ;
+        return view('layoutspp.codespromo' , compact('codespromo','codepromos_filter')) 
+        ->with('i',$codespromo,$codepromos_filter); 
     }
 
     public function add(){
@@ -165,5 +166,69 @@ class CodepromoController extends Controller
    
 
  
+   }
+   public function codepromoSearch(Request $request)
+   {
+     $codepromos_filter = Codepromo::distinct()->get(['Nom']) ; 
+     $Nom = $_GET['Nom'] ;
+     $Code = $_GET['Code'] ;
+     $Pourcentage = $_GET['Pourcentage'] ;
+     
+    
+
+     if($request->Code)
+     {
+         $result = Codepromo::where('Code','LIKE','%' . $request->Code . '%')->get();
+     }
+      if($request->Nom)
+     {
+         $result = Codepromo::where('Nom','LIKE','%' . $request->Nom . '%')->get();
+     }
+    if($request->Pourcentage)
+     {
+         $result = Codepromo::where('Pourcentage','LIKE','%' . $request->Pourcentage . '%')->get();
+     }
+     
+    
+     if($request->Nom && $request->Code)
+     {
+        
+         $result = Codepromo::where('Nom','LIKE','%' . $request->Nom . '%')
+                         ->where('Code','LIKE','%' . $request->Code . '%')
+                         ->get();
+     }
+     if($request->Nom && $request->cin)
+     {
+        
+         $result = Codepromo::where('Nom','LIKE','%' . $request->Nom . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->get();
+     }
+     if($request->Code && $request->cin)
+     {
+        
+         $result = Codepromo::where('Code','LIKE','%' . $request->Code . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->get();
+     }
+     if($request->Code && $request->cin && $request->Nom)
+     {
+        
+         $result = Codepromo::where('Code','LIKE','%' . $request->Code . '%')
+                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->where('Nom','LIKE','%' . $request->Nom . '%')
+                         ->get();
+     }
+    
+    
+
+     
+    
+
+     return view('layoutspp.searchCodepromo' , compact('result','codepromos_filter')) 
+    ->with('i',$result, $codepromos_filter);
+   // return view('layoutspp.searchclient' , compact('client_filter','name','Nom','cin','nb_v','etatcpt','result')) 
+    //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
+
    }
 }
