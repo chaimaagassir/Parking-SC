@@ -27,6 +27,22 @@ class HomeController extends Controller
         }
     }
     
+    public function firstpage(){
+        if(Auth::id()){
+            if(Auth::user()->usertype=='0')
+            {
+                return view('client.layouts.index') ;
+            }
+            elseif (Auth::user()->usertype=='1'){
+                return redirect()->route('tableau-de-bord') ; 
+            }
+
+        }
+        else {
+            return view('client/layouts.index') ;
+        }
+
+    }
 }
 
  

@@ -11,8 +11,10 @@ use App\Models\Places ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Mail\CodePromoMail ;
-use Mail ;
 use App\Http\Requests\ReservationFormRequest; 
+use Mail ;
+use PDF ;
+
 use DB  ;
 // use App\Http\Controllers\Carbon ; 
 
@@ -117,8 +119,10 @@ class ReservationController extends Controller
         $prix_mois=$parking->prix_mois ;
         
         
-        $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type ) - $solde ;
+        $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type );
         $reservation->prix = $prix; 
+        // $reservation->prix_a_payer = $prix  - $solde ;  et ajouter le calcul du code promo 
+        // $reservation->prix_a_payer = 5 ;
         $reservation->save() ; 
 
         $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
@@ -143,10 +147,35 @@ class ReservationController extends Controller
             
         }
 
-        
-         
+        // PDF
+
       
-        return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
+        return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket  ! ') ;
    }  
+   public function telecharger_ticket($id_reservation){
+    // get data from tables 
+    $reservation = Reservation::find($id_reservation) ;
+ 
+    $parking = Parking::find( $reservation->id_parking); 
+    $client = User::find( $reservation->id_client); 
+    $vehicule = Vehicules::find( $reservation->id_vehicule); 
+    $place = Places::find( $reservation->id_place);
+    
+    
+    // view()->share(['reservation' =>$reservation ,
+    //                 'parking' => $parking , 
+    //                 'client' => $client ,
+    //                 'vehicule'=>$vehicule ,
+    //                 'place' => $place]) ; 
+    $pdf= PDF::loadView('client/layouts.ticket' ,['reservation' =>$reservation ,
+    'parking' => $parking , 
+    'client' => $client ,
+    'vehicule'=>$vehicule ,
+    'place' => $place]) ; 
+
+   
+    return $pdf->download('Ticket'. $client->name . '_' . $client->prenom .'.pdf' ) ;
+
+   }
 
 }

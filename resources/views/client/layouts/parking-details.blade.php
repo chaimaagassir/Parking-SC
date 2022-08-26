@@ -43,8 +43,21 @@
                                 <ul>
                                     <li>{{ $p->emplacement }}</li>
                                     <li><i class="fas fa-map-marker-alt"></i>{{ $p->ville }}</li>
-                                    <li>{{ $p->prix }}</li>
+                                    
                                 </ul>
+                                <ul><br> </ul>
+                                <ul>
+                                    @if($nb_places_vide == 0)
+                                    <li > <label class="badge badge-danger" style = " font-size : 18px ;">Parking est plein !  </label> </li>
+                                    
+                                    @else
+                                    @if($nb_places_vide == 1)
+                                    <li > <label class="badge badge-success " style = " font-size : 15px ;">{{ $nb_places_vide }} place restante </label> </li>
+                                    @else
+                                    <li > <label class="badge badge-success " style = " font-size : 15px ;">{{ $nb_places_vide }} places restantes </label> </li>
+                                   @endif
+                                    @endif
+                               
                             </div>
                         </div>
                     </div>
@@ -65,6 +78,8 @@
                             @else
                             <p>{{ $p->description }}</p>
                             @endif
+
+
                         </div>
                         
                     </div>
@@ -81,7 +96,7 @@
                       <ul>
                           <li>Posted date : <span>{{$p->created_at->format('Y-m-d')}}</span></li>
                           <li>Location : <span>{{$p->ville}}</span></li>
-                          <li>Price : <span>{{$p->prix_heure}}</span></li>
+                          <li>Hour price : <span>{{$p->prix_heure}} MAD</span></li>
                           <li>Park condition : <span>Full time</span></li>
 
                       </ul>

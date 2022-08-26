@@ -29,16 +29,16 @@ use App\Http\Controllers\ContactController;
 
 Route::get('admin-index', [HomeController::class,'redirect'])->middleware('auth','verified');
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
+// Route::get('dashboard', function () {
+//     return view('dashboard');
+// });
+
+Route::get('/', [HomeController::class,'firstpage']); 
 
 
-
-
-Route::get('/', function () {
-    return view('client/layouts.index');
-});
+// Route::get('/', function () {
+//     return view('client/layouts.index');
+// });
 
 
 
@@ -169,6 +169,7 @@ Route::post('/parking_update/{id}',[ParkingController::class,'update_parking'])-
 
 Route::get('reserver/{id}',[ReservationController::class,'id_parking_form'])->name('reserver');
 
+Route::get('telecharger_ticket/{id_reservation}', [ReservationController::class,'telecharger_ticket'])->name('telecharger_ticket');
 
 
 Route::get('ajouterclient', [ClientsController::class,'add']);

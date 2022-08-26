@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Parking ; 
 use App\Models\Places ;
+use App\Models\Reservation;
 use App\Http\Requests\ParkingFormRequest;
 use App\Exports\ParkingsExport;
+use Carbon\Carbon ; 
 use Excel;
 use DB;
 class ParkingController extends Controller
@@ -26,23 +28,46 @@ class ParkingController extends Controller
         ->with('i',$parking);   
     }   
     public function afficherfind(){
-    
+        // vider les places expirés 
+        $now=Carbon::now() ; 
+        $reservation = Reservation::where([
+                                 ['date_fin', '<' , $now],
+                ])->get() ; 
+
+        foreach ($reservation as $r) {
+            DB::update('update places set etat= ?  where id = ?', ["0",$r->id_place]);
+        }
+        
+        // affichage des parkings sur findplace
+
         $parkingf= Parking::paginate(5);
         $parking_filter = Parking::distinct()->get(['ville']) ; // pour éviter les redondances des ville sur select
+      
         return view('client/layouts.findplace' , compact('parkingf', 'parking_filter')) 
         ->with('i',$parkingf,$parking_filter);   
     } 
     public function parking_details($parking_id){
         $parking= Parking::where('id', '=' , $parking_id)->get(); 
-       
-        return view('client.layouts.parking-details' , compact('parking')) 
+        $nb_places_vide = Places::where([
+            ['etat', '=' , '0'],
+            ['id_parking', '=' ,$parking_id ]
+        ])->count() ; 
+        // dd($nb_places_vide) ; 
+        return view('client.layouts.parking-details' , compact('parking' , 'nb_places_vide')) 
         ->with('i',$parking); 
 
     }
     public function parking_details_admin($parking_id){
         $parking= Parking::where('id', '=' , $parking_id)->get(); 
-       
-        return view('layoutspp.parkingdetails' , compact('parking')) 
+        $nb_places_vide = Places::where([
+            ['etat', '=' , '0'],
+            ['id_parking', '=' ,$parking_id ]
+        ])->count() ; 
+        $nb_places_réservé = Places::where([
+            ['etat', '=' , '1'],
+            ['id_parking', '=' ,$parking_id ]
+        ])->count() ; 
+        return view('layoutspp.parkingdetails' , compact('parking', 'nb_places_vide' ,'nb_places_réservé' )) 
         ->with('i',$parking); 
 
     }
@@ -88,11 +113,13 @@ class ParkingController extends Controller
       
         $parking->save() ;
         
-
+         $numero = 0 ;
         for($i=0 ; $i<$data["nb_p_c_voiture"]; $i++) 
         {
             $place = new places ; 
             $place->id_parking=$parking->id ; 
+            $numero=$numero +1 ;
+            $place->numero= $numero;
             $place->save() ;
        
         }
@@ -101,6 +128,8 @@ class ParkingController extends Controller
             $place = new places ; 
             $place->id_parking=$parking->id ; 
             $place->couverte='0' ; 
+            $numero=$numero +1 ;
+            $place->numero= $numero;
             $place->save() ;
        
         }
@@ -109,6 +138,8 @@ class ParkingController extends Controller
             $place = new places ; 
             $place->id_parking=$parking->id ; 
             $place->typev='0';
+            $numero=$numero +1 ;
+            $place->numero= $numero;
             $place->save() ;
        
         }
@@ -118,6 +149,8 @@ class ParkingController extends Controller
             $place->id_parking=$parking->id ;
             $place->typev='0';
             $place->couverte='0' ; 
+            $numero=$numero +1 ;
+            $place->numero= $numero;
             $place->save() ;
        
         }

@@ -9,5 +9,5 @@ class Codepromo extends Model
 {
     use HasFactory;
     protected $table="codepromos" ; 
-    protected $fillable = ['Nom','Code' ,'Pourcentage','>nb_reserv'];
+    protected $fillable = ['Nom','Code'. 'Occasion' , 'date_expiration' ,'Pourcentage','nb_reserv'];
 }

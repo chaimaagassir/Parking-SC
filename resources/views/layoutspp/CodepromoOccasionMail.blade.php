@@ -34,7 +34,8 @@
                                                                 <tr>
                                                                     <td class="esd-container-frame" width="530" valign="top" align="center">
                                                                         <table width="100%" cellspacing="0" cellpadding="0">
-                                                                            <tbody><br><br>
+                                                                            <tbody>
+                                                                                <br><br>
                                                                                 <tr>
                                                                                     {{-- <img src="/images/logo.svg" alt="logo"/> --}} 
                                                                                     <td class="esd-block-image es-p20t es-p25b es-p35r es-p35l" style="font-size:0" align="center">
@@ -48,14 +49,14 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td class="esd-block-text es-m-txt-l es-p20t" align="left">
-                                                                                        <h3 style="font-size: 18px;  : #333333;">Bonjour {{$datalist['name_client']}}  ,<br></h3>
+                                                                                        <h3 style="font-size: 18px; color: #333333;">Bonjour {{$datalist['name_client']}}  ,<br></h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td class="esd-block-text es-p15t es-p10b" align="left">
-                                                                                        <p style="font-size: 16px;  color: #777777;">
+                                                                                        <p style="font-size: 16px; color: #777777;">
                                                                                         
-                                                                                            Sc Parking  vous offre un code promo &#x1F381; pour votre fildélité puisque vous avez atteint {{$datalist['nb_reserv']}} réservations chez nous ! 
+                                                                                            A l'occasion de {{$datalist['Occasion']}}  Sc Parking  vous offre un code promo &#x1F381; pour  fetez avec vous cette occasion . 
                                                                                         </p>
                                                                                     </td>
                                                                                 </tr>
@@ -154,8 +155,6 @@
         </table>
     </div>
 </body>
-
 <footer style='color : blue ; text-align : center ;'> <a href="http://127.0.0.1:8000/"> SC Parking </a> </footer>
-
 
 </html>
