@@ -25,6 +25,8 @@ class PlacesController extends Controller
    public function placeSearch(Request $request)
    {
     
+
+    
      $typev = $_GET['typev'] ;
      $couverte = $_GET['couverte'] ;
      $etat = $_GET['etat'] ;
@@ -52,33 +54,30 @@ class PlacesController extends Controller
                          ->where('typev','LIKE','%' . $request->typev . '%')
                          ->get();
      }
-     if($request->couverte && $request->cin)
+     if($request->couverte && $request->etat)
      {
         
          $result = Places::where('couverte','LIKE','%' . $request->couverte . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->where('etat','LIKE','%' . $request->etat . '%')
                          ->get();
      }
-     if($request->typev && $request->cin)
+     if($request->typev && $request->etat)
      {
         
          $result = Places::where('typev','LIKE','%' . $request->typev . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->where('etat','LIKE','%' . $request->etat . '%')
                          ->get();
      }
-     if($request->typev && $request->cin && $request->couverte)
+     if($request->typev && $request->etat && $request->couverte)
      {
         
          $result = Places::where('typev','LIKE','%' . $request->typev . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
+                         ->where('etat','LIKE','%' . $request->etat . '%')
                          ->where('couverte','LIKE','%' . $request->couverte . '%')
                          ->get();
      }
     
-    
-
-     
-    
+   
 
      return view('layoutspp.searchplace' , compact('result')) 
     ->with('i',$result);

@@ -97,7 +97,7 @@ class ReservationController extends Controller
             DB::update('update places set etat= ?  where id = ?', ["1",$place->id]);
         }
      
-
+        // enregitrer les reservation
         $reservation = new Reservation ;  
 
         $reservation->date_debut = $request["date_debut"];   //data from form
@@ -164,6 +164,7 @@ class ReservationController extends Controller
             
         }
 
+
       
         return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
 
@@ -178,7 +179,24 @@ class ReservationController extends Controller
 
   
    }
-     
+     public function telecharger_ticket($id_reservation){
+        $reservation = Reservation::find($id_reservation) ;
+
+        $client = User::find($reservation->id_client) ; 
+        $parking = Parking::find($reservation->id_parking) ;
+        $place = Places::find($reservation->id_place) ;
+        $vehicule = Vehicules::find($reservation->id_vehicule) ;
+
+        $pdf = PDF::loadView('client/layouts.ticket',[
+            'reservation' => $reservation ,
+            'parking' => $parking ,
+            'place' => $place ,
+            'vehicule' => $vehicule, 
+            'client' => $client
+        ]);
+
+        return $pdf->download('Ticket' . $client->name . '_' .$client->prenom. '.pdf') ; 
+     }
  }  
 
 

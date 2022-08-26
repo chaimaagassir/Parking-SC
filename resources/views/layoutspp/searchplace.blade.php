@@ -17,8 +17,8 @@
          
           <select class="form-control" id="exampleSelectGender" name="typev">
             <option></option>
-            <option>Car</option>
-            <option>Moto</option>
+            <option value="1">Voiture</option>
+            <option value="0">Moto</option>
           </select>
         </div>
        
@@ -26,16 +26,16 @@
             <label for="exampleSelectGender">Couverte ou non</label>
             <select class="form-control" id="exampleSelectGender" name="couverte">
               <option></option>
-              <option>Couverte</option>
-              <option>Non couverte</option>
+              <option value="1">Couverte</option>
+              <option value= "0">Non couverte</option>
             </select>
         </div>
          <div class="col">
           <label>Etat</label>
           <select class="form-control" id="exampleSelectGender" name="etat">
             <option></option>
-            <option>Vide</option>
-            <option>Pleine</option>
+            <option value="0">Vide</option>
+            <option value="1">Réservé</option>
           </select>
         </div> 
       
