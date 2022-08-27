@@ -108,7 +108,7 @@
               
             </td>
                
-              <td>{{ $p->name }}</td>
+              <td> <div class="truncate">{{ $p->name }}</div></td>
               <td >{{ $p->prenom }} </td>
               <td >{{ $p->tel}} </td>
               <td><label >{{ $p->ville }}</label></td>

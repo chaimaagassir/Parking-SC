@@ -29,6 +29,18 @@
   <link rel="stylesheet" href="css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/logo-mini.svg" />
+  <style>
+   th>.truncate, td>.truncate{
+  width: auto;
+  min-width: 0;
+  max-width: 50px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-wrap: break-word;
+}
+  </style>
  
 </head>
 <body>
@@ -72,6 +84,7 @@
   <script src="js/dashboard.js"></script>
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
+  
 
   
 </body>
