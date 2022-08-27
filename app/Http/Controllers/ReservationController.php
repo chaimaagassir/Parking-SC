@@ -11,6 +11,7 @@ use App\Models\Places ;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Mail\CodePromoMail ;
+use App\Mail\ReservationEmail ;
 use App\Http\Requests\ReservationFormRequest; 
 use Mail ;
 use PDF ;
@@ -125,7 +126,7 @@ class ReservationController extends Controller
         $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type );
         $reservation->prix = $prix; 
         // $reservation->prix_a_payer = $prix  - $solde ;  et ajouter le calcul du code promo 
-        // $reservation->prix_a_payer = 5 ;
+        $reservation->prix_a_payer = 5 ;
         $reservation->save() ; 
        
         
@@ -150,6 +151,20 @@ class ReservationController extends Controller
             }
             
         }
+        $reservation = Reservation::find($reservation->id) ;
+
+        $client = User::find($reservation->id_client) ; 
+        $parking = Parking::find($reservation->id_parking) ;
+        $place = Places::find($reservation->id_place) ;
+        $vehicule = Vehicules::find($reservation->id_vehicule) ;
+        $datalist=[
+            'reservation' => $reservation ,
+            'parking' => $parking ,
+            'place' => $place ,
+            'vehicule' => $vehicule, 
+            'client' => $client
+        ] ; 
+        Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist)) ;
 
 
       
@@ -171,6 +186,7 @@ class ReservationController extends Controller
             'vehicule' => $vehicule, 
             'client' => $client
         ]);
+        
 
         return $pdf->download('Ticket' . $client->name . '_' .$client->prenom. '.pdf') ; 
      }
