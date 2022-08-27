@@ -122,7 +122,7 @@
                                                         <table width="100%" cellspacing="0" cellpadding="0">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td class="esd-container-frame" width="530" valign="top" align="center">
+                                                                    <td class="esd-container-frame" width="530" valign="top" align="center">  
                                                                         <table width="100%" cellspacing="0" cellpadding="0">
                                                                             <tbody>
                                                                                 
