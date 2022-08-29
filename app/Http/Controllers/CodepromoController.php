@@ -36,7 +36,7 @@ class CodepromoController extends Controller
         $codespromo->nb_reserv = $data["nb_reserv"] ;
         $codespromo->Occasion = $data["Occasion"] ;
         $codespromo->date_expiration = $request["date_expiration"] ;
-        
+        $codespromo->save() ;
 
          $client = User::where('usertype', '=' , '0')->get();
 
@@ -85,7 +85,7 @@ class CodepromoController extends Controller
                 }      
                 
         }
-        $codespromo->save() ; 
+         
         
     
    }   

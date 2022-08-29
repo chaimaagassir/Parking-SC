@@ -19,6 +19,7 @@ class CreateReservationsTable extends Migration
             $table->dateTime('date_fin');
             $table->integer('prix');
             $table->integer('prix_a_payer');
+            $table->string('statut')->default('confirmée');
             $table->foreignId('id_client')
             ->constrained('users')
             ->onDelete('cascade')

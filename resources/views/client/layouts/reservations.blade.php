@@ -83,55 +83,81 @@
              </div>
  
         </div>
-        <div class="card-body px-0">
-            @forelse($reservation as $r )
-<div class="d-flex align-items-center justify-content-between px-4">
-    <div class="d-flex align-items-center">
-         <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-        <div class="ms-4" style="margin-left: 80px;">
-            <div class="small">VILLE</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 100px;">
-            <div class="small">Emplacement</div>
-          
-        </div>
-        <div class="ms-4" style="margin-left: 100px;">
-            <div class="small">Expired / pas encore</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 100px;">
-            <div class="small">{{$r->prix}}</div>
-            
-        </div>
-        <div class="ms-4" style="margin-left: 100px;">
-            <div class="small">{{Carbon\Carbon::parse($r->date_debut)->format('d-m-Y H:i')}} <b>vers </b> {{Carbon\Carbon::parse($r->date_fin)->format('d-m-Y H:i')}}</div>
-            
-        </div>
-    </div>
-    <div class="ms-4 small" style="margin-left: 100px;">
-        @if($r->date_fin < $now)
-        <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Expired</button>
+ 
+      
         
-        @else
+        <table class="table table-hover">
+               
+                <tbody>
+                
+                 @forelse($reservations as $r )
+                <tr style ='height:70px ;'>
+                <td>  <img src="../../uploads/parkings/{{ $r->image }}" width="50" 
+                height="50"  class="rounded-circle z-depth-2" alt="100x100" data-holder-rendered="true" alt="image_parking"/></div>
+                </td>
 
-        <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Cancel</button>
-        
-        @endif
+                <td><div class="small">{{$r->ville}}</div> </td>
+            
+     
+            <td> <div class="small">{{$r->emplacement}}</div></td>
+     
+
+            <td> <div class="small">{{$r->prix}} DH</div></td>
+            
+            <td><div class="small">{{$r->immatricule}}</td>
+            
+         <td> @if($r->type == '1')
+            <div class="small">Voiture</div>
+           
+            @else
+            <div class="small">Moto</div>  
+            @endif
+         </td>
+            <td>
+            @if($r->couverte == '1')
+            <div class="small">Couverte</div>
+           
+            @else
+            <div class="small">Non couverte</div>  
+            @endif
+            </td>
+ 
+             <td> <div class="small">{{Carbon\Carbon::parse($r->date_debut)->format('d-m-Y H:i')}} <b>vers </b> {{Carbon\Carbon::parse($r->date_fin)->format('d-m-Y H:i')}}</div>
+             </td>
+            <td>
+            @if($r->date_fin < $now)
+                {{-- @if($r->statut=="annulée")
+                <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Canceled and expired</button>
+                @else --}}
+                <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Expired</button>
+                {{-- @endif --}}
+            @else
+
+            @if($r->statut=="annulée")
+            <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Canceled </button>
+            @else
+                
+            <a href="{{route('cancel_reservation' ,$r->id )}}"> 
+            <button type="button" class="btn btn-danger" style=' padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Cancel</button>
+            </a>
+            @endif
+            @endif
+
+            <a href="{{route('telecharger_ticket' ,$r->id )}}"> 
+                <button type="button" class="btn btn-danger" style=' padding: 10px 20px;  border-radius: 8px;'>
+                    <svg height="23"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M128 160H448V352H128V160zM512 64C547.3 64 576 92.65 576 128V208C549.5 208 528 229.5 528 256C528 282.5 549.5 304 576 304V384C576 419.3 547.3 448 512 448H64C28.65 448 0 419.3 0 384V304C26.51 304 48 282.5 48 256C48 229.5 26.51 208 0 208V128C0 92.65 28.65 64 64 64H512zM96 352C96 369.7 110.3 384 128 384H448C465.7 384 480 369.7 480 352V160C480 142.3 465.7 128 448 128H128C110.3 128 96 142.3 96 160V352z"/></svg>
+                </button>
+            </a>
+
+            </td>
+            </tr>
+                @empty <h5> You don't have reservation yet </h5>
+                @endforelse
+
+            </tbody>
+        </table>
     </div>
-    <div class="ms-4 small" style="margin-left: 10px;" >
-        <a href="{{route('telecharger_ticket' ,$r->id )}}"> 
-            <button type="button" class="btn btn-danger" style=' padding: 10px 20px;  border-radius: 8px;'>
-                <svg height="23"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M128 160H448V352H128V160zM512 64C547.3 64 576 92.65 576 128V208C549.5 208 528 229.5 528 256C528 282.5 549.5 304 576 304V384C576 419.3 547.3 448 512 448H64C28.65 448 0 419.3 0 384V304C26.51 304 48 282.5 48 256C48 229.5 26.51 208 0 208V128C0 92.65 28.65 64 64 64H512zM96 352C96 369.7 110.3 384 128 384H448C465.7 384 480 369.7 480 352V160C480 142.3 465.7 128 448 128H128C110.3 128 96 142.3 96 160V352z"/></svg>
-            </button>
-        </a>
+    
+</div>
 
-    </div>
-</div>
-<hr>
-@empty <h5> You don't have reservation yet </h5>
-@endforelse
-
-</div>
-</div>
 @endsection

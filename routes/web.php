@@ -127,9 +127,16 @@ Route::middleware('auth')->group(function (){
 }) ;
 
 
-Route::get('réservations', function () {
-    return view('layoutspp.réservations');
-});
+// Route::get('réservations', function () {
+//     return view('layoutspp.réservations');
+// });
+
+Route::get('réservations', [ReservationController::class,'afficher_admin']); 
+Route::get('delete_reservation/{id}',[ReservationController::class,'delete_reservation'])->name('delete_reservation');
+
+Route::get('cancel_reservation/{id}',[ReservationController::class,'cancel_reservation'])->name('cancel_reservation');
+Route::get('reservation_details_admin/{id}', [ReservationController::class,'reservation_details_admin'])->name('reservation_details_admin');
+
 
 // Route::get('tableau-de-bord', function () {
 //     return view('layoutspp.tableau-de-bord');

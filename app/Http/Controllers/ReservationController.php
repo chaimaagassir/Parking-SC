@@ -26,14 +26,32 @@ class ReservationController extends Controller
         $user=User::find(Auth::user()->id);
         $now=Carbon::now() ; 
         $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
-        $nb_reservation_expired=Reservation::where('date_fin','<',$now)->count();
-        $nb_reservation_not_expired=Reservation::where('date_fin','>',$now)->count();
+        $nb_reservation_expired=Reservation::where('date_fin','<',$now)->where('id_client','=',Auth::user()->id)->count();
+        $nb_reservation_not_expired=Reservation::where('date_fin','>',$now)->where('id_client','=',Auth::user()->id)->count();
         $solde =$user->solde ;
       
-        $reservation= Reservation::where('id_client', '=' ,Auth::user()->id )->get(); 
+        $reservations= DB::table('reservations')
+                                ->where('reservations.id_client' , '=' ,Auth::user()->id)
+                                ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
+                                ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
+                                ->join('places', 'reservations.id_place' , '=' , 'places.id')
+                                 ->select('reservations.*' , 'parkings.ville' , 'parkings.emplacement','parkings.image' ,  'places.couverte' , 'places.numero' , 'vehicules.immatricule' , 'vehicules.type')
+                                 ->get() ; 
 
-        return view('client/layouts.reservations' , compact ( 'now','solde'  , 'reservation' , 'nb_reservation' , 'nb_reservation_expired' , 'nb_reservation_not_expired')) ; 
+        return view('client/layouts.reservations' , compact ( 'now','solde'  , 'reservations' , 'nb_reservation' , 'nb_reservation_expired' , 'nb_reservation_not_expired')) ; 
 
+    }
+    public function afficher_admin (){
+        $reservations= DB::table('reservations')
+        ->join('users', 'reservations.id_client' , '=' , 'users.id')
+        ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
+        ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
+        ->join('places', 'reservations.id_place' , '=' , 'places.id')
+         ->select('reservations.*' , 'parkings.ville' , 'parkings.emplacement', 'places.couverte' , 'places.numero' , 'vehicules.immatricule' , 'vehicules.type' , 'users.profile_photo_path')
+         ->paginate(5) ; 
+         
+
+         return view('layoutspp.réservations' , compact('reservations')); 
 
     }
 
@@ -47,8 +65,42 @@ class ReservationController extends Controller
         } 
 
     }
-   
 
+    public function delete_reservation($id) {
+   
+        $reservation=Reservation::find($id);
+        //  $place=Places::find($reservation->id_place); 
+        $user=User::find($reservation->id_client);
+        $now=Carbon::now() ; 
+
+            DB::update('update places set etat= ?  where id = ?', ["0",$reservation->id_place]);
+        if($reservation->date_fin > $now){
+            $newsolde = $user->solde + $reservation->prix_a_payer ; 
+            DB::update('update users set solde= ?  where id = ?', [$newsolde,$reservation->id_client]);
+        }
+        
+
+        
+        
+
+        $reservation->delete();
+    
+    
+        return redirect('réservations')->with('message','Reservation Deleted');
+    }
+   
+    public function reservation_details_admin($id){
+        $reservations= DB::table('reservations')
+        ->where('reservations.id' , "=" , $id)
+        ->join('users', 'reservations.id_client' , '=' , 'users.id')
+        ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
+        ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
+        ->join('places', 'reservations.id_place' , '=' , 'places.id')
+         ->select('reservations.*' , 'parkings.*' ,  'places.*' , 'vehicules.*'  , 'users.*')
+         ->get() ; 
+         return view('layoutspp.reservationdetails' , compact('reservations')) 
+         ->with('i',$reservations); 
+    }
     
     public function add_reservation(Request $request ,$id){
 
@@ -129,10 +181,12 @@ class ReservationController extends Controller
         $reservation->prix_a_payer = 5 ;
         $reservation->save() ; 
        
-        
+        // email code promo si il a atteint nb reservation parmi les codes de fidélité
+
         $nb_reservation=Reservation::where('id_client','=',Auth::user()->id)->count();
         $Codepromo = Codepromo::get();
 
+        
         
         foreach ($Codepromo as $cp) {
             if($cp->nb_reserv == $nb_reservation ){
@@ -140,7 +194,8 @@ class ReservationController extends Controller
                     $datalist=[
                         "Nom"=> $cp->Nom ,
                         "Code"=>$cp->Code, 
-                        "Pourcentage"=>$cp->Pourcentage, 
+                        "Pourcentage"=>$cp->Pourcentage,
+                        "date_expiration"=>$cp->date_expiration,  
                         "nb_reserv"=>$cp->nb_reserv, 
                         "name_client"=>Auth::user()->name 
                     ] ; 
@@ -151,12 +206,24 @@ class ReservationController extends Controller
             }
             
         }
+
+        // email récapitulatif réservation
+
         $reservation = Reservation::find($reservation->id) ;
 
         $client = User::find($reservation->id_client) ; 
         $parking = Parking::find($reservation->id_parking) ;
         $place = Places::find($reservation->id_place) ;
         $vehicule = Vehicules::find($reservation->id_vehicule) ;
+
+        // $pdf = PDF::loadView('client/layouts.ticket',[
+        //     'reservation' => $reservation ,
+        //     'parking' => $parking ,
+        //     'place' => $place ,
+        //     'vehicule' => $vehicule, 
+        //     'client' => $client
+        // ]);
+
         $datalist=[
             'reservation' => $reservation ,
             'parking' => $parking ,
@@ -164,12 +231,23 @@ class ReservationController extends Controller
             'vehicule' => $vehicule, 
             'client' => $client
         ] ; 
-        Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist)) ;
+        Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist) )   ;
 
-
-      
-        return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
+        return redirect('reservations')->with('message'  , 'Réservation added successfully , please upload your ticket ! ') ;
   
+   }
+
+   public function cancel_reservation($id){
+    $reservation=Reservation::find($id) ; 
+    $user = User::find($reservation->id_client) ; 
+    $solde_user = $user->solde + $reservation->prix_a_payer  ; 
+    DB::update('update places set etat= ?  where id = ?', ["0",$reservation->id_place]);
+    DB::update('update users set solde= ?  where id = ?', [$solde_user,$reservation->id_client]);
+    DB::update('update reservations set statut= ?  where id = ?', ['annulée',$id]);
+
+    return redirect('reservations')->with('message'  , 'Réservation canceled successfully ') ;
+  
+
    }
      public function telecharger_ticket($id_reservation){
         $reservation = Reservation::find($id_reservation) ;
