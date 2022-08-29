@@ -68,20 +68,15 @@
                       </div>
                       
                       </div><br><br>
-                      {{-- <div class="row">
-                          <div class="col-md-6">
+                      <div class="row">
+                          <div class="col-md-12">
                               <div class="form-group">
-                                  <input class="form-control" type="email" placeholder="Enter your Email">
-                                  <span class="form-label">Email</span>
+                                  <input class="form-control" type="text" placeholder="Enter your promo code" name="promocode">
+                                  <span class="form-label">Promo code</span>
                               </div>
                           </div>
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <input class="form-control" type="tel" placeholder="Enter you Phone">
-                                  <span class="form-label">Phone</span>
-                              </div>
-                          </div>
-                      </div> --}}
+                          
+                      </div>
                       <div class="form-btn">
                           <button class="submit-btn">Book Now</button>
                       </div>

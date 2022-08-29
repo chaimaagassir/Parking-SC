@@ -174,6 +174,7 @@
                     <div class="home-blog-single mb-30">
                         <div class="blog-img-cap">
                             <div class="blog-img">
+                                
                                 <img src="client/assets/img/blog/home-blog1.jpg" alt="">
                                 <!-- Blog date -->
                                 <div class="blog-date text-center">

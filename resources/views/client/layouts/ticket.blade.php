@@ -210,6 +210,7 @@
                             <div class="d-none d-sm-block col-1">Date début : {{Carbon\Carbon::parse($reservation->date_debut)->format('d-m-Y H:i')}} </div>
                             <div class="col-9 col-sm-5"> Date fin : {{Carbon\Carbon::parse($reservation->date_debut)->format('d-m-Y H:i')}} </div>
                             <div class="col-9 col-sm-5"> Prix: {{$reservation->prix}} DH</div>
+                            <div class="col-9 col-sm-5"> Prix payé: {{$reservation->prix_a_payer}} DH</div>
                           
                         </div>
 

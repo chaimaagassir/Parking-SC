@@ -127,35 +127,7 @@ class ReservationController extends Controller
         // dd($nb_heures) ;
         // dd($nb_minutes) ;
         
-        //function to search place and save it and get id 
-
-        $place= Places::where([
-                               ['etat', '=' , '0'] ,
-                               ['couverte', '=' , $request["couverte"]] ,
-                               ['typev', '=' , $type_v ],
-                               ['id_parking', '=' , $id]
-                               ] )->first();                                
-        // // Changer état du place 
-      
-        if( is_null($place)){
-            return redirect()->back()->with('message'  , 'Parking est plein !  ') ;
-        }
-          
-        else{
-            DB::update('update places set etat= ?  where id = ?', ["1",$place->id]);
-        }
      
-        // enregitrer les reservation
-        $reservation = new Reservation ;  
-
-        $reservation->date_debut = $request["date_debut"];   //data from form
-        $reservation->date_fin = $request["date_fin"];       //data from form
-        $reservation->id_vehicule = $request["id_vehicule"] ; //data from form
-        $reservation->id_client = Auth::user()->id ;
-        $reservation->id_parking = $id ; 
-        $reservation->id_place = $place->id ;// from link
-        // $reservation->id_codepromos = $request["id_codepromos"] ; 
-      
         if($type_v=='1'){
             $coeff_type=1;
         }
@@ -174,11 +146,83 @@ class ReservationController extends Controller
         $prix_jour=$parking->prix_jour ;
         $prix_mois=$parking->prix_mois ;
         
+        $reservation = new Reservation ; 
         
         $prix = ((($nb_heures * $prix_heure) + ($nb_jours * $prix_jour) + ($nb_mois * $prix_mois ) +($nb_minutes * $prix_heure / 60 ) ) * $coeff_couverte * $coeff_type );
         $reservation->prix = $prix; 
-        // $reservation->prix_a_payer = $prix  - $solde ;  et ajouter le calcul du code promo 
-        $reservation->prix_a_payer = 5 ;
+        // des conditions pour vérifier existence du code promo valide ou pas expiré ou pas 
+
+        $now=Carbon::now() ;
+        $promocode = Codepromo::where('Code' , '=' , $request['promocode'])->first() ; 
+        
+        if($request['promocode']){
+            if(is_null($promocode)){
+         
+                return redirect()->back()->with('message'  , 'invalid promo code !  ') ;
+            }else{
+                if($promocode->date_expiration < $now){
+                    return redirect()->back()->with('message'  , 'Promo code expired !  ') ;
+                }else{
+                    $reservation->id_codepromos = $promocode->id ; 
+                    if($solde > $prix){
+                        $prix_a_payer = 0 ;
+                        DB::update('update users set solde= ?  where id = ?', [$solde-$prix,Auth::user()->id]);
+                        
+    
+                    }else if($solde < $prix || $solde==$prix){
+                        $prix_a_payer = ($prix-$solde) -  ($prix *$promocode->Pourcentage / 100 );
+                        DB::update('update users set solde= ?  where id = ?', ['0',Auth::user()->id]);
+                    }
+    
+                }
+    
+    
+            }
+
+        }else{
+            if($solde > $prix){
+                $prix_a_payer = 0 ;
+                DB::update('update users set solde= ?  where id = ?', [$solde-$prix,Auth::user()->id]);
+                
+
+            }else if($solde < $prix || $solde==$prix){
+                $prix_a_payer = $prix-$solde ;
+                DB::update('update users set solde= ?  where id = ?', ['0',Auth::user()->id]);
+            }
+
+        }
+
+           //function to search place and save it and get id 
+
+        $place= Places::where([
+                               ['etat', '=' , '0'] ,
+                               ['couverte', '=' , $request["couverte"]] ,
+                               ['typev', '=' , $type_v ],
+                               ['id_parking', '=' , $id]
+                               ] )->first();                                
+        // // Changer état du place 
+      
+        if( is_null($place)){
+            return redirect()->back()->with('message'  , 'Parking est plein !  ') ;
+        }
+          
+        else{
+            DB::update('update places set etat= ?  where id = ?', ["1",$place->id]);
+        }
+     
+        // enregitrer les reservation
+        
+
+        $reservation->date_debut = $request["date_debut"];   //data from form
+        $reservation->date_fin = $request["date_fin"];       //data from form
+        $reservation->id_vehicule = $request["id_vehicule"] ; //data from form
+        $reservation->id_client = Auth::user()->id ;
+        $reservation->id_parking = $id ; 
+        $reservation->id_place = $place->id ;// from link
+        
+        
+
+        $reservation->prix_a_payer = $prix_a_payer ;
         $reservation->save() ; 
        
         // email code promo si il a atteint nb reservation parmi les codes de fidélité

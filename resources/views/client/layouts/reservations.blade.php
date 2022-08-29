@@ -87,6 +87,23 @@
       
         
         <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th style='font-size:14px ; '>Parking</th>
+                  <th style='font-size:14px ; '>Ville</th>
+                  <th style='font-size:14px ; '>Emplacement </th>
+                  <th style='font-size:14px ; '>Prix</th>
+                  <th style='font-size:14px ; '>Prix payé</th>
+                  <th style='font-size:14px ; '>Immatricule</th>
+                  <th style='font-size:14px ; '>Type de véhicule</th>
+                  <th style='font-size:14px ; '>Type de place</th>
+                  <th style='font-size:14px ; '>Durée</th>
+                  <th style='font-size:14px ; '>Action</th>
+                 
+                  
+                
+                </tr>
+              </thead>
                
                 <tbody>
                 
@@ -103,6 +120,7 @@
      
 
             <td> <div class="small">{{$r->prix}} DH</div></td>
+            <td> <div class="small">{{$r->prix_a_payer}} DH</div></td>
             
             <td><div class="small">{{$r->immatricule}}</td>
             
