@@ -60,6 +60,10 @@
    @if(Session('message'))
       <div class="alert alert-success"> {{Session('message')}} </div>
       @endif
+
+      @if(Session('erreur'))
+      <div class="alert alert-danger"> {{Session('erreur')}} </div>
+      @endif
    <h4> La liste des parkings  :   </h4> <br> 
    
 <div class="table-responsive">

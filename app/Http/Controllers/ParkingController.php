@@ -170,10 +170,19 @@ class ParkingController extends Controller
 
    public function delete_parkings($id)
    {
-    $data=Parking::find($id);
-    $data->delete();
+    $place=Places::where([['id_parking' ,  '=', $id] , ["etat"  , "=" , "1"] ])->count() ;
 
+    if( $place == '0'){
+         $data=Parking::find($id);
+        $data->delete();
     return redirect('parkings')->with('message','Parking Deleted Successfully');
+
+    }else{
+        return redirect('parkings')->with('erreur','Impossible de supprimer ce parking car il ya des reservations dans ce parking');
+
+    }
+
+    
    }
 
 
@@ -183,9 +192,17 @@ class ParkingController extends Controller
        return view('layoutspp.modifier-parking',['parkings'=>$parkings]);
    }
    public function update_parking(Request $request,$id)
+   
    {   
+        // pour tester est ce que ces valeurs sont les memes ou modifié
+        // $p=Parking::find($id) ;
+        // if($p->ville == $request->ville){
+        //     dd('bravo') ; 
+        // }else{
+        //     dd('ok') ;
+        // }
        $parkings = parking::find($id);
-
+       
        $parkings->ville=$request->ville;
        $parkings->emplacement=$request->emplacement;
        $image=$request->file;
