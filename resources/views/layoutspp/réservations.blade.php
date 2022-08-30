@@ -56,7 +56,7 @@
 <div style =' position: absolute; right: 20px;'>
 
   
-  <button type="button" class="btn btn-primary btn-rounded btn-fw">Exporter le fichier csv </button>
+  <a href="=export-excel-reservation" ><button type="button" class="btn btn-primary btn-rounded btn-fw">Exporter le fichier csv </button> </a>
   <a href="ajouterrésevation" ><button type="button" class="btn btn-primary btn-rounded btn-fw" >Ajouter une réservation</button> </a>
   </div>
    <br> <br>  <br>

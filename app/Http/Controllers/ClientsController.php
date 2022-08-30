@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\User ;
 use App\Exports\ClientsExport;
 use App\Http\Requests\ClientFormRequest; 
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
 use Excel;
 use DB;
 
@@ -101,7 +103,7 @@ class ClientsController extends Controller
 
        return redirect('clients')->with('message','Client updated');
 
-    return redirect('clients')->with('message','User deleted Successfully');
+    
 
    }
 
@@ -328,6 +330,24 @@ class ClientsController extends Controller
     //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
 
    }
+
+   public function sendEmail($id)
+   {
+       $users = DB::select('select * from users where id = ?',[$id]);
+       return view('layoutspp.sendemail',['users'=>$users]);
+   }
+   public function sendfunction(Request $req)
+    {
+        $email= $req->email;
+        $datalist=[
+            "email"=>$req->email, 
+            "subject"=>$req->subject,
+             "description"=>$req->description,
+        ] ;
+       
+        Mail::to($email)->send(new TestMail($datalist));
+        return redirect('clients')->with('message','Email sent');
+    }
 }
 
 

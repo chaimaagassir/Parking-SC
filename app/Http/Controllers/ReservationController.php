@@ -21,7 +21,12 @@ use DB  ;
 
 class ReservationController extends Controller
 
-{
+{  
+
+    public function exportIntoExcelReservation()
+    {
+           return Excel::download(new ReservationExport,'ReservationList.xlsx');
+    }
     public function afficher (){
         $user=User::find(Auth::user()->id);
         $now=Carbon::now() ; 
@@ -157,7 +162,6 @@ class ReservationController extends Controller
         $parking = Parking::find($reservation->id_parking) ;
         $place = Places::find($reservation->id_place) ;
         $vehicule = Vehicules::find($reservation->id_vehicule) ;
-<<<<<<< HEAD
 
         $pdf = PDF::loadView('client/layouts.ticket',[
             'reservation' => $reservation ,
@@ -167,8 +171,6 @@ class ReservationController extends Controller
             'client' => $client
         ]);
 
-=======
->>>>>>> 5f5b9efe581bf8c4545d8177a27b2661d2d02a83
         $datalist=[
             'reservation' => $reservation ,
             'parking' => $parking ,
@@ -176,11 +178,10 @@ class ReservationController extends Controller
             'vehicule' => $vehicule, 
             'client' => $client
         ] ; 
-<<<<<<< HEAD
         Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist) )   ;
-=======
+
         Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist)) ;
->>>>>>> 5f5b9efe581bf8c4545d8177a27b2661d2d02a83
+
 
 
       

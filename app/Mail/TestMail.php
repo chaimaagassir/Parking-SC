@@ -11,15 +11,15 @@ class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
+    public $datalist;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details)
+    public function __construct($datalist)
     {
-        $this->details = $details;
+        $this->datalist = $datalist;
     }
 
     /**
@@ -29,6 +29,9 @@ class TestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Test Mail')->view('emails.TestMail');
+        return $this->subject('Test Mail')->view('layoutspp.email')
+                                          ->subject('A new contact email')
+                                          ->from('scparking2022@gmail.com','System')
+                                          ->with('data',$this->datalist);
     }
 }

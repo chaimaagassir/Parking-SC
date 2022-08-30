@@ -11,6 +11,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StripePaymentController;
 
 
 
@@ -39,6 +40,8 @@ Route::get('/', [HomeController::class,'firstpage']);
 // Route::get('/', function () {
 //     return view('client/layouts.index');
 // });
+Route::get('stripe', [StripePaymentController::class, 'index']);
+Route::post('payment-process', [StripePaymentController::class, 'process']);
 
 
 
@@ -111,7 +114,7 @@ Route::get('parkings', function () {
     return view('layoutspp.parking');    
 });
 
-
+//Routes place Admin
 Route::get('places', [PlacesController::class,'afficher']);
 Route::get('delete_place/{id}',[PlacesController::class,'delete_places'])->name('delete_place');
 Route::get('/search_place',[PlacesController::class,'placeSearch'])->name('search_place');
@@ -177,6 +180,10 @@ Route::get('delete_client/{id}',[ClientsController::class,'delete_clients'])->na
 Route::get('click_edit/{id}',[ClientsController::class,'edit_function'])->name('click_edit');
 Route::post('/update/{id}',[ClientsController::class,'update_function'])->name('update');
 Route::get('/search_client',[ClientsController::class,'clientSearch'])->name('search_client');
+//Mail to Client
+Route::get('sendemail/{id}',[ClientsController::class,'sendEmail'])->name('sendemail');
+Route::post('/sent-email/{id}',[ClientsController::class,'sendfunction'])->name('sent-email');
+
 
 
 
@@ -213,9 +220,7 @@ Route::get('modifierrésevation', function () {
 Route::get('modifierplace', function () {
     return view('layoutspp.modifier-places');
 });
-Route::get('sendemail', function () {
-    return view('layoutspp.sendemail');
-});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -242,6 +247,4 @@ Route::get('export-csv',[ParkingController::class,'exportIntoCSV']);
 Route::get('export-excel-place',[PlacesController::class,'exportIntoExcelPlace']);
 Route::get('export-csv-place',[PlacesController::class,'exportIntoCSVPlace']);
 
-//Mail to Client
-Route::get('/sent-email',[MailController::class,'sendEmail']);
 
