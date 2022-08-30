@@ -99,7 +99,7 @@
                                 </tr>
                                
                               
-                                <tr>
+                                <tr> 
                                     <td width="390"><b>Prix</b></td>
                                     <td>{{ $p->prix }} DH</td>
                                 </tr>
@@ -107,6 +107,19 @@
                                     <td width="390"><b>Prix payé</b></td>
                                     <td>{{ $p->prix_a_payer }} DH</td>
                                 </tr>
+                                @if(is_null($p->id_codepromos ))
+                               
+                                @else
+                                <tr>
+                                    <td width="390"><b>Code promo utilisé : </b></td>
+                                    <td>{{ $p->Code }} </td>
+                                </tr>
+                               
+                                <tr>
+                                    <td width="390"><b>Pourcentage du code :</b></td>
+                                    <td>-{{ $p->Pourcentage }} %</td>
+                                </tr>
+                                @endif
                                
                                 
                                 <tr>

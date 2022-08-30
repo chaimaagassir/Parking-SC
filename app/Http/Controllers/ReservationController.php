@@ -90,16 +90,41 @@ class ReservationController extends Controller
     }
    
     public function reservation_details_admin($id){
-        $reservations= DB::table('reservations')
-        ->where('reservations.id' , "=" , $id)
-        ->join('users', 'reservations.id_client' , '=' , 'users.id')
-        ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
-        ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
-        ->join('places', 'reservations.id_place' , '=' , 'places.id')
-         ->select('reservations.*' , 'parkings.*' ,  'places.*' , 'vehicules.*'  , 'users.*')
-         ->get() ; 
-         return view('layoutspp.reservationdetails' , compact('reservations')) 
-         ->with('i',$reservations); 
+
+        $r=Reservation::find($id) ;
+
+        // dd($r->id_codepromos) ;
+
+        if(is_null($r->id_codepromos )) {
+            $reservations= DB::table('reservations')
+            ->where('reservations.id' , "=" , $id)
+            ->join('users', 'reservations.id_client' , '=' , 'users.id')
+            ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
+            ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
+            ->join('places', 'reservations.id_place' , '=' , 'places.id')
+           
+             ->select('reservations.*' , 'parkings.*' ,  'places.*' , 'vehicules.*' , 'users.*')
+             ->get() ; 
+             return view('layoutspp.reservationdetails' , compact('reservations')) 
+             ->with('i',$reservations); 
+
+        }else{
+
+            $reservations= DB::table('reservations')
+            ->where('reservations.id' , "=" , $id)
+            ->join('users', 'reservations.id_client' , '=' , 'users.id')
+            ->join('vehicules', 'reservations.id_vehicule' , '=' , 'vehicules.id')
+            ->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')
+            ->join('places', 'reservations.id_place' , '=' , 'places.id')
+            ->join('codepromos', 'reservations.id_codepromos' , '=' , 'codepromos.id')
+             ->select('reservations.*' , 'parkings.*' ,  'places.*' , 'vehicules.*', 'codepromos.Code' , 'codepromos.Pourcentage'  , 'users.*')
+             ->get() ; 
+             return view('layoutspp.reservationdetails' , compact('reservations')) 
+             ->with('i',$reservations); 
+        }
+
+
+      
     }
     
     public function add_reservation(Request $request ,$id){
