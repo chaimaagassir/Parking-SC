@@ -135,7 +135,7 @@ class ClientsController extends Controller
      }
      if($request->etatcpt)
      {
-        $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')->get();
+        $result = User::where('etatcpt','=','%' . $request->etatcpt . '%')->get();
      }
      if($request->ville && $request->name)
      {

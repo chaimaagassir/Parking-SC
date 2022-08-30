@@ -96,6 +96,7 @@
             <td class="py-1">
                  
               @if ($p->profile_photo_path)
+              
                      
               <img  width="23" height="23" src="{{ $p->profile_photo_url }}"  class="rounded-circle z-depth-2" alt="100x100" data-holder-rendered="true">
               

@@ -10,6 +10,7 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $table="reservations" ; 
+<<<<<<< HEAD
 
    protected $fillable = ['date_debut','date_fin' ,'prix', 'id_client', 'id_parking', 'id_place' , 'id_vehicule' , 'id_codepromos'];
 
@@ -43,4 +44,7 @@ class Reservation extends Model
        return $result;
    }
 
+=======
+    protected $fillable = ['date_debut','date_fin' ,'statut' ,'prix',  'prix_a_payer', 'id_client', 'id_parking', 'id_place' , 'id_vehicule' , 'id_codepromos'];
+>>>>>>> bd0e803ac486b728889f183e3bb1633589dde05b
 }

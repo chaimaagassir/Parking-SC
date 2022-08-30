@@ -36,6 +36,7 @@
             </div>
         </div>
         
+        
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-yellow order-card">
                 <div class="card-block">
@@ -67,7 +68,193 @@
             </div>
         </div>
 	</div>
+    {{-- {{$clientschart}} --}}
+    
+    <div class="row">
+        {{-- chart client  --}}
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Client</h4>
+            <canvas id="myChartclient"></canvas>
+          </div>
+        </div>
+      </div>
+      {{-- chart reservation --}}
+      <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Reservation</h4>
+            <canvas id="mychartreservation"></canvas>
+          </div>
+        </div>
+      </div>
+
+      {{-- chartes parkings --}}
+      <div class="col-lg-6 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Parkings</h4>
+          <canvas id="myChartparkings"></canvas>
+        </div>
+      </div>
+      </div>
+      
+    </div>
+      
+    </div>
+    {{-- {{$parkingschart}}
+    {{$reservationschart}} --}}
 </div>
+{{-- <script src="../../js/chart.js"></script>
+<script src="../../vendors/chart.js/Chart.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+{{-- chartclient --}}
+<script type="text/javascript">
+   var _ydata=JSON.parse('{!! json_encode($monthsclient) !!} ') ; 
+   var _xdata=JSON.parse('{!! json_encode($monthscountclient) !!} ') ; 
+
+   var ctx = document.getElementById("myChartclient");
+    var myLineChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: _ydata,
+    datasets: [{
+      label: "Registration",
+      backgroundColor: "rgba(2,117,216,1)",
+      borderColor: "rgba(2,117,216,1)",
+      data: _xdata,
+    }],
+  },
+  options: {
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          maxTicksLimit: 9
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 10,
+          maxTicksLimit: 10
+        },
+        gridLines: {
+          display: true
+        }
+      }],
+    },
+    legend: {
+      display: false
+    }
+  }
+    });
+</script>
+
+{{-- chartes parking --}}
+
+<script type="text/javascript">
+    var _ydata=JSON.parse('{!! json_encode($monthsparkings) !!} ') ; 
+    var _xdata=JSON.parse('{!! json_encode($monthscountparkings) !!} ') ; 
+ 
+    var ctx = document.getElementById("mychartreservation");
+     var myLineChart = new Chart(ctx, {
+   type: 'bar',
+   data: {
+     labels: _ydata,
+     datasets: [{
+       label: "Registration",
+       backgroundColor: "rgba(2,117,216,1)",
+       borderColor: "rgba(2,117,216,1)",
+       data: _xdata,
+     }],
+   },
+   options: {
+     scales: {
+       xAxes: [{
+         time: {
+           unit: 'month'
+         },
+         gridLines: {
+           display: false
+         },
+         ticks: {
+           maxTicksLimit: 9
+         }
+       }],
+       yAxes: [{
+         ticks: {
+           min: 0,
+           max: 10,
+           maxTicksLimit: 10
+         },
+         gridLines: {
+           display: true
+         }
+       }],
+     },
+     legend: {
+       display: false
+     }
+   }
+     });
+</script>
+
+ {{-- chartes reservation --}}
+
+<script type="text/javascript">
+    var _ydata=JSON.parse('{!! json_encode($monthsreservation) !!} ') ; 
+    var _xdata=JSON.parse('{!! json_encode($monthscountreservation) !!} ') ; 
+ 
+    var ctx = document.getElementById("myChartparkings");
+     var myLineChart = new Chart(ctx, {
+   type: 'bar',
+   data: {
+     labels: _ydata,
+     datasets: [{
+       label: "Registration",
+       backgroundColor: "rgba(2,117,216,1)",
+       borderColor: "rgba(2,117,216,1)",
+       data: _xdata,
+     }],
+   },
+   options: {
+     scales: {
+       xAxes: [{
+         time: {
+           unit: 'month'
+         },
+         gridLines: {
+           display: false
+         },
+         ticks: {
+           maxTicksLimit: 9
+         }
+       }],
+       yAxes: [{
+         ticks: {
+           min: 0,
+           max: 10,
+           maxTicksLimit: 10
+         },
+         gridLines: {
+           display: true
+         }
+       }],
+     },
+     legend: {
+       display: false
+     }
+   }
+     });
+</script>
+
 @endsection
 @section('css_dashboard')
     <style>
