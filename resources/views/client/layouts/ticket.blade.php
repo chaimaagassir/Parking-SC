@@ -158,11 +158,11 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div>
-                            <span class="text-sm text-grey-m2 align-middle">Client : {{$client->name}} &nbsp; {{$client->prenom}} </span>
-                           <br> <span class="text-600 text-110 text-blue align-middle">Email : {{$client->email}}</span>
-                           <br> <span class="text-sm text-grey-m2 align-middle">CIN : {{$client->cin}}</span>
+                            <span class="col-9 col-sm-5">Client : {{$client->name}} &nbsp; {{$client->prenom}} </span>
+                           <br> <span class="col-9 col-sm-5">Email : {{$client->email}}</span>
+                           <br> <span class="col-9 col-sm-5">CIN : {{$client->cin}}</span>
                         </div>
-                        <div class="text-grey-m2">
+                        <div >
                             <div class="my-1">
                                Immatricule :{{$vehicule->immatricule}}
                             </div>
@@ -180,17 +180,17 @@
 
                     <div class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end">
                         <hr class="d-sm-none" />
-                        <div class="text-grey-m2">
+                        <div>
                             <div class="mt-1 mb-2 text-secondary-m1 text-600 text-125">
                                <b> Parking </b>
                             </div>
 
-                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Ville:</span> {{$parking->ville}}</div>
+                            <div class="my-2"><span class="col-9 col-sm-5">Ville:</span> {{$parking->ville}}</div>
 
-                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Emplacement:</span> {{$parking->emplacement}}</div>
+                            <div class="my-2"><span class="col-9 col-sm-5">Emplacement:</span> {{$parking->emplacement}}</div>
 
-                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Place numéro :</span> {{$place->numero}}</div>
-                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Type de place:
+                            <div class="my-2"><span class="col-9 col-sm-5">Place numéro :</span> {{$place->numero}}</div>
+                            <div class="my-2"><span class="col-9 col-sm-5">Type de place:
                                 </span> @if($place->couverte == '1')
                                 couverte
                                 @else

@@ -107,225 +107,225 @@ class ClientsController extends Controller
 
    //Search Client
    public function clientSearch(Request $request)
-   {
-     $client_filter = User::distinct()->get(['ville']) ; 
-     $name = $_GET['name'] ;
-     $ville = $_GET['ville'] ;
-     $cin = $_GET['cin'] ;
-     $nb_v = $_GET['nb_v'] ;
-     $etatcpt = $_GET['etatcpt'] ;
+        {
+            $client_filter = User::distinct()->get(['ville']) ; 
+            $name = $_GET['name'] ;
+            $ville = $_GET['ville'] ;
+            $cin = $_GET['cin'] ;
+            $nb_v = $_GET['nb_v'] ;
+            $etatcpt = $_GET['etatcpt'] ;
 
-     if($request->name)
-     {
-         $result = User::where('name','LIKE','%' . $request->name . '%')->get();
-     }
-      if($request->ville)
-     {
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')->get();
-     }
-    if($request->cin)
-     {
-         $result = User::where('cin','LIKE','%' . $request->cin . '%')->get();
-     }
-     if($request->nb_v)
-     {
-        $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')->get();
-     }
-     if($request->etatcpt)
-     {
-        $result = User::where('etatcpt','=','%' . $request->etatcpt . '%')->get();
-     }
-     if($request->ville && $request->name)
-     {
-        
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->get();
-     }
-     if($request->cin && $request->name)
-     {
-        
-         $result = User::where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->get();
-     }
-     if($request->nb_v && $request->name)
-     {
-        
-         $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->get();
-     }
-     if($request->etatcpt && $request->name)
-     {
-        
-         $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->get();
-     }
-     if($request->cin && $request->name && $request->ville)
-     {
-        
-         $result = User::where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->get();
-     }
-     if($request->nb_v && $request->name && $request->ville)
-     {
-        
-         $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->get();
-     }
-     if($request->etatcpt && $request->name && $request->ville)
-     {
-        
-         $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->get();
-     }
-     if($request->etatcpt && $request->name && $request->cin)
-     {
-        
-         $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->get();
-     }
-     if($request->nb_v && $request->name && $request->cin)
-     {
-        
-         $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->get();
-     }
-     if($request->nb_v && $request->name && $request->etatcpt)
-     {
-        
-         $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('name','LIKE','%' . $request->name . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->get();
-     }
-     if($request->name && $request->ville && $request->cin && $request->nb_v)
-     {
-        
-         $result = User::where('name','LIKE','%' . $request->name . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->get();
-     }
-     if($request->name && $request->ville && $request->cin && $request->etatcpt)
-     {
-        
-         $result = User::where('name','LIKE','%' . $request->name . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->get();
-     }
-     if($request->name && $request->nb_v && $request->cin && $request->etatcpt)
-     {
-        
-         $result = User::where('name','LIKE','%' . $request->name . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->get();
-     }
-     if($request->name && $request->nb_v && $request->cin && $request->etatcpt && $request->nb_v)
-     {
-        
-         $result = User::where('name','LIKE','%' . $request->name . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('ville','LIKE','%' . $request->ville . '%')
-                         ->get();
-     }
-   //Ville
-   if($request->ville && $request->cin)
-   {
-      
-       $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                       ->where('cin','LIKE','%' . $request->cin . '%')
-                       ->get();
-   }
-   if($request->ville && $request->nb_v)
-   {
-      
-       $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                       ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                       ->get();
-   }
-   if($request->ville && $request->etatcpt)
-   {
-      
-       $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                       ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                       ->get();
-   }
-   if($request->ville && $request->nb_v && $request->cin)
-     {
-        
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->get();
-     }
-     if($request->ville && $request->etatcpt && $request->cin)
-     {
-        
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->get();
-     }
-     if($request->ville && $request->etatcpt && $request->nb_v)
-     {
-        
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->get();
-     }
-     if($request->ville && $request->nb_v && $request->cin && $request->etatcpt)
-     {
-        
-         $result = User::where('ville','LIKE','%' . $request->ville . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->get();
-     }
-     //CIN
-     if($request->etatcpt && $request->cin)
-     {
-        
-         $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
-                         ->where('cin','LIKE','%' . $request->cin . '%')
-                         ->get();
-     }
-     if($request->cin && $request->nb_v)
-     {
-        
-         $result = User::where('cin','LIKE','%' . $request->cin . '%')
-                         ->where('nb_v','LIKE','%' . $request->nb_v . '%')
-                         ->get();
-     }
+            if($request->name)
+            {
+                $result = User::where('name','LIKE','%' . $request->name . '%')->get();
+            }
+            if($request->ville)
+            {
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')->get();
+            }
+            if($request->cin)
+            {
+                $result = User::where('cin','LIKE','%' . $request->cin . '%')->get();
+            }
+            if($request->nb_v)
+            {
+                $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')->get();
+            }
+            if($request->etatcpt)
+            {
+                $result = User::where('etatcpt','=','%' . $request->etatcpt . '%')->get();
+            }
+            if($request->ville && $request->name)
+            {
+                
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->get();
+            }
+            if($request->cin && $request->name)
+            {
+                
+                $result = User::where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->get();
+            }
+            if($request->nb_v && $request->name)
+            {
+                
+                $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->get();
+            }
+            if($request->etatcpt && $request->name)
+            {
+                
+                $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->get();
+            }
+            if($request->cin && $request->name && $request->ville)
+            {
+                
+                $result = User::where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->get();
+            }
+            if($request->nb_v && $request->name && $request->ville)
+            {
+                
+                $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->get();
+            }
+            if($request->etatcpt && $request->name && $request->ville)
+            {
+                
+                $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->get();
+            }
+            if($request->etatcpt && $request->name && $request->cin)
+            {
+                
+                $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->get();
+            }
+            if($request->nb_v && $request->name && $request->cin)
+            {
+                
+                $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->get();
+            }
+            if($request->nb_v && $request->name && $request->etatcpt)
+            {
+                
+                $result = User::where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('name','LIKE','%' . $request->name . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->get();
+            }
+            if($request->name && $request->ville && $request->cin && $request->nb_v)
+            {
+                
+                $result = User::where('name','LIKE','%' . $request->name . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->get();
+            }
+            if($request->name && $request->ville && $request->cin && $request->etatcpt)
+            {
+                
+                $result = User::where('name','LIKE','%' . $request->name . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->get();
+            }
+            if($request->name && $request->nb_v && $request->cin && $request->etatcpt)
+            {
+                
+                $result = User::where('name','LIKE','%' . $request->name . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->get();
+            }
+            if($request->name && $request->nb_v && $request->cin && $request->etatcpt && $request->nb_v)
+            {
+                
+                $result = User::where('name','LIKE','%' . $request->name . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('ville','LIKE','%' . $request->ville . '%')
+                                ->get();
+            }
+        //Ville
+        if($request->ville && $request->cin)
+        {
+            
+            $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                            ->where('cin','LIKE','%' . $request->cin . '%')
+                            ->get();
+        }
+        if($request->ville && $request->nb_v)
+        {
+            
+            $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                            ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                            ->get();
+        }
+        if($request->ville && $request->etatcpt)
+        {
+            
+            $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                            ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                            ->get();
+        }
+        if($request->ville && $request->nb_v && $request->cin)
+            {
+                
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->get();
+            }
+            if($request->ville && $request->etatcpt && $request->cin)
+            {
+                
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->get();
+            }
+            if($request->ville && $request->etatcpt && $request->nb_v)
+            {
+                
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->get();
+            }
+            if($request->ville && $request->nb_v && $request->cin && $request->etatcpt)
+            {
+                
+                $result = User::where('ville','LIKE','%' . $request->ville . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->get();
+            }
+            //CIN
+            if($request->etatcpt && $request->cin)
+            {
+                
+                $result = User::where('etatcpt','LIKE','%' . $request->etatcpt . '%')
+                                ->where('cin','LIKE','%' . $request->cin . '%')
+                                ->get();
+            }
+            if($request->cin && $request->nb_v)
+            {
+                
+                $result = User::where('cin','LIKE','%' . $request->cin . '%')
+                                ->where('nb_v','LIKE','%' . $request->nb_v . '%')
+                                ->get();
+            }
 
-     
-    
+            
+            
 
-     return view('layoutspp.searchclient' , compact('result','client_filter')) 
-    ->with('i',$result, $client_filter);
-   // return view('layoutspp.searchclient' , compact('client_filter','name','ville','cin','nb_v','etatcpt','result')) 
-    //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
+            return view('layoutspp.searchclient' , compact('result','client_filter')) 
+            ->with('i',$result, $client_filter);
+        // return view('layoutspp.searchclient' , compact('client_filter','name','ville','cin','nb_v','etatcpt','result')) 
+            //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
 
    }
 }

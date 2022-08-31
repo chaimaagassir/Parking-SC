@@ -113,6 +113,7 @@ class ParkingController extends Controller
         $parking->save() ;
         
          $numero = 0 ;
+        //  création des places voiture couverte
         for($i=0 ; $i<$data["nb_p_c_voiture"]; $i++) 
         {
             $place = new places ; 
@@ -122,6 +123,7 @@ class ParkingController extends Controller
             $place->save() ;
        
         }
+        // création des places voiture non couverte
         for($i=0 ; $i<$data["nb_p_nc_voiture"]; $i++) 
         {
             $place = new places ; 
@@ -132,6 +134,7 @@ class ParkingController extends Controller
             $place->save() ;
        
         }
+        // création des place moto couverte
         for($i=0 ; $i<$data["nb_p_c_moto"]; $i++) 
         {
             $place = new places ; 
@@ -142,6 +145,7 @@ class ParkingController extends Controller
             $place->save() ;
        
         }
+        // création des places non couverte moto
         for($i=0 ; $i<$data["nb_p_nc_moto"]; $i++) 
         {
             $place = new places ; 
@@ -171,7 +175,7 @@ class ParkingController extends Controller
    public function delete_parkings($id)
    {
     $place=Places::where([['id_parking' ,  '=', $id] , ["etat"  , "=" , "1"] ])->count() ;
-
+    //  si aucune place n'est avec un statut 1 réservé c'est bon supprimer parking
     if( $place == '0'){
          $data=Parking::find($id);
         $data->delete();
@@ -193,41 +197,235 @@ class ParkingController extends Controller
    }
    public function update_parking(Request $request,$id)
    
-   {   
-        // pour tester est ce que ces valeurs sont les memes ou modifié
-        // $p=Parking::find($id) ;
-        // if($p->ville == $request->ville){
-        //     dd('bravo') ; 
-        // }else{
-        //     dd('ok') ;
-        // }
-       $parkings = parking::find($id);
-       
-       $parkings->ville=$request->ville;
-       $parkings->emplacement=$request->emplacement;
-       $image=$request->file;
-       if($image)
-       {
-       $imagename=time().'.'.$image->getClientOriginalExtension();
-
-       $request->file->move('parkingimage',$imagename);
-
-       $parkings->image=$imagename;
-       }
+   {      
     
-       $parkings->nb_p_c_voiture=$request->nb_p_c_voiture;
-       $parkings->nb_p_nc_voiture=$request->nb_p_nc_voiture;
-       $parkings->nb_p_c_moto=$request->nb_p_c_moto;
-       $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
+            // le parking à modifier
+         $parkings = parking::find($id);
+            $parkings->ville=$request->ville;
+            $parkings->emplacement=$request->emplacement;
+            $image=$request->file;
+            if($image)
+            {
+            $imagename=time().'.'.$image->getClientOriginalExtension();
+
+            $request->file->move('parkingimage',$imagename);
+
+            $parkings->image=$imagename;
+            }
+        
+            $parkings->numéro_téléphone=$request->numéro_téléphone;
+            $parkings->prix_heure = $request->prix_heure;
+            $parkings->prix_jour = $request->prix_jour;
+            $parkings->prix_mois = $request->prix_mois;
+            $parkings->description=$request->description;
+
+            $parkings->save();
+        
+        // pour savoir les anciens valeurs 
+        $ancien=Parking::find($id) ;
+        /////// ////////////////////////////////////////////
+        ///////////// Modification place couverte voiture /////////////////////////
+        // ///////////////////////////////////////////////////
+
+        //////// le cas de suppression des places existantes ////////
+
+        if($ancien->nb_p_c_voiture > $request->nb_p_c_voiture){
+            $nb_a_supprimer = $ancien->nb_p_c_voiture - $request->nb_p_c_voiture ;
+
+            $nb_place = Places::where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '1'] , ['couverte' , '=' , '1']])->count() ;  
+            
+            
+            if($nb_place >= $nb_a_supprimer){
+                $place_a_supprimer=Places::take($nb_a_supprimer)->where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '1'] , ['couverte' , '=' , '1']])->delete();
+                $parkings->nb_p_c_voiture=$request->nb_p_c_voiture;
+                $parkings->save();
+            }
+            // le cas de suppression des places et le nombre de places vides ne sont pas suffisable pour modification
+            else{
+
+                return redirect('parkings')->with('erreur',' Impossible de modifier le nombre des places , des places dans ce parking sont réserver , merci  d\'essayer ultérieurement');
+            }
+            
+        //////////le cas d'ajout des places   //////// 
+        }elseif( $ancien->nb_p_c_voiture < $request->nb_p_c_voiture){
+            // savoir le dernier numéro dans cette table 
+           $dernier_numero =Places::all()->where('id_parking' , '=' , $id)->last()->numero ;
+            // $dernier_numero= $place->numero; 
+            
+
+            $nb_place_a_ajouter = $request->nb_p_c_voiture - $ancien->nb_p_c_voiture ;
+            // dd($nb_place_a_ajouter) ; 
+            // création des places o continuant selon le vrai ordre de numéro place 
+            for($i=0 ; $i<$nb_place_a_ajouter ; $i++) 
+            {
+                $place = new places ; 
+                $place->id_parking=$id ; 
+                $dernier_numero=$dernier_numero +1 ;
+                $place->numero= $dernier_numero;
+                $place->save() ;
+                 
+            
+            }
+            $parkings->nb_p_c_voiture=$request->nb_p_c_voiture;
+            $parkings->save();
+
+            
+        }
+
+
+          /////// ////////////////////////////////////////////
+        ///////////// Modification place non couverte voiture /////////////////////////
+        // ///////////////////////////////////////////////////
+        
+        //////// le cas de suppression des places existantes ////////
+
+        if($ancien->nb_p_nc_voiture > $request->nb_p_nc_voiture){
+            $nb_a_supprimer = $ancien->nb_p_nc_voiture - $request->nb_p_nc_voiture ;
+
+            $nb_place = Places::where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '1'] , ['couverte' , '=' , '0']])->count() ;  
+            
+            
+            if($nb_place >= $nb_a_supprimer){
+                $place_a_supprimer=Places::take($nb_a_supprimer)->where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '1'] , ['couverte' , '=' , '0']])->delete();
+                $parkings->nb_p_nc_voiture=$request->nb_p_nc_voiture;
+                $parkings->save();
+            }
+            // le cas de suppression des places et le nombre de places vides ne sont pas suffisable pour modification
+            else{
+
+                return redirect('parkings')->with('erreur',' Impossible de modifier le nombre des places , des places dans ce parking sont réserver , merci  d\'essayer ultérieurement');
+            }
+            
+        //////////le cas d'ajout des places   //////// 
+        }elseif( $ancien->nb_p_nc_voiture < $request->nb_p_nc_voiture){
+            // savoir le dernier numéro dans cette table 
+           $dernier_numero =Places::all()->where('id_parking' , '=' , $id)->last()->numero ;
+            // $dernier_numero= $place->numero; 
+            
+
+            $nb_place_a_ajouter = $request->nb_p_nc_voiture - $ancien->nb_p_nc_voiture ;
+            // dd($nb_place_a_ajouter) ; 
+            // création des places o continuant selon le vrai ordre de numéro place 
+            for($i=0 ; $i<$nb_place_a_ajouter ; $i++) 
+            {
+                $place = new places ; 
+                $place->id_parking=$id ; 
+                $place->couverte='0' ;
+                $dernier_numero=$dernier_numero +1 ;
+                $place->numero= $dernier_numero;
+                $place->save() ;
+                 
+            
+            }
+            $parkings->nb_p_nc_voiture=$request->nb_p_nc_voiture;
+            $parkings->save();
+
+            
+        }
+       
+                  /////// ////////////////////////////////////////////
+        ///////////// Modification place  couverte moto /////////////////////////
+        // ///////////////////////////////////////////////////
+        
+        //////// le cas de suppression des places existantes ////////
+
+        if($ancien->nb_p_c_moto > $request->nb_p_c_moto){
+            $nb_a_supprimer = $ancien->nb_p_c_moto - $request->nb_p_c_moto ;
+
+            $nb_place = Places::where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '0'] , ['couverte' , '=' , '1']])->count() ;  
+            
+            
+            if($nb_place >= $nb_a_supprimer){
+                $place_a_supprimer=Places::take($nb_a_supprimer)->where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '0'] , ['couverte' , '=' , '1']])->delete();
+                $parkings->nb_p_c_moto=$request->nb_p_c_moto;
+                $parkings->save();
+            }
+            // le cas de suppression des places et le nombre de places vides ne sont pas suffisable pour modification
+            else{
+
+                return redirect('parkings')->with('erreur',' Impossible de modifier le nombre des places , des places dans ce parking sont réserver , merci  d\'essayer ultérieurement');
+            }
+            
+        //////////le cas d'ajout des places   //////// 
+        }elseif( $ancien->nb_p_c_moto < $request->nb_p_c_moto){
+            // savoir le dernier numéro dans cette table 
+           $dernier_numero =Places::all()->where('id_parking' , '=' , $id)->last()->numero ;
+            // $dernier_numero= $place->numero; 
+            
+
+            $nb_place_a_ajouter = $request->nb_p_c_moto - $ancien->nb_p_c_moto ;
+            // dd($nb_place_a_ajouter) ; 
+            // création des places o continuant selon le vrai ordre de numéro place 
+            for($i=0 ; $i<$nb_place_a_ajouter ; $i++) 
+            {
+                $place = new places ; 
+                $place->id_parking=$id ; 
+                $place->typev='0';
+                $dernier_numero=$dernier_numero +1 ;
+                $place->numero= $dernier_numero;
+                $place->save() ;
+                 
+            
+            }
+            $parkings->nb_p_c_moto=$request->nb_p_c_moto;
+            $parkings->save();
+
+            
+        }
+
+                          /////// ////////////////////////////////////////////
+        ///////////// Modification place  non couverte moto /////////////////////////
+        // ///////////////////////////////////////////////////
+        
+        //////// le cas de suppression des places existantes ////////
+
+        if($ancien->nb_p_nc_moto > $request->nb_p_nc_moto){
+            $nb_a_supprimer = $ancien->nb_p_nc_moto - $request->nb_p_nc_moto ;
+
+            $nb_place = Places::where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '0'] , ['couverte' , '=' , '0']])->count() ;  
+            
+            
+            if($nb_place >= $nb_a_supprimer){
+                $place_a_supprimer=Places::take($nb_a_supprimer)->where([['id_parking' , '=' , $id] , ['etat' , '=' , '0'] , ['typev', "=" , '0'] , ['couverte' , '=' , '0']])->delete();
+                $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
+                $parkings->save();
+            }
+            // le cas de suppression des places et le nombre de places vides ne sont pas suffisable pour modification
+            else{
+
+                return redirect('parkings')->with('erreur',' Impossible de modifier le nombre des places , des places dans ce parking sont réserver , merci  d\'essayer ultérieurement');
+            }
+            
+        //////////le cas d'ajout des places   //////// 
+        }elseif( $ancien->nb_p_nc_moto < $request->nb_p_nc_moto){
+            // savoir le dernier numéro dans cette table 
+           $dernier_numero =Places::all()->where('id_parking' , '=' , $id)->last()->numero ;
+            // $dernier_numero= $place->numero; 
+            
+
+            $nb_place_a_ajouter = $request->nb_p_nc_moto - $ancien->nb_p_nc_moto ;
+            // dd($nb_place_a_ajouter) ; 
+            // création des places o continuant selon le vrai ordre de numéro place 
+            for($i=0 ; $i<$nb_place_a_ajouter ; $i++) 
+            {
+                $place = new places ; 
+                $place->id_parking=$id ; 
+                $place->typev='0';
+                $place->couverte='0' ; 
+                $dernier_numero=$dernier_numero +1 ;
+                $place->numero= $dernier_numero;
+                $place->save() ;
+                 
+            
+            }
+            $parkings->nb_p_nc_moto=$request->nb_p_nc_moto;
+            $parkings->save();
+
+            
+        }
        
 
-       $parkings->numéro_téléphone=$request->numéro_téléphone;
-
-       $parkings->prix_heure = $request->prix_heure;
-        $parkings->prix_jour = $request->prix_jour;
-        $parkings->prix_mois = $request->prix_mois;
-
-       $parkings->description=$request->description;
+       
        $parkings->save();
 
        return redirect('parkings')->with('message','parkings updated');

@@ -62,7 +62,7 @@
       @endif
 
       @if(Session('erreur'))
-      <div class="alert alert-danger"> {{Session('erreur')}} </div>
+      <b><div class="alert alert-danger"> {{Session('erreur')}} </div></b>
       @endif
    <h4> La liste des parkings  :   </h4> <br> 
    

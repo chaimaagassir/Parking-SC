@@ -48,15 +48,15 @@
           </div>
           <div class="form-group">
             <label for="Prix/heure">Prix par heure</label>
-            <input type="number" class="form-control" name="prix_heure" id="Prix/heure" placeholder="Prix/heure">
+            <input type="number" class="form-control" name="prix_heure" id="Prix/heure" value="{{ $parkings[0]->prix_heure}}" placeholder="Prix/heure">
           </div>
           <div class="form-group">
             <label for="Prix/jour">Prix par jour</label>
-            <input type="number" class="form-control" name="prix_jour" id="Prix/jour" placeholder="Prix/jour">
+            <input type="number" class="form-control" name="prix_jour" id="Prix/jour" value="{{ $parkings[0]->prix_jour}}"  placeholder="Prix/jour">
           </div>
           <div class="form-group">
             <label for="Prix/mois">Prix par mois</label>
-            <input type="number" class="form-control" name="prix_mois" id="Prix/mois" placeholder="Prix/mois">
+            <input type="number" class="form-control" name="prix_mois" id="Prix/mois"  value="{{ $parkings[0]->prix_mois}}" placeholder="Prix/mois">
           </div>
           <div class="form-group">
             <label for="Numéro de téléphone">Numéro de téléphone</label>

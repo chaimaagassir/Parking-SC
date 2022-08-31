@@ -152,7 +152,7 @@
             @else
 
             @if($r->statut=="annulée")
-            <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 32px; font-size: 16px; border-radius: 8px;'>Canceled </button>
+            <button type="button" href="#" class="btn btn-danger" style=' background-color : rgb(78, 78, 78) ; padding: 20px 29px; font-size: 16px; border-radius: 8px;'>Canceled </button>
             @else
                 
             <a href="{{route('cancel_reservation' ,$r->id )}}"> 

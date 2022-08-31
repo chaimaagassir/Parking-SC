@@ -10,13 +10,13 @@ class Clients extends Model
 {
     use HasFactory;   
     protected $table="users" ; 
-    protected $fillable = ['name','prenom' ,'avatar', 'tel', 'ville', 'email' , 'cin' , 'usertype' ,  'etatcpt' ];
+    protected $fillable = ['id' ,'name','prenom' ,'avatar', 'tel', 'ville', 'email' , 'cin' , 'usertype' ,  'nb_v' ,'etatcpt'  ,'solde' ];
 
     public static function getClients()
     {
         $result = DB::table('users')
-        ->select('id','name','prenom' ,'avatar', 'tel', 'ville', 'email' , 'cin' , 'usertype' , 'etatcpt')
-        ->get()->toArray(); 
+        ->select('id','name','prenom' ,'avatar', 'tel', 'ville', 'email' , 'cin' , 'usertype' , 'nb_v', 'etatcpt'  , 'solde')
+        ->where('usertype', '=' , '0')->get()->toArray(); 
         return $result;
     }
 
