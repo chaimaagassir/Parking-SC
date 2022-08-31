@@ -21,7 +21,12 @@ use DB  ;
 
 class ReservationController extends Controller
 
-{
+{  
+
+    public function exportIntoExcelReservation()
+    {
+           return Excel::download(new ReservationExport,'ReservationList.xlsx');
+    }
     public function afficher (){
         $user=User::find(Auth::user()->id);
         $now=Carbon::now() ; 
@@ -285,6 +290,15 @@ class ReservationController extends Controller
         $place = Places::find($reservation->id_place) ;
         $vehicule = Vehicules::find($reservation->id_vehicule) ;
 
+<<<<<<< HEAD
+        $pdf = PDF::loadView('client/layouts.ticket',[
+            'reservation' => $reservation ,
+            'parking' => $parking ,
+            'place' => $place ,
+            'vehicule' => $vehicule, 
+            'client' => $client
+        ]);
+=======
         // $pdf = PDF::loadView('client/layouts.ticket',[
         //     'reservation' => $reservation ,
         //     'parking' => $parking ,
@@ -292,6 +306,7 @@ class ReservationController extends Controller
         //     'vehicule' => $vehicule, 
         //     'client' => $client
         // ]);
+>>>>>>> bd0e803ac486b728889f183e3bb1633589dde05b
 
         $datalist=[
             'reservation' => $reservation ,
@@ -301,8 +316,18 @@ class ReservationController extends Controller
             'client' => $client
         ] ; 
         Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist) )   ;
+<<<<<<< HEAD
+
+        Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist)) ;
+
+
+
+      
+        return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
+=======
 
         return redirect('reservations')->with('message'  , 'Réservation added successfully , please upload your ticket ! ') ;
+>>>>>>> bd0e803ac486b728889f183e3bb1633589dde05b
   
    }
 

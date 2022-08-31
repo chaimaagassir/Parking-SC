@@ -3,10 +3,17 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Places ;
+use App\Exports\PlaceExport;
+use Excel;
+
 
 
 class PlacesController extends Controller
 {
+    public function exportIntoExcelPlace()
+    {
+           return Excel::download(new PlaceExport,'placelist.xlsx');
+    }
 
     public function afficher()
     {
@@ -24,19 +31,18 @@ class PlacesController extends Controller
    }
    public function placeSearch(Request $request)
    {
-    
-
-    
      $typev = $_GET['typev'] ;
      $couverte = $_GET['couverte'] ;
      $etat = $_GET['etat'] ;
-     
-    
 
+     //dd($request->typev); 
+     //dd($request->couverte); 
+     //dd($request->etat);     
      if($request->typev)
-     {
+     {  
          $result = Places::where('typev','LIKE','%' . $request->typev . '%')->get();
      }
+
       if($request->couverte)
      {
          $result = Places::where('couverte','LIKE','%' . $request->couverte . '%')->get();
@@ -80,7 +86,7 @@ class PlacesController extends Controller
    
 
      return view('layoutspp.searchplace' , compact('result')) 
-    ->with('i',$result);
+    ;
    // return view('layoutspp.searchclient' , compact('client_filter','name','ville','cin','nb_v','etatcpt','result')) 
     //->with('i', $client_filter,$name,$ville,$cin,$nb_v,$etatcpt,$result);
 
