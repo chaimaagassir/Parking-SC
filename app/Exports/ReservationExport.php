@@ -21,7 +21,9 @@ class ReservationExport implements FromCollection
             'id_parking',
              'id_place' , 
              'id_vehicule' , 
-             'id_codepromos'
+             'id_codepromos',
+             'prix',
+             'prix_a_payer'
             
         ];
     }

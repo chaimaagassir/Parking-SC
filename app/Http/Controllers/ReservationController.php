@@ -14,8 +14,9 @@ use App\Mail\CodePromoMail ;
 use App\Mail\ReservationEmail ;
 use App\Http\Requests\ReservationFormRequest; 
 use Mail ;
+use Excel;
+use App\Exports\ReservationExport;
 use PDF ;
-
 use DB  ;
 // use App\Http\Controllers\Carbon ; 
 
@@ -77,17 +78,19 @@ class ReservationController extends Controller
         //  $place=Places::find($reservation->id_place); 
         $user=User::find($reservation->id_client);
         $now=Carbon::now() ; 
-
-            DB::update('update places set etat= ?  where id = ?', ["0",$reservation->id_place]);
+        $dernier_délai = Carbon::parse($reservation->date_debut)->subHour(1) ;
+    
         if($reservation->date_fin > $now){
+            DB::update('update places set etat= ?  where id = ?', ["0",$reservation->id_place]);
+            if($reservation->staut=='confirmée'){
+                if($now < $dernier_délai){
             $newsolde = $user->solde + $reservation->prix_a_payer ; 
             DB::update('update users set solde= ?  where id = ?', [$newsolde,$reservation->id_client]);
+            }
+            }
+            
         }
-        
-
-        
-        
-
+       
         $reservation->delete();
     
     
@@ -290,7 +293,6 @@ class ReservationController extends Controller
         $place = Places::find($reservation->id_place) ;
         $vehicule = Vehicules::find($reservation->id_vehicule) ;
 
-<<<<<<< HEAD
         $pdf = PDF::loadView('client/layouts.ticket',[
             'reservation' => $reservation ,
             'parking' => $parking ,
@@ -298,7 +300,7 @@ class ReservationController extends Controller
             'vehicule' => $vehicule, 
             'client' => $client
         ]);
-=======
+
         // $pdf = PDF::loadView('client/layouts.ticket',[
         //     'reservation' => $reservation ,
         //     'parking' => $parking ,
@@ -306,7 +308,7 @@ class ReservationController extends Controller
         //     'vehicule' => $vehicule, 
         //     'client' => $client
         // ]);
->>>>>>> bd0e803ac486b728889f183e3bb1633589dde05b
+
 
         $datalist=[
             'reservation' => $reservation ,
@@ -316,7 +318,7 @@ class ReservationController extends Controller
             'client' => $client
         ] ; 
         Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist) )   ;
-<<<<<<< HEAD
+
 
         Mail::to(Auth::user()->email)->send(new ReservationEmail($datalist)) ;
 
@@ -324,15 +326,19 @@ class ReservationController extends Controller
 
       
         return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
-=======
+
 
         return redirect('reservations')->with('message'  , 'Réservation added successfully , please upload your ticket ! ') ;
->>>>>>> bd0e803ac486b728889f183e3bb1633589dde05b
+
   
    }
 
    public function cancel_reservation($id){
     $reservation=Reservation::find($id) ; 
+    $dernier_délai = Carbon::parse($reservation->date_debut)->subHour(1) ;
+    $now=Carbon::now() ; 
+    if($now < $dernier_délai){
+        
     $user = User::find($reservation->id_client) ; 
     $solde_user = $user->solde + $reservation->prix_a_payer  ; 
     DB::update('update places set etat= ?  where id = ?', ["0",$reservation->id_place]);
@@ -340,10 +346,14 @@ class ReservationController extends Controller
     DB::update('update reservations set statut= ?  where id = ?', ['annulée',$id]);
 
     return redirect('reservations')->with('message'  , 'Réservation canceled successfully ') ;
+    }else{
+        return redirect('reservations')->with('erreur'  , 'Unable to cancel this reservation, you have exceeded the cancellation deadline ') ;
+    }
+    
   
 
    }
-     public function telecharger_ticket($id_reservation){
+    public function telecharger_ticket($id_reservation){
         $reservation = Reservation::find($id_reservation) ;
 
         $client = User::find($reservation->id_client) ; 

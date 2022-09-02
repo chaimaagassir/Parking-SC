@@ -97,6 +97,8 @@
                           <li>Posted date : <span>{{$p->created_at->format('Y-m-d')}}</span></li>
                           <li>Location : <span>{{$p->ville}}</span></li>
                           <li>Hour price : <span>{{$p->prix_heure}} MAD</span></li>
+                          <li>Day price : <span>{{$p->prix_jour}} MAD</span></li>
+                          <li>Mounth price : <span>{{$p->prix_mois}} MAD</span></li>
                           <li>Park condition : <span>Full time</span></li>
 
                       </ul>

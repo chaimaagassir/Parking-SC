@@ -9,7 +9,7 @@
                          <div class="footer-tittle">
                              <h4>About Us</h4>
                              <div class="footer-pera">
-                                 <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                 <p>SC Parking unearths new shared car parks for you every day. </p>
                             </div>
                          </div>
                      </div>

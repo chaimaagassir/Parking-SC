@@ -75,6 +75,10 @@
             @if(Session('message'))
             <div class="alert alert-success"> {{Session('message')}} </div>
             @endif
+
+            @if(Session('erreur'))
+            <div class="alert alert-danger"> {{Session('erreur')}} </div>
+            @endif
             
             <div class="header-btn d-none f-right d-lg-block">
                               

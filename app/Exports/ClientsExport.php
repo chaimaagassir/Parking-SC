@@ -23,7 +23,8 @@ class ClientsExport implements FromCollection, WithHeadings
             'cin',
             'usertype',
             'nb_v',
-            'etatcpt'
+            'etatcpt',
+            'solde'
         ];
     }
 

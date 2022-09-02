@@ -72,33 +72,45 @@
     
     <div class="row">
         {{-- chart client  --}}
-    <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Client</h4>
-            <canvas id="myChartclient"></canvas>
-          </div>
-        </div>
-      </div>
-      {{-- chart reservation --}}
-      <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Reservation</h4>
-            <canvas id="mychartreservation"></canvas>
-          </div>
-        </div>
-      </div>
-
-      {{-- chartes parkings --}}
-      <div class="col-lg-6 grid-margin stretch-card">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Parkings</h4>
-          <canvas id="myChartparkings"></canvas>
-        </div>
-      </div>
-      </div>
+          <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Clients </h4>
+                  <canvas id="myChartclient"></canvas>
+                </div>
+              </div>
+            </div>
+            {{-- chart reservation --}}
+            <div class="col-lg-6 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Reservations</h4>
+                  <canvas id="mychartreservation"></canvas>
+                </div>
+              </div>
+            </div>
+     </div>
+      <div class="row">
+                {{-- chartes parkings --}}
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Parkings</h4>
+                    <canvas id="myChartparkings"></canvas>
+                  </div>
+                </div>
+              </div>
+              {{-- Pie chart --}}
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Reservations of each city</h4>
+                    <canvas id="pieChart"></canvas>
+                  </div>
+                </div>
+              </div>
+       </div>
+      
       
     </div>
       
@@ -120,9 +132,23 @@
   data: {
     labels: _ydata,
     datasets: [{
-      label: "Registration",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
+      label: "Clients",
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
       data: _xdata,
     }],
   },
@@ -163,15 +189,29 @@
     var _ydata=JSON.parse('{!! json_encode($monthsparkings) !!} ') ; 
     var _xdata=JSON.parse('{!! json_encode($monthscountparkings) !!} ') ; 
  
-    var ctx = document.getElementById("mychartreservation");
+    var ctx = document.getElementById("myChartparkings");
      var myLineChart = new Chart(ctx, {
    type: 'bar',
    data: {
      labels: _ydata,
      datasets: [{
-       label: "Registration",
-       backgroundColor: "rgba(2,117,216,1)",
-       borderColor: "rgba(2,117,216,1)",
+       label: "Parkings",
+       backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
        data: _xdata,
      }],
    },
@@ -212,16 +252,17 @@
     var _ydata=JSON.parse('{!! json_encode($monthsreservation) !!} ') ; 
     var _xdata=JSON.parse('{!! json_encode($monthscountreservation) !!} ') ; 
  
-    var ctx = document.getElementById("myChartparkings");
+    var ctx = document.getElementById("mychartreservation");
      var myLineChart = new Chart(ctx, {
-   type: 'bar',
+   type: 'line',
    data: {
      labels: _ydata,
      datasets: [{
-       label: "Registration",
-       backgroundColor: "rgba(2,117,216,1)",
+       label: "Reservations",
+      //  backgroundColor: "rgba(2,117,216,1)",
        borderColor: "rgba(2,117,216,1)",
        data: _xdata,
+      //  fill: false
      }],
    },
    options: {
@@ -253,6 +294,70 @@
      }
    }
      });
+</script>
+
+{{-- chartes reservation by cities --}}
+
+<script type="text/javascript">
+  var _ydata=JSON.parse('{!! json_encode($villereservation) !!} ') ; 
+  var _xdata=JSON.parse('{!! json_encode($villecountreservation) !!} ') ; 
+
+  var ctx = document.getElementById("pieChart");
+   var myLineChart = new Chart(ctx, {
+ type: 'pie',
+ data: {
+   labels: _ydata,
+   datasets: [{
+     label: "Reservations",
+     backgroundColor: [
+        'rgba(255, 99, 132, 0.5)',
+        'rgba(54, 162, 235, 0.5)',
+        'rgba(255, 206, 86, 0.5)',
+        'rgba(75, 192, 192, 0.5)',
+        'rgba(153, 102, 255, 0.5)',
+        'rgba(255, 159, 64, 0.5)'
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)'
+      ],
+     data: _xdata,
+    //  fill: false
+   }],
+ },
+//  options: {
+//    scales: {
+//      xAxes: [{
+//        time: {
+//          unit: 'month'
+//        },
+//        gridLines: {
+//          display: false
+//        },
+//        ticks: {
+//          maxTicksLimit: 9
+//        }
+//      }],
+//      yAxes: [{
+//        ticks: {
+//          min: 0,
+//          max: 10,
+//          maxTicksLimit: 10
+//        },
+//        gridLines: {
+//          display: true
+//        }
+//      }],
+//    },
+//    legend: {
+//      display: false
+//    }
+//  }
+   });
 </script>
 
 @endsection

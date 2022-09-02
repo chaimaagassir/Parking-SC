@@ -18,11 +18,12 @@ class DashboardController extends Controller
         $codespromo = Codepromo::count();
         // chartes js 
         // clients chart
-        $clientschart = User::select('id' , 'created_at')->where('usertype', '=' , '0')->get()->groupby(function($clientschart){
-            Carbon::parse($clientschart->created_at)->format('M') ; 
+        $clientschart = User::select('id' , 'created_at')->where('usertype', '=' , '0')->get()->groupBy(function($clientschart){
+            return Carbon::parse($clientschart->created_at)->format('M') ; 
    
 
         });
+        
         // clients
         $monthsclient=[] ; 
         $monthscountclient=[] ; 
@@ -30,49 +31,65 @@ class DashboardController extends Controller
         foreach($clientschart as $m => $values){
             $monthsclient[]=$m ;
             $monthscountclient[] = count($values); 
+            
         }
 
         // parkings
+
+        $parkingschart = Parking::select('id' , 'created_at')->get()->groupBy(function($parkingschart){
+           return Carbon::parse($parkingschart->created_at)->format('M') ; 
+        });
+        
         $monthsparkings=[] ; 
         $monthscountparkings=[] ; 
 
-        foreach($clientschart as $m => $values){
+        foreach($parkingschart as $m => $values){
             $monthsparkings[]=$m ;
             $monthscountparkings[] = count($values); 
+            
         }
 
-        // reservation
+        
+           // reservation chart
+
+           $reservationschart = Reservation::select('id' , 'created_at')->get()->groupBy(function($reservationschart){
+            return Carbon::parse($reservationschart->created_at)->format('M') ; 
+        }); 
+
         
         $monthsreservation=[] ; 
         $monthscountreservation=[] ; 
 
-        foreach($clientschart as $m => $values){
+        foreach($reservationschart as $m => $values){
             $monthsreservation[]=$m ;
             $monthscountreservation[] = count($values); 
         }
 
-         // parking chart
+         // pie chart
 
-        $parkingschart = Parking::select('id' , 'created_at')->get()->groupby(function($parkingschart){
-            Carbon::parse($parkingschart->created_at)->format('M') ; 
-        });
-
-         // reservation chart
-
-        $reservationschart = Reservation::select('id' , 'created_at')->get()->groupby(function($reservationschart){
-            Carbon::parse($reservationschart->created_at)->format('M') ; 
+         $reservations_ville= DB::table('reservations')->join('parkings', 'reservations.id_parking' , '=' , 'parkings.id')->select('reservations.id' , 'parkings.ville')->get()->groupBy(function($reservations_ville){
+            return $reservations_ville->ville ; 
         }); 
 
-        // code promo chart
+        
+        $villereservation=[] ; 
+        $villecountreservation=[] ; 
 
-        // $codespromochart = Codepromo::select('id' , 'created_at')->get()->groupby(function($codespromochart){
-        //     Carbon::parse($codespromochart->created_at)->format('M') ; 
-        // });
+        foreach($reservations_ville as $m => $values){
+            $villereservation[]=$m ;
+            $villecountreservation[] = count($values); 
+        }
+        
+
+      
+      
+
+        
 
         return view('layoutspp.tableau-de-bord' , [
             'parkings'=>$parkings,
             'clients' =>$clients , 
-            'reservations' =>$reservations, 
+            'reservations' =>$reservations,  
             'codespromo'=> $codespromo , 
             'clientschart'=>$clientschart ,
             'monthsclient' =>$monthsclient ,
@@ -82,7 +99,10 @@ class DashboardController extends Controller
             'monthscountparkings' =>$monthscountparkings , 
             'reservationschart'=>$reservationschart  ,
             'monthsreservation' =>$monthsreservation ,
-            'monthscountreservation' =>$monthscountreservation 
+            'monthscountreservation' =>$monthscountreservation,
+            'villereservation'=>$villereservation,
+            'villecountreservation'=>$villecountreservation 
+
       
             
         ]); 
