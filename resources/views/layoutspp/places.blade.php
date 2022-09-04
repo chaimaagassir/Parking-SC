@@ -68,7 +68,7 @@
       <thead>
         <tr>
           
-          <th>Numéro parking</th>
+          <th>Numéro de Place</th>
           <th>Type de véhicule</th>
           <th>couverte/non couverte</th>
           <th>Etat</th>

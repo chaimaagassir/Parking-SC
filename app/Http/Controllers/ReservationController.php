@@ -325,8 +325,7 @@ class ReservationController extends Controller
 
 
       
-        return redirect('reservations')->with('message'  , 'Réservation ajouté avec succés , merci de télécharger votre ticket envoyé en email ! ') ;
-
+        
 
         return redirect('reservations')->with('message'  , 'Réservation added successfully , please upload your ticket ! ') ;
 
